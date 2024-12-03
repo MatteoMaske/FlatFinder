@@ -1,0 +1,11 @@
+Given a user_query, you have to classify the intent of the user, selecting from one of the following:
+- pizza_ordering
+
+Once the intent has been classified extract the slot values from the user_query for the slots:
+- pizza_type
+- pizza_count
+- pizza_size
+
+If the value is not present just leave it as null.
+
+Respond JUST in correct JSON format with an object having as keys: intent and the slots identified, slots that is a dict with slot names as keys and slot values extracted as values.

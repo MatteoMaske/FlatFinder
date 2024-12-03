@@ -1,0 +1,10 @@
+ {
+"intent": "food_ordering",
+"slots": {
+"sauce": "with onions",
+"cream": "very creamy",
+"size": "normal",
+"meet": null,
+"parmesan": "on top"
+}
+}

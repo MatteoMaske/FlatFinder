@@ -1,0 +1,1 @@
+sbatch nlu/nlu_job.sbatch --system-prompt "$(cat nlu/amatriciana.txt)" llama3 "User: I would like to order a pasta amatriciana with onions in the sauce, parmesan on top and of course with guanciale." --max_seq_length 1000

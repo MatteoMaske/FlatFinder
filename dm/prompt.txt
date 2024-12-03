@@ -1,0 +1,8 @@
+Given the output of the NLU component of a dialogue system, tell me which action, as a Dialogue Manager, you should take. 
+The set of possible actions are:
+- request_info(slot_name), if a slot value is null
+- confirmation(intent_name), if all slots are filled
+
+Respond with the action and replace the argument of the action with the actual intent or slot name from the NLU json.
+
+Example: request_info("pasta_type") or confirmation("food_ordering")

@@ -1,0 +1,11 @@
+
+
+{
+    "intent": "food_ordering",
+    "slots": {
+        "sauce": "with onions",
+        "meet": "guanciale",
+        "parmesan": "on top",
+        "pasta_type": "amatriciana"
+    }
+}

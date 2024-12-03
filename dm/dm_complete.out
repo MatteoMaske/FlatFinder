@@ -1,0 +1,7 @@
+
+
+The slots are all filled, so I should take the action:
+
+- confirmation(intent_name)
+
+Attribute to be passed to the action: "food_ordering"

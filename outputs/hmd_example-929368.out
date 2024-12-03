@@ -1,0 +1,26 @@
+ Sure, I can help you with that! Based on the user's query, the intent of the user is "food_ordering". Here is the classification and the extracted slot values in JSON format:
+
+{
+"intent": "food_ordering",
+"slots": {
+"sauce": "with onions",
+"cream": "very creamy",
+"size": "normale",
+"meet": "guanciale",
+"parmesan": {
+"on top": true
+}
+}
+}
+
+Explanation:
+
+* Intent: "food_ordering" because the user is asking for a specific food item.
+* Slots:
+	+ Sauce: "with onions" because the user mentioned "onions in the sauce".
+	+ Cream: "very creamy" because the user did not specify otherwise.
+	+ Size: "normale" because the user did not specify a size.
+	+ Meat: "guanciale" because the user mentioned "guanciale".
+	+ Parmesan: "on top" because the user mentioned "parmesan on top".
+
+Note that if the user had not mentioned any of these slots, the values would be null.

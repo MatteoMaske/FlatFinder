@@ -1,0 +1,7 @@
+
+
+Based on the output of the NLU component, I should take the action:
+
+request_info(slot)
+
+The reason is that the values for the "cream" and "size" slots are null, indicating that the user has not provided enough information for these slots. Therefore, I should request more information from the user to fill in these slots.

@@ -1,0 +1,25 @@
+Identify the user intent from this list: 
+[food_ordering, book_table, drink_ordering, out_of_domain].
+If the intent is food_ordering, extract the slots values from the input of the user.
+The slots are:
+- sauce ->"with onions" or "without onions"
+- cream -> "very creamy" or "low creamy"
+- size -> "reduced" or "normal"
+- meet -> "pancetta" or "guanciale"
+- parmesan -> "on top" or "in the sauce"
+- pasta_type -> "penne" or "spaghetti" or "maccheroni"
+
+If no values for a certain slot are present in the user input you have to put the slot with a null as the value.
+Output them in a json format.
+The json format is: 
+{
+    \"intent\": \"intent_value\", 
+    \"slots\": {
+        \"slot1\": \"value1\",
+        \"slot2\": \"value2\",
+        \"slot3\": \"value3\",
+	...
+    }
+}
+
+Respond with just the json object.

@@ -1,0 +1,13 @@
+
+
+{
+    "intent": "food_ordering",
+    "slots": {
+        "sauce": "with onions",
+        "cream": null,
+        "size": null,
+        "meet": "guanciale",
+        "parmesan": "on top",
+        "pasta_type": null
+    }
+}

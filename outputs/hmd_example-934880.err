@@ -1,0 +1,2 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:17<00:52, 17.50s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:25<00:23, 11.88s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:32<00:09,  9.55s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:33<00:00,  6.09s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:33<00:00,  8.25s/it]
+Some parameters are on the meta device device because they were offloaded to the cpu.

@@ -1,0 +1,6 @@
+usage: python -m query_model [-h] [--system-prompt SYSTEM_PROMPT]
+                             [--dtype {f32,bf16}]
+                             [--max_seq_length MAX_SEQ_LENGTH] [--return-full]
+                             [--dotenv-path DOTENV_PATH]
+                             {llama2,llama3} INPUT_TEXT
+python -m query_model: error: unrecognized arguments: --reservation=hmd-2024 --account hmd-2024_tue
