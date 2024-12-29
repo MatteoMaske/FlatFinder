@@ -1,7 +1,7 @@
 import argparse
 from argparse import Namespace
 
-import torch
+import torch, json, ollama
 
 from utils import load_model, generate, MODELS, TEMPLATES, PROMPTS
 
@@ -50,39 +50,73 @@ def get_args() -> Namespace:
 
     return parsed_args
 
+class NLU:
+    def __init__(self, model, tokenizer, args):
+        self.model = model
+        self.tokenizer = tokenizer
+        self.args = args
+
+    def generate_chunks(self, user_input):
+        nlu_text = self.args.chat_template.format(PROMPTS["AMATRICIANA"]["CHUNKING"], user_input)
+        nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
+        nlu_output = nlu_output.strip()
+
+        try:
+            chunks = eval(nlu_output)
+        except Exception as e:
+            print("Error: The NLU output [CHUNKING] is not in the expected python list format.")
+            raise e
+        
+        return chunks
+
+    def __call__(self, user_input):
+        chunks = self.generate_chunks(user_input)
+        print(f"NLU Chunks found: {chunks}")
+        nlu_outputs = []
+        for chunk in chunks:
+            nlu_text = self.args.chat_template.format(PROMPTS["AMATRICIANA"]["NLU"], chunk)
+            nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
+            nlu_outputs.append(nlu_output)
+        print(f"NLU output: {nlu_outputs}")
+        return nlu_outputs
+
 def main():
     args = get_args()
-    model, tokenizer = load_model(args)
+    if args.model_name != "llama3:latest":
+        model, tokenizer = load_model(args)
+    else:
+        ollama.show(args.model_name)
+        model, tokenizer = None, None
 
-    # exit the loop using CTRL+C
     while True:
-        # function to wait for the user input
         user_input = input("User: ")
 
         # get the NLU output
-        nlu_text = args.chat_template.format(PROMPTS["NLU"], user_input)
-        nlu_input = tokenizer(nlu_text, return_tensors="pt").to(model.device)
-        nlu_output = generate(model, nlu_input, tokenizer, args)
+        nlu_component = NLU(model, tokenizer, args)
+        # nlu_text = args.chat_template.format(PROMPTS["NLU"], user_input)
+        # nlu_input = tokenizer(nlu_text, return_tensors="pt").to(model.device)
+        # nlu_output = generate(model, nlu_input, tokenizer, args)
+        nlu_output = nlu_component(user_input)
         print(f"NLU: {nlu_output}")
 
         # Optional Pre-Processing for DM
-        nlu_output = nlu_output.strip()
+        # nlu_output = nlu_output.strip()
 
-        # get the DM output
-        dm_text = args.chat_template.format(PROMPTS["DM"], nlu_output)
-        dm_input = tokenizer(dm_text, return_tensors="pt").to(model.device)
-        dm_output = generate(model, dm_input, tokenizer, args)
-        print(f"DM: {dm_output}")
+        # # get the DM output
+        # dm_text = args.chat_template.format(PROMPTS["DM"], nlu_output)
+        # dm_input = tokenizer(dm_text, return_tensors="pt").to(model.device)
+        # dm_output = generate(model, dm_input, tokenizer, args)
+        # print(f"DM: {dm_output}")
 
-        # Optional Pre-Processing for NLG
-        dm_output = dm_output.strip()
+        # # Optional Pre-Processing for NLG
+        # dm_output = dm_output.strip()
 
-        # get the NLG output
-        nlg_text = args.chat_template.format(PROMPTS["NLG"], dm_output)
-        nlg_input = tokenizer(nlg_text, return_tensors="pt").to(model.device)
-        nlg_output = generate(model, nlg_input, tokenizer, args)
+        # # get the NLG output
+        # nlg_text = args.chat_template.format(PROMPTS["NLG"], dm_output)
+        # nlg_input = tokenizer(nlg_text, return_tensors="pt").to(model.device)
+        # nlg_output = generate(model, nlg_input, tokenizer, args)
 
-        print(f"NLG: {nlg_output}")
+        # print(f"NLG: {nlg_output}")
 
 
 if __name__ == "__main__":
