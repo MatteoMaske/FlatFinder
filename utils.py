@@ -23,6 +23,7 @@ TEMPLATES = {
 }
 
 PROMPTS = {
+    # PIZZA template =================================
     "PIZZA": {
     "NLU": """Identify the user intent from this list:
 [pizza_ordering, pizza_delivery, drink_ordering, out_of_domain].
@@ -55,8 +56,11 @@ Possible next best actions are:
 - request_info(slot): generate an appropriate question to ask the user for the missing slot value
 - confirmation(intent): generate an appropriate confirmation message for the user intent"""
     },
+
+    # AMATRICIANA template =================================
     "AMATRICIANA": {
-        "CHUNKING": """You are an intelligent NLU component of a conversational agent that analyzes user request for different intents. Here is a list of intents:
+        "NLU": {
+            "CHUNKING": """You are an intelligent NLU component of a conversational agent that analyzes user request for different intents. Here is a list of intents:
 - pasta_ordering
 - pasta_delivery
 - drink_ordering
@@ -72,30 +76,61 @@ Task:
     {"chunk": "chunk 2 text", "intent": "identified intent"},
     ...
 ]
-Only output the JSON object.
+
+Only output a valid JSON object.
 """,
-        "NLU": """Identify the user intent from this list:
-[pasta_ordering, pasta_delivery, drink_ordering, request_information, out_of_domain].
-If the intent is pizza_ordering, extract the following slot values from the user input
-- sauce ->"with onions" or "without onions"
-- cream -> "very creamy" or "low creamy"
-- size -> "reduced" or "normal"
-- meet -> "pancetta" or "guanciale"
-- parmesan -> "on top" or "in the sauce"
-- pasta_type -> "penne" or "spaghetti" or "maccheroni"
+            "PASTA_ORDERING": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request. 
+Extract the following slot values from a chunk of the user input for the intent "pasta_ordering":
+- sauce, "with onions" or "without onions"
+- cream, "very creamy" or "low creamy"
+- size, "reduced" or "normal"
+- meet, "pancetta" or "guanciale"
+- parmesan, "on top" or "in the sauce"
+- pasta_type, "penne" or "spaghetti" or "maccheroni"
+
 If no values are present in the user input you have to put null as the value.
 Output them in a json format.
 Only output the json file.
 The json format is:
 {
-    "intent": "intent_value",
-    "slots": {
-        "slot1": "value1",
-        "slot2": "value2",
-        "slot3": "value3",
-        ...
-    }
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
 }""",
+            "PASTA_DELIVERY": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "pasta_delivery":
+- address, the delivery address
+- phone, the phone number
+- order_time, the time of delivery
+
+If no values are present in the user input you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}""",
+            "DRINK_ORDERING": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "drink_ordering":
+- drink_type, the type of drink
+- drink_size, the size of the drink
+- drink_count, the number of drinks
+
+If no values are present in the user input you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}""",   
+        },
 
     "DM": """You are the Dialogue Manager.
 Given the output of the NLU component, you should only generate the next best action from this list:
@@ -105,6 +140,140 @@ Given the output of the NLU component, you should only generate the next best ac
     "NLG": """You are the NLG component: you must be very polite.
 Given the next best action classified by the Dialogue Manager (DM),
 you should only generate a lexicalized response for the user.
+Possible next best actions are:
+- request_info(slot): generate an appropriate question to ask the user for the missing slot value
+- confirmation(intent): generate an appropriate confirmation message for the user intent"""
+    },  
+
+    # HOUSE AGENCY template =================================
+    "HOUSE_AGENCY": {
+        "NLU": {
+            "CHUNKING": """You are an intelligent NLU component of a conversational agent that analyzes user request for different intents. Here is a list of intents:
+- house_search, initial request to find a house including some search information
+- house_info, request for specific information about a specific house
+- contract_info, request for information about the contract terms and conditions
+- location_info, request for information about the location of a house
+- apartment_life, request for information about the life in the specific house such as occupants, shared spaces, and rules 
+- out_of_domain
+
+Task:
+1. Divide the input text into sentences or chunks.
+2. Assign each chunk to one of the intents from the list. If no intent matches, label it as "out_of_domain".
+3. Respond in the following JSON format:
+[
+    {"chunk": "chunk 1 text", "intent": "identified intent"},
+    {"chunk": "chunk 2 text", "intent": "identified intent"},
+    ...
+]
+
+Only output a valid JSON object.
+""",
+            "HOUSE_SEARCH": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "house_search":
+- house_type, the type of house
+- house_size, the size of the house
+- house_price, the price of the house
+- house_location, the location of the house
+- house_condition, the condition of the house
+
+If no values are present in the user input you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}""",
+            "HOUSE_INFO": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "house_info":
+- house_reference, a unique identifier or description of the house the user is referring to
+- specific_info, the specific information the user is requesting about the house (e.g., price, size, condition, location, amenities, or any other detail)
+- context, any additional context provided by the user about their request (e.g., comparisons, preferences, or time-related questions)
+
+If no values are present in the user input, you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}
+""",
+            "CONTRACT_INFO": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "contract_info":
+- start_date, the starting date of the contract
+- rent_amount, the monthly rent amount
+- extra_costs, any additional costs associated with the contract (e.g., utilities, maintenance fees)
+- deposit_amount, the amount required as a deposit
+- min_duration, the minimum length for which the contract has to be signed (e.g., 6 months, 1 year)
+- cancellation_policy, the policy regarding early termination or cancellation of the contract
+- other_conditions, any other specific conditions or clauses mentioned in the contract
+
+If no values are present in the user input, you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}
+""",
+            "LOCATION_INFO": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "location_info":
+- house_address, the specific address or location of the house
+- neighborhood, the name or description of the surrounding area
+- nearby_amenities, amenities or facilities near the location (e.g., grocery stores, gyms, parks)
+- transport_options, available public transportation options or proximity to major transit hubs (e.g., bus stops, metro stations)
+- safety_level, any mention of the safety or security of the area
+- distance_to_point, the distance to a specific point of interest (e.g., university, workplace, city center)
+- other_location_details, any additional information about the location not captured by the other slots
+
+If no values are present in the user input, you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}
+""",
+            "APARTMENT_LIFE": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "apartment_life":
+- number_of_occupants, the total number of people currently living in the apartment
+- occupant_types, the type or demographic of the occupants (e.g., students, professionals, families)
+- shared_spaces, details about shared spaces in the apartment (e.g., kitchen, living room, bathroom)
+- apartment_rules, any specific rules or policies mentioned (e.g., no smoking, quiet hours)
+- compatibility_info, information about compatibility or preferences for living arrangements (e.g., looking for quiet people, non-smokers)
+- other_apartment_details, any additional information about life in the apartment not captured by the other slots
+
+If no values are present in the user input, you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}
+"""
+        },
+
+     "DM": """You are the Dialogue Manager.
+Given the output of the NLU component, you should only generate the next best action from this list:
+- request_info(slot), if a slot value is missing (null) by substituting slot with the missing slot name
+- confirmation(intent), if all slots have been filled""",
+
+    "NLG": """You are the NLG component: you must be very polite.
+Given the next best action classified by the Dialogue Manager (DM), you should only generate a lexicalized response for the user.
 Possible next best actions are:
 - request_info(slot): generate an appropriate question to ask the user for the missing slot value
 - confirmation(intent): generate an appropriate confirmation message for the user intent"""
