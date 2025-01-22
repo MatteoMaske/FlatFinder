@@ -148,16 +148,14 @@ Possible next best actions are:
     # HOUSE AGENCY template =================================
     "HOUSE_AGENCY": {
         "NLU": {
-            "CHUNKING": """You are an intelligent NLU component of a conversational agent that analyzes user request for different intents. Here is a list of intents:
+            "CHUNKING": """You are an intelligent NLU component of a conversational agent that analyzes user requests for different intents. Here is a list of intents:
 - house_search, initial request to find a house including some search information
-- house_info, request for specific information about a specific house
-- contract_info, request for information about the contract terms and conditions
-- location_info, request for information about the location of a house
-- apartment_life, request for information about the life in the specific house such as occupants, shared spaces, and rules 
+- ask_info, request for specific information about a house (contract, housemates, location etc.)
+- compare_houses, comparison between two houses or apartments
 - out_of_domain
 
 Task:
-1. Divide the input text into sentences or chunks.
+1. Analyze the input text and divide it into chunks if and only if DIFFERENT intents are present.
 2. Assign each chunk to one of the intents from the list. If no intent matches, label it as "out_of_domain".
 3. Respond in the following JSON format:
 [
@@ -165,7 +163,6 @@ Task:
     {"chunk": "chunk 2 text", "intent": "identified intent"},
     ...
 ]
-
 Only output a valid JSON object.
 """,
             "HOUSE_SEARCH": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
@@ -264,10 +261,27 @@ The json format is:
     "slot3": "value3",
     ...
 }
-"""
-        },
+""",
+            "ASK_INFO": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
+Extract the following slot values from a chunk of the user input for the intent "ask_info":
+- house_reference, a unique identifier or description of the house the user is referring to
+- specific_info, the specific information the user is requesting about the house (e.g., price, size, condition, location, amenities, or any other detail)
+- context, any additional context provided by the user about their request (e.g., comparisons, preferences, or time-related questions)
 
-     "DM": """You are the Dialogue Manager.
+If no values are present in the user input, you have to put null as the value.
+Output them in a json format.
+Only output the json file.
+The json format is:
+{
+    "slot1": "value1",
+    "slot2": "value2",
+    "slot3": "value3",
+    ...
+}
+""",
+    },
+
+    "DM": """You are the Dialogue Manager.
 Given the output of the NLU component, you should only generate the next best action from this list:
 - request_info(slot), if a slot value is missing (null) by substituting slot with the missing slot name
 - confirmation(intent), if all slots have been filled""",
