@@ -25,9 +25,9 @@ class DM:
         Apply simple post-processing to the NLU outputs by converting them to a dictionary.
         """
         to_remove = []
-        for i, dm_output in enumerate(dm_outputs):
-            dm_output = dm_output.strip("\n")
-            if len(dm_output) == 0:
+        for i in range(len(dm_outputs)):
+            dm_outputs[i] = dm_outputs[i].strip("\n")
+            if len(dm_outputs[i]) == 0:
                 to_remove.append(i)
         
         # TODO: Handle this missing information later with the fallback policy

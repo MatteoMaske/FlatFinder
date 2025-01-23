@@ -69,23 +69,31 @@ def main():
         ollama.show(args.model_name)
         model, tokenizer = None, None
 
+    conversation = []
+
     while True:
         user_input = input("User: ")
+        conversation.append({"role": "user", "text": user_input})
 
         # get the NLU output
         nlu_component = NLU(model, tokenizer, args)
-        nlu_output = nlu_component(user_input)
+        nlu_output = nlu_component(user_input, conversation[:-1])
         print(f"NLU: {nlu_output}")
+        if input("Continue? (y/n): ") == "n":
+            break
 
         # get the DM output
         dm_component = DM(model, tokenizer, args)
         dm_output = dm_component(nlu_output)
         print(f"DM: {dm_output}")
+        if input("Continue? (y/n): ") == "n":
+            break
 
         # get the NLG output
         nlg_component = NLG(model, tokenizer, args)
         nlg_output = nlg_component(dm_output)
-        print(f"NLG: {nlg_output}")
+        print(f"System: {nlg_output}")
+        conversation.append({"role": "system", "text": nlg_output})
 
 
 if __name__ == "__main__":

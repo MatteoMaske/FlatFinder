@@ -16,15 +16,28 @@ class NLU:
             chunks = json.loads(nlu_output)
         except Exception as e:
             print("Error: The NLU output [CHUNKING] is not in the expected json format.")
-            print(f"'nlu_output'")
+            print(f"'{nlu_output}'")
             raise e
         
         return chunks
+    
+    def classify_intent(self, user_input, conversation):
+        prompt = PROMPTS[self.args.domain]["NLU"]["INTENT"].format(str(conversation))
+        nlu_text = self.args.chat_template.format(prompt, user_input)
+        nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
+        nlu_output = nlu_output.strip("\n").strip()
+        print(f"NLU Intent: '{nlu_output}'")
 
-    def __call__(self, user_input):
+        return [{"intent": nlu_output, "chunk": user_input}]
 
-        chunks = self.generate_chunks(user_input)
-        print(f"NLU Chunks found: {chunks}")
+    def __call__(self, user_input, conversation=[], chunks=False):
+        
+        if chunks:
+            chunks = self.generate_chunks(user_input)
+            print(f"NLU Chunks found: {chunks}")
+        else:
+            chunks = self.classify_intent(user_input, conversation)
+
         nlu_outputs = []
 
         for chunk in chunks:

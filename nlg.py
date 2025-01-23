@@ -18,16 +18,16 @@ class NLG:
 
         self.post_process(nlg_outputs)
 
-        return nlg_outputs
+        return nlg_outputs[0]
     
     def post_process(self, nlg_outputs):
         """
         Apply simple post-processing to the NLU outputs by converting them to a dictionary.
         """
         to_remove = []
-        for i, nlg_output in enumerate(nlg_outputs):
-            nlg_output = nlg_output.strip()
-            if len(nlg_output) == 0:
+        for i in range(len(nlg_outputs)):
+            nlg_outputs[i] = nlg_outputs[i].strip("\n")
+            if len(nlg_outputs[i]) == 0:
                 to_remove.append(i)
         
         # TODO: Handle this missing information later with the fallback policy

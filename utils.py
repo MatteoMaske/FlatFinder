@@ -149,21 +149,37 @@ Possible next best actions are:
     "HOUSE_AGENCY": {
         "NLU": {
             "CHUNKING": """You are an intelligent NLU component of a conversational agent that analyzes user requests for different intents. Here is a list of intents:
-- house_search, initial request to find a house including some search information
-- ask_info, request for specific information about a house (contract, housemates, location etc.)
+- house_search, request for a house specifying different attributes to guide the search
+- ask_info, request for specific information about a specific house (contract, housemates, location etc.)
 - compare_houses, comparison between two houses or apartments
 - out_of_domain
 
 Task:
-1. Analyze the input text and divide it into chunks if and only if DIFFERENT intents are present.
-2. Assign each chunk to one of the intents from the list. If no intent matches, label it as "out_of_domain".
+1. Analyze the input text and divide it into sentences or phrases representing user requests for a specific intent.
+2. Assign each text to one of the intents from the list. If no intent matches, label it as "out_of_domain".
 3. Respond in the following JSON format:
 [
-    {"chunk": "chunk 1 text", "intent": "identified intent"},
-    {"chunk": "chunk 2 text", "intent": "identified intent"},
+    {"chunk": "text 1", "intent": "identified intent"},
+    {"chunk": "text 2", "intent": "identified intent"},
     ...
 ]
-Only output a valid JSON object.
+
+Only output a valid JSON object without any additional information.
+""",
+            "INTENT": """You are an intelligent NLU component of a conversational agent that analyzes user requests for different intents. Here is a list of intents:
+- house_search, request for a house specifying different attributes to guide the search
+- ask_info, request for specific information about a specific house (contract, housemates, location etc.)
+- compare_houses, comparison between two houses or apartments
+- out_of_domain
+
+Task:
+1. Given an optional history of the conversation and a new user input, classify the intent of the user request.
+2. Respond with the name of the identified intent.
+
+History:
+{}
+
+Only output the intent name.
 """,
             "HOUSE_SEARCH": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
 Extract the following slot values from a chunk of the user input for the intent "house_search":
@@ -171,7 +187,6 @@ Extract the following slot values from a chunk of the user input for the intent 
 - house_size, the size of the house
 - house_price, the price of the house
 - house_location, the location of the house
-- house_condition, the condition of the house
 
 If no values are present in the user input you have to put null as the value.
 Output them in a json format.
@@ -287,10 +302,11 @@ Given the output of the NLU component, you should only generate the next best ac
 - confirmation(intent), if all slots have been filled""",
 
     "NLG": """You are the NLG component: you must be very polite.
-Given the next best action classified by the Dialogue Manager (DM), you should only generate a lexicalized response for the user.
+Given the next best action classified by the Dialogue Manager (DM), you should generate a lexicalized response for the user.
 Possible next best actions are:
 - request_info(slot): generate an appropriate question to ask the user for the missing slot value
-- confirmation(intent): generate an appropriate confirmation message for the user intent"""
+- confirmation(intent): generate an appropriate confirmation message for the user intent
+Please do not include other information other than the response."""
     },  
 }
 
