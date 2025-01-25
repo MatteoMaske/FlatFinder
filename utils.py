@@ -190,14 +190,16 @@ Extract the following slot values from a chunk of the user input for the intent 
 
 If no values are present in the user input you have to put null as the value.
 Output them in a json format.
-Only output the json file.
 The json format is:
 {
     "slot1": "value1",
     "slot2": "value2",
     "slot3": "value3",
     ...
-}""",
+}
+
+Output only a valid JSON object without any additional information.
+""",
             "HOUSE_INFO": """You are an intelligent NLU component of a conversational agent that analyzes chunks of user request.
 Extract the following slot values from a chunk of the user input for the intent "house_info":
 - house_reference, a unique identifier or description of the house the user is referring to
@@ -296,16 +298,25 @@ The json format is:
 """,
     },
 
-    "DM": """You are the Dialogue Manager.
-Given the output of the NLU component, you should only generate the next best action from this list:
-- request_info(slot), if a slot value is missing (null) by substituting slot with the missing slot name
-- confirmation(intent), if all slots have been filled""",
+    "DM": """You are an intelligent component of a conversational agent that acts as the Dialogue Manager.
+Given the output of the NLU component, you should generate the next best action from this list:
+- request_info(slot), if a slot value is missing (None) by substituting slot with the missing slot name
+- confirmation(intent), if all slots have been filled with a not null value
+
+Guidelines:
+- Use only the given intent and slots to generate the next best action.
+
+Please do not include other information other than the next best action.""",
 
     "NLG": """You are the NLG component: you must be very polite.
 Given the next best action classified by the Dialogue Manager (DM), you should generate a lexicalized response for the user.
 Possible next best actions are:
 - request_info(slot): generate an appropriate question to ask the user for the missing slot value
 - confirmation(intent): generate an appropriate confirmation message for the user intent
+
+Please be coherent with the following chat history:
+{}
+
 Please do not include other information other than the response."""
     },  
 }

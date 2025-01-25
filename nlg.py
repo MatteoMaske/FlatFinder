@@ -2,17 +2,20 @@ import json
 from utils import generate, PROMPTS
 
 class NLG:
-    def __init__(self, model, tokenizer, args):
+    def __init__(self, model, tokenizer, args, verbose=False):
         self.model = model
         self.tokenizer = tokenizer
         self.args = args
+        self.verbose = verbose
 
-    def __call__(self, dm_output):
+    def __call__(self, dm_output, conversation=[]):
 
         nlg_outputs = []
 
         for next_best_action in dm_output:
-            nlg_text = self.args.chat_template.format(PROMPTS[self.args.domain]["NLG"], next_best_action)
+            prompt = PROMPTS[self.args.domain]["NLG"].format(conversation)
+            nlg_text = self.args.chat_template.format(prompt, next_best_action)
+            print(f"NLG Text: '{nlg_text}'") if self.verbose else None
             nlg_output = generate(self.model, nlg_text, self.tokenizer, self.args)
             nlg_outputs.append(nlg_output)
 

@@ -7,6 +7,8 @@ from utils import load_model, generate, MODELS, TEMPLATES, PROMPTS
 from nlu import NLU
 from dm import DM
 from nlg import NLG
+from state_tracker import StateTracker
+from conversation import Conversation
 
 
 def get_args() -> Namespace:
@@ -69,31 +71,39 @@ def main():
         ollama.show(args.model_name)
         model, tokenizer = None, None
 
-    conversation = []
+    conversation = Conversation(history_size=4)
+    state_tracker = StateTracker()
 
     while True:
         user_input = input("User: ")
-        conversation.append({"role": "user", "text": user_input})
+        conversation.update("user", user_input)
 
         # get the NLU output
         nlu_component = NLU(model, tokenizer, args)
-        nlu_output = nlu_component(user_input, conversation[:-1])
+        nlu_output = nlu_component(user_input, conversation.get_history(until=-1))
         print(f"NLU: {nlu_output}")
         if input("Continue? (y/n): ") == "n":
             break
 
+        # update the state tracker
+        state_tracker.update(nlu_output)
+        print(f"State Tracker: {state_tracker.current_slots}")
+
         # get the DM output
-        dm_component = DM(model, tokenizer, args)
-        dm_output = dm_component(nlu_output)
+        dm_component = DM(model, tokenizer, args, verbose=True)
+        dm_output = dm_component(state_tracker)
         print(f"DM: {dm_output}")
         if input("Continue? (y/n): ") == "n":
             break
 
+        # update the next best actions
+        state_tracker.update_nba(dm_output)
+
         # get the NLG output
         nlg_component = NLG(model, tokenizer, args)
-        nlg_output = nlg_component(dm_output)
+        nlg_output = nlg_component(dm_output, conversation.get_history())
         print(f"System: {nlg_output}")
-        conversation.append({"role": "system", "text": nlg_output})
+        conversation.update("system", nlg_output)
 
 
 if __name__ == "__main__":

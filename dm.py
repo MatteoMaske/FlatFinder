@@ -1,20 +1,24 @@
-import json
 from utils import generate, PROMPTS
+from state_tracker import StateTracker
 
 class DM:
-    def __init__(self, model, tokenizer, args):
+    def __init__(self, model, tokenizer, args, verbose=False):  
         self.model = model
         self.tokenizer = tokenizer
         self.args = args
+        self.verbose = verbose
 
-    def __call__(self, nlu_output):
+    def __call__(self, state_tracker: StateTracker):
 
         dm_outputs = []
 
-        for chunk in nlu_output:
-            dm_text = self.args.chat_template.format(PROMPTS[self.args.domain]["DM"], str(chunk))
-            dm_output = generate(self.model, dm_text, self.tokenizer, self.args)
-            dm_outputs.append(dm_output)
+        intent = state_tracker.current_intent
+        slots = state_tracker.current_slots
+        info = f"Intent: {intent}, Slots: {slots}"
+        dm_text = self.args.chat_template.format(PROMPTS[self.args.domain]["DM"], info)
+        print(f"DM Text: '{dm_text}'") if self.verbose else None
+        dm_output = generate(self.model, dm_text, self.tokenizer, self.args)
+        dm_outputs.append(dm_output)
 
         self.post_process(dm_outputs)
 

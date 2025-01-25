@@ -2,10 +2,11 @@ import json
 from utils import generate, PROMPTS
 
 class NLU:
-    def __init__(self, model, tokenizer, args):
+    def __init__(self, model, tokenizer, args, verbose=False):
         self.model = model
         self.tokenizer = tokenizer
         self.args = args
+        self.verbose = verbose
 
     def generate_chunks(self, user_input):
         nlu_text = self.args.chat_template.format(PROMPTS[self.args.domain]["NLU"]["CHUNKING"], user_input)
@@ -22,7 +23,9 @@ class NLU:
         return chunks
     
     def classify_intent(self, user_input, conversation):
-        prompt = PROMPTS[self.args.domain]["NLU"]["INTENT"].format(str(conversation))
+        chat_history = conversation if len(conversation) > 0 else "EMPTY"
+        prompt = PROMPTS[self.args.domain]["NLU"]["INTENT"].format(chat_history)
+        print(f"NLU [Intent] Prompt: '{prompt}'") if self.verbose else None
         nlu_text = self.args.chat_template.format(prompt, user_input)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
         nlu_output = nlu_output.strip("\n").strip()
@@ -37,7 +40,7 @@ class NLU:
             print(f"NLU Chunks found: {chunks}")
         else:
             chunks = self.classify_intent(user_input, conversation)
-
+        print(f"NLU Chunks: {chunks}") if self.verbose else None
         nlu_outputs = []
 
         for chunk in chunks:
@@ -46,6 +49,7 @@ class NLU:
                 print(f"Error: The detected intent {intent} is not in the domain {self.args.domain}.")
                 continue
             nlu_text = self.args.chat_template.format(PROMPTS[self.args.domain]["NLU"][intent], chunk['chunk'])
+            print(f"NLU [Slots] Text: '{nlu_text}'") if self.verbose else None
             nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
             nlu_outputs.append((intent, nlu_output))
 
@@ -60,6 +64,8 @@ class NLU:
         to_remove = []
         for i, (intent, nlu_output) in enumerate(nlu_outputs):
             try:
+                if "{" in nlu_output and "}" in nlu_output:
+                    nlu_output = nlu_output[nlu_output.index("{") : nlu_output.index("}")+1]
                 nlu_output_dict = json.loads(nlu_output)
                 nlu_outputs[i] = {"intent": intent, "slots": nlu_output_dict}
             except Exception as e:
