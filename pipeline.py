@@ -1,14 +1,15 @@
 import argparse
 from argparse import Namespace
 
-import torch, json, ollama
+import torch, ollama, os
 
-from utils import load_model, generate, MODELS, TEMPLATES, PROMPTS
-from nlu import NLU
-from dm import DM
-from nlg import NLG
-from state_tracker import StateTracker
-from conversation import Conversation
+from utils.utils import load_model, MODELS, TEMPLATES
+from components.nlu import NLU
+from components.dm import DM
+from components.nlg import NLG
+from components.state_tracker import StateTracker
+from utils.conversation import Conversation
+from data.database import Database
 
 
 def get_args() -> Namespace:
@@ -51,14 +52,21 @@ def get_args() -> Namespace:
     parser.add_argument(
         "--domain",
         type=str,
-        choices=PROMPTS.keys(),
-        default="HOUSE_AGENCY",
+        choices=os.listdir("prompts"),
+        default="house_agency",
         help="The domain to use for the model."
+    )
+    parser.add_argument(
+        "--database-path",
+        type=str,
+        default="house_dataset/House_Rent_Dataset.csv",
+        help="The path to the csv file to use as database."
     )
 
     parsed_args = parser.parse_args()
     parsed_args.chat_template = TEMPLATES[parsed_args.model_name]
     parsed_args.model_name = MODELS[parsed_args.model_name]
+    assert os.path.exists(parsed_args.database_path), "The database path does not exist."
 
     return parsed_args
 
@@ -72,9 +80,15 @@ def main():
         model, tokenizer = None, None
 
     conversation = Conversation(history_size=4)
-    state_tracker = StateTracker()
+    database = Database(args.database_path)
+    state_tracker = StateTracker(database)
+    welcome_message = "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"
+    print(f"System: {welcome_message}")
+    conversation.update("system", welcome_message)
 
     while True:
+        state_tracker.test()
+        exit()
         user_input = input("User: ")
         conversation.update("user", user_input)
 
@@ -90,7 +104,7 @@ def main():
         print(f"State Tracker: {state_tracker.current_slots}")
 
         # get the DM output
-        dm_component = DM(model, tokenizer, args, verbose=True)
+        dm_component = DM(model, tokenizer, args)
         dm_output = dm_component(state_tracker)
         print(f"DM: {dm_output}")
         if input("Continue? (y/n): ") == "n":
@@ -99,9 +113,10 @@ def main():
         # update the next best actions
         state_tracker.update_nba(dm_output)
 
+
         # get the NLG output
         nlg_component = NLG(model, tokenizer, args)
-        nlg_output = nlg_component(dm_output, conversation.get_history())
+        nlg_output = nlg_component(state_tracker, conversation.get_history())
         print(f"System: {nlg_output}")
         conversation.update("system", nlg_output)
 

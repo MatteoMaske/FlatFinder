@@ -1,5 +1,7 @@
-import json
-from utils import generate, PROMPTS
+import os
+
+from components.state_tracker import StateTracker
+from utils.utils import generate
 
 class NLG:
     def __init__(self, model, tokenizer, args, verbose=False):
@@ -8,15 +10,22 @@ class NLG:
         self.args = args
         self.verbose = verbose
 
-    def __call__(self, dm_output, conversation=[]):
+    def __call__(self, state_tracker: StateTracker, conversation=[]):
+
+        dm_output = list(state_tracker.next_best_actions[-1])
+        intent = state_tracker.current_intent
+        slots = state_tracker.current_slots
+        info = f"\nIntent: {intent}, Slots: {slots}"
 
         nlg_outputs = []
 
         for next_best_action in dm_output:
-            prompt = PROMPTS[self.args.domain]["NLG"].format(conversation)
-            nlg_text = self.args.chat_template.format(prompt, next_best_action)
-            print(f"NLG Text: '{nlg_text}'") if self.verbose else None
-            nlg_output = generate(self.model, nlg_text, self.tokenizer, self.args)
+            path = os.path.join("prompts", self.args.domain, "nlg.txt")
+            system_prompt = open(path, "r").read()
+            system_prompt = self.args.chat_template.format(system_prompt, next_best_action+info)
+            print(f"NLG Text: '{system_prompt}'") if self.verbose else None
+
+            nlg_output = generate(self.model, system_prompt, self.tokenizer, self.args)
             nlg_outputs.append(nlg_output)
 
         self.post_process(nlg_outputs)

@@ -1,5 +1,7 @@
-from utils import generate, PROMPTS
-from state_tracker import StateTracker
+import os
+
+from utils.utils import generate
+from .state_tracker import StateTracker
 
 class DM:
     def __init__(self, model, tokenizer, args, verbose=False):  
@@ -15,9 +17,12 @@ class DM:
         intent = state_tracker.current_intent
         slots = state_tracker.current_slots
         info = f"Intent: {intent}, Slots: {slots}"
-        dm_text = self.args.chat_template.format(PROMPTS[self.args.domain]["DM"], info)
-        print(f"DM Text: '{dm_text}'") if self.verbose else None
-        dm_output = generate(self.model, dm_text, self.tokenizer, self.args)
+        
+        path = os.path.join("prompts", self.args.domain, "dm.txt")
+        system_prompt = open(path, "r").read()
+        system_prompt = self.args.chat_template.format(system_prompt, info)
+        print(f"DM Text: '{system_prompt}'") if self.verbose else None
+        dm_output = generate(self.model, system_prompt, self.tokenizer, self.args)
         dm_outputs.append(dm_output)
 
         self.post_process(dm_outputs)

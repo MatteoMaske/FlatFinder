@@ -1,5 +1,6 @@
-import json
-from utils import generate, PROMPTS
+import os, json
+from utils.utils import generate
+from prompts.house_agency.nlu import PROMPTS
 
 class NLU:
     def __init__(self, model, tokenizer, args, verbose=False):
@@ -22,11 +23,14 @@ class NLU:
         
         return chunks
     
-    def classify_intent(self, user_input, conversation):
+    def classify_intent(self, user_input, conversation):        
         chat_history = conversation if len(conversation) > 0 else "EMPTY"
-        prompt = PROMPTS[self.args.domain]["NLU"]["INTENT"].format(chat_history)
-        print(f"NLU [Intent] Prompt: '{prompt}'") if self.verbose else None
-        nlu_text = self.args.chat_template.format(prompt, user_input)
+        # prompt = PROMPTS[self.args.domain]["NLU"]["INTENT"].format(chat_history)
+        path = os.path.join("prompts", self.args.domain, "intent.txt")
+        system_prompt = open(path, "r").read()
+        print(f"NLU [Intent] Prompt: '{system_prompt}'") if self.verbose else None
+
+        nlu_text = self.args.chat_template.format(system_prompt, user_input)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
         nlu_output = nlu_output.strip("\n").strip()
         print(f"NLU Intent: '{nlu_output}'")
@@ -41,16 +45,18 @@ class NLU:
         else:
             chunks = self.classify_intent(user_input, conversation)
         print(f"NLU Chunks: {chunks}") if self.verbose else None
+        
         nlu_outputs = []
 
         for chunk in chunks:
             intent = chunk['intent'].upper()
-            if intent not in PROMPTS[self.args.domain]['NLU'].keys():
+            user_input = chunk['chunk']
+            if intent not in PROMPTS.keys():
                 print(f"Error: The detected intent {intent} is not in the domain {self.args.domain}.")
                 continue
-            nlu_text = self.args.chat_template.format(PROMPTS[self.args.domain]["NLU"][intent], chunk['chunk'])
-            print(f"NLU [Slots] Text: '{nlu_text}'") if self.verbose else None
-            nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
+            system_prompt = self.args.chat_template.format(PROMPTS[intent], user_input)
+            print(f"NLU [Slots] Text: '{system_prompt}'") if self.verbose else None
+            nlu_output = generate(self.model, system_prompt, self.tokenizer, self.args)
             nlu_outputs.append((intent, nlu_output))
 
         self.post_process(nlu_outputs)
