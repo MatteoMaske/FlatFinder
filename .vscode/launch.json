@@ -24,7 +24,7 @@
             "justMyCode": false,
             "console": "integratedTerminal",
             "args": [
-                "llama3", "--parallel", "--max-new-tokens", "1000"
+                "llama3", "--parallel"
             ]
         },
 
