@@ -8,10 +8,10 @@ NO explanation!
 DO NOT invent new intents!
 
 Here is the list of intents:
-- house_search, request for a house specifying different attributes to guide the search
+- house_search, used when a user initially requests housing information and in subsequent queries that refine or clarify the search criteria.
 - ask_info, request for specific information about a specific house (contract, housemates, location etc.)
 - compare_houses, comparison between two houses or apartments
-- out_of_domain
+- out_of_domain, the user request is not related to the house search
 
 History:
 {}

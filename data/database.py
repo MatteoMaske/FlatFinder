@@ -25,11 +25,11 @@ class Database:
         
         house_size = slots.get("house_size")
         house_size = [int(word) for word in house_size.split() if word.isdigit()]
-        house_size = min(house_size)
+        house_size = min(house_size) if house_size else 0
 
         house_rent = slots.get("house_rent")
         house_rent = [int(word) for word in house_rent.split() if word.isdigit()]
-        house_rent = max(house_rent)
+        house_rent = max(house_rent) if house_rent else 1000000
 
         house_location = slots.get("house_location")
         house_location = house_location.lower()

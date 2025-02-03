@@ -46,7 +46,7 @@ class StateTracker:
             houses = self.database.get_houses(self.current_slots)
             self.current_intent = "show_houses"
             self.current_slots = {}
-            print(houses)
+            print(f"Houses with the given slots found: {houses}")
 
 
     def test(self):

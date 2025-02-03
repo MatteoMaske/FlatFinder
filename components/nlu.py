@@ -24,10 +24,9 @@ class NLU:
         return chunks
     
     def classify_intent(self, user_input, conversation):        
-        chat_history = conversation if len(conversation) > 0 else "EMPTY"
-        # prompt = PROMPTS[self.args.domain]["NLU"]["INTENT"].format(chat_history)
         path = os.path.join("prompts", self.args.domain, "intent.txt")
         system_prompt = open(path, "r").read()
+        system_prompt = system_prompt.format(conversation)
         print(f"NLU [Intent] Prompt: '{system_prompt}'") if self.verbose else None
 
         nlu_text = self.args.chat_template.format(system_prompt, user_input)
@@ -54,8 +53,9 @@ class NLU:
             if intent not in PROMPTS.keys():
                 print(f"Error: The detected intent {intent} is not in the domain {self.args.domain}.")
                 continue
-            system_prompt = self.args.chat_template.format(PROMPTS[intent], user_input)
-            print(f"NLU [Slots] Text: '{system_prompt}'") if self.verbose else None
+            system_prompt = PROMPTS[intent].format(conversation)
+            system_prompt = self.args.chat_template.format(system_prompt, user_input)
+            print(f"NLU [Slots] prompt: '{system_prompt}'") if self.verbose else None
             nlu_output = generate(self.model, system_prompt, self.tokenizer, self.args)
             nlu_outputs.append((intent, nlu_output))
 

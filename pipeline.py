@@ -87,13 +87,11 @@ def main():
     conversation.update("system", welcome_message)
 
     while True:
-        state_tracker.test()
-        exit()
         user_input = input("User: ")
         conversation.update("user", user_input)
 
         # get the NLU output
-        nlu_component = NLU(model, tokenizer, args)
+        nlu_component = NLU(model, tokenizer, args, verbose=True)
         nlu_output = nlu_component(user_input, conversation.get_history(until=-1))
         print(f"NLU: {nlu_output}")
         if input("Continue? (y/n): ") == "n":

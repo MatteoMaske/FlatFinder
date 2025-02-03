@@ -4,6 +4,11 @@ You are working as a real estate agency that helps students find houses to rent.
 Extract the given slot values from the user input for the intent "house_search".
 If a slot value is not present in the user input you have to put null as the value.
 
+Here is provided the chat history, use it to understand the context of the conversation.
+History:
+{}
+
+Use the history to understand which slots are involved in the current user request.
 Only output a valid JSON object.
 You must output all the slots!
 Only short answers!
@@ -20,12 +25,12 @@ The slots name are:
 - house_furnished, whether the house should be furnished or semi-furnished or unfurnished
 
 The json format is:
-{
+{{
     "slot1": "value1",
     "slot2": "value2",
     "slot3": "value3",
     ...
-}""",
+}}""",
 
 "ASK_INFO": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
 Extract the following slot values from a chunk of the user input for the intent "ask_info"
@@ -51,3 +56,5 @@ The json format is:
 }
 """
 }
+
+print(PROMPTS["HOUSE_SEARCH"].format(8))
