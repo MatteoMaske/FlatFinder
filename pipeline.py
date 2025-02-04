@@ -91,22 +91,20 @@ def main():
         conversation.update("user", user_input)
 
         # get the NLU output
-        nlu_component = NLU(model, tokenizer, args, verbose=True)
+        nlu_component = NLU(model, tokenizer, args)
         nlu_output = nlu_component(user_input, conversation.get_history(until=-1))
+        print("="*50 + " NLU " + "="*50)
         print(f"NLU: {nlu_output}")
-        if input("Continue? (y/n): ") == "n":
-            break
 
         # update the state tracker
         state_tracker.update(nlu_output)
-        print(f"State Tracker: {state_tracker.current_slots}")
+        print(f"State Tracker: {state_tracker}")
 
         # get the DM output
         dm_component = DM(model, tokenizer, args)
         dm_output = dm_component(state_tracker)
+        print("="*50 + " DM " + "="*50)
         print(f"DM: {dm_output}")
-        if input("Continue? (y/n): ") == "n":
-            break
 
         # update the next best actions
         state_tracker.update_nba(dm_output)
@@ -115,6 +113,7 @@ def main():
         # get the NLG output
         nlg_component = NLG(model, tokenizer, args)
         nlg_output = nlg_component(state_tracker, conversation.get_history())
+        print("="*50 + " NLG " + "="*50)
         print(f"System: {nlg_output}")
         conversation.update("system", nlg_output)
 

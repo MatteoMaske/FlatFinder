@@ -12,6 +12,14 @@ Possible next best actions are:
 - confirmation(intent_name): generate an appropriate confirmation message for the given user intent and provide a brief summary of what discussed so far
 - show_houses(intent_name): generate a list of houses that match the user's search criteria following the information provided by the Dialogue Manager (DM)
 
+Slot values are:
+- house_size: the size of the house (in square feet)
+- house_bhk: the number of bedrooms, hall, and kitchen in the house
+- house_rent: the monthly fee to rent the house (in INR)
+- house_location: the location of the house within the city
+- house_city: the city where the house is located
+- house_furnished: whether the house should be furnished or semi-furnished or unfurnished
+
 Please be coherent with the following chat history:
 {}
 

@@ -41,9 +41,9 @@ class Database:
         filter_func = lambda house: house.bhk in house_bhk and \
             house.size >= house_size and \
             house.rent <= house_rent and \
-            house_location in house.area_locality and \
             house_city in house.city and \
             house_furnished in house.furnishing_status
+            # house_location in house.area_locality and \
 
         # Filter houses based on the slots
         filtered_houses = filter(filter_func, self.database)
