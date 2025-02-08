@@ -21,14 +21,23 @@ class Database:
 
         # Filter slots values to match the database types
         house_bhk = slots.get("house_bhk")
-        house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
+        if len(house_bhk.split()) > len(house_bhk):
+            house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
+        else:
+            house_bhk = [int(house_bhk)]
         
         house_size = slots.get("house_size")
-        house_size = [int(word) for word in house_size.split() if word.isdigit()]
+        if len(house_size.split()) > len(house_size):
+            house_size = [int(word) for word in house_size.split() if word.isdigit()]
+        else:
+            house_size = [int(house_size)]
         house_size = min(house_size) if house_size else 0
 
         house_rent = slots.get("house_rent")
-        house_rent = [int(word) for word in house_rent.split() if word.isdigit()]
+        if len(house_rent.split()) > len(house_rent):
+            house_rent = [int(word) for word in house_rent.split() if word.isdigit()]
+        else:
+            house_rent = [int(house_rent)]
         house_rent = max(house_rent) if house_rent else 1000000
 
         house_location = slots.get("house_location")

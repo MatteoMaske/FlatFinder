@@ -14,5 +14,5 @@
 
 ## Minimum priority:
 1. Engagement
-2. Conversational marks
+2. Conversational markers
 3. Multiple requests in the same sentence

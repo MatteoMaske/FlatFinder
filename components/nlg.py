@@ -10,27 +10,27 @@ class NLG:
         self.args = args
         self.verbose = verbose
 
-    def __call__(self, state_tracker: StateTracker, conversation=[]):
+    def __call__(self, state_tracker: StateTracker, conversation=[], stream=False):
 
-        dm_output = list(state_tracker.next_best_actions[-1])
-        intent = state_tracker.current_intent
-        slots = state_tracker.current_slots
-        info = f"\nIntent: {intent}, Slots: {slots}"
+        dm_output = [state_tracker.next_best_actions[-1]]
+        state_tracker_state = state_tracker.get_state()
 
         nlg_outputs = []
 
         for next_best_action in dm_output:
             path = os.path.join("prompts", self.args.domain, "nlg.txt")
             system_prompt = open(path, "r").read()
-            system_prompt = self.args.chat_template.format(system_prompt, next_best_action+info)
+            # system_prompt = system_prompt.format(conversation)
+            nlg_input = next_best_action + "\n" + str(state_tracker_state)
+            system_prompt = self.args.chat_template.format(system_prompt, nlg_input)
             print(f"NLG Text: '{system_prompt}'") if self.verbose else None
-
+            
             nlg_output = generate(self.model, system_prompt, self.tokenizer, self.args)
             nlg_outputs.append(nlg_output)
 
-        self.post_process(nlg_outputs)
+            self.post_process(nlg_outputs)
 
-        return nlg_outputs[0]
+            return nlg_outputs[0]
     
     def post_process(self, nlg_outputs):
         """

@@ -14,13 +14,14 @@ class DM:
 
         dm_outputs = []
 
-        intent = state_tracker.current_intent
-        slots = state_tracker.current_slots
-        info = f"Intent: {intent}, Slots: {slots}"
+        info = state_tracker.get_state()
+        if info["intent"] == "SHOW_HOUSES":
+            return ["show_houses(HOUSE_SEARCH)"]
+        
         
         path = os.path.join("prompts", self.args.domain, "dm.txt")
         system_prompt = open(path, "r").read()
-        system_prompt = self.args.chat_template.format(system_prompt, info)
+        system_prompt = self.args.chat_template.format(system_prompt, str(info))
         print(f"DM Text: '{system_prompt}'") if self.verbose else None
         dm_output = generate(self.model, system_prompt, self.tokenizer, self.args)
         dm_outputs.append(dm_output)

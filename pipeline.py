@@ -46,7 +46,7 @@ def get_args() -> Namespace:
     parser.add_argument(
         "--max-new-tokens",
         type=int,
-        default=1000,
+        default=1500,
         help="The maximum sequence length to use for the model.",
     )
     parser.add_argument(
@@ -91,29 +91,28 @@ def main():
         conversation.update("user", user_input)
 
         # get the NLU output
+        print("="*50 + " NLU " + "="*50)
         nlu_component = NLU(model, tokenizer, args)
         nlu_output = nlu_component(user_input, conversation.get_history(until=-1))
-        print("="*50 + " NLU " + "="*50)
         print(f"NLU: {nlu_output}")
 
         # update the state tracker
         state_tracker.update(nlu_output)
-        print(f"State Tracker: {state_tracker}")
+        print(f"State Tracker: {state_tracker.get_state()}")
 
         # get the DM output
+        print("="*50 + " DM " + "="*50)
         dm_component = DM(model, tokenizer, args)
         dm_output = dm_component(state_tracker)
-        print("="*50 + " DM " + "="*50)
         print(f"DM: {dm_output}")
 
         # update the next best actions
         state_tracker.update_nba(dm_output)
 
-
         # get the NLG output
+        print("="*50 + " NLG " + "="*50)
         nlg_component = NLG(model, tokenizer, args)
         nlg_output = nlg_component(state_tracker, conversation.get_history())
-        print("="*50 + " NLG " + "="*50)
         print(f"System: {nlg_output}")
         conversation.update("system", nlg_output)
 

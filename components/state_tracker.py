@@ -56,10 +56,11 @@ class StateTracker:
         """Handles one intent, once its slots are filled"""
 
         if intent == "HOUSE_SEARCH":
-            if self.next_best_actions[-1] in ['confirmation("HOUSE_SEARCH")', 'confirmation(HOUSE_SEARCH)']:
+            if self.next_best_actions[-1] in ['confirmation("HOUSE_SEARCH")', 'confirmation(HOUSE_SEARCH)', "confirmation('HOUSE_SEARCH')"]:
                 houses = self.database.get_houses(self.current_slots)
-                self.current_intent = "show_houses"
-                self.current_slots = {}
+                houses = houses[:3] if len(houses) > 3 else houses
+                self.current_intent = "SHOW_HOUSES"
+                self.current_slots = {f"option_{i}": house for i, house in enumerate(houses)}
                 print("="*100)
                 print(f"The search resulted in {len(houses)} houses.")
                 print("="*100)
@@ -69,6 +70,6 @@ class StateTracker:
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': None, 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Mumbai", 'house_city': "Mumbai", 'house_furnished': "Furnished"}}])
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': "100", 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Nalasopara", 'house_city': "Mumbai", 'house_furnished': "Unfurnished"}}])
 
-    def __str__(self) -> str:
+    def get_state(self) -> dict:
         info = {"intent": self.current_intent, "slots": self.current_slots}
-        return str(info)
+        return info

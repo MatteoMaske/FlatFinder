@@ -7,7 +7,7 @@ from transformers import (
     AutoTokenizer,
     BatchEncoding,
     PreTrainedTokenizer,
-    PreTrainedModel,
+    PreTrainedModel
 )
 
 MODELS = {
@@ -159,13 +159,13 @@ def load_model(args: Namespace) -> Tuple[PreTrainedModel, PreTrainedTokenizer]:
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     return model, tokenizer  # type: ignore
 
-
 def model_generate(
     model: PreTrainedModel,
     inputs: BatchEncoding,
     tokenizer: PreTrainedTokenizer,
     args: Namespace,
 ) -> str:
+    print(f"Inputs number of tokens: {len(inputs.input_ids[0])}")
     output = model.generate(
         inputs.input_ids,
         attention_mask=inputs.attention_mask,
@@ -179,9 +179,7 @@ def model_generate(
 def generate(model, text, tokenizer, args):
     if model is None:
         response = ollama.generate(args.model_name, text, raw=True)
-        output = response["response"]
+        return response["response"]
     else:
         nlu_input = tokenizer(text, return_tensors="pt").to(model.device)
-        output = model_generate(model, nlu_input, tokenizer, args)
-
-    return output
+        return model_generate(model, nlu_input, tokenizer, args)
