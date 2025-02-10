@@ -8,8 +8,9 @@ class StateTracker:
         self.current_intent = None
         self.current_slots = {}
         self.next_best_actions = []
-        self.slots_to_ask = []
         self.database = database
+        self.current_houses = []
+        self.active_house = None
 
     def update(self, nlu_output):
 
@@ -20,17 +21,27 @@ class StateTracker:
                 self.current_intent = intent
                 self.initialize_slots(intent, slots)
             elif intent == self.current_intent: # Same intent
-                self.current_slots.update((k, v) for k, v in slots.items() if v is not None and v != "None" and v != "null")
+                if intent == "ASK_INFO":
+                    self.current_slots = slots
+                else:
+                    self.current_slots.update((k, v) for k, v in slots.items() if v is not None and v != "None" and v != "null")
+
                 if self.check_slots():
                     self.handle_intent(intent)
-            else: # Different intent
+            else:
                 if not self.check_slots():
                     #! Handle this missing information later with the fallback policy
                     raise Exception("Error: The previous slots are not valid.")
                 else:
                     self.current_intent = intent
                     self.current_slots = slots
-                    print(f"Current intent: {self.current_intent}, Current slots: {self.current_slots}", file=sys.stderr)
+                    print("*"*100)
+                    print(f"Changing intent to {intent} with slots {slots}")
+                    print("*"*100)
+                    if self.check_slots():
+                        self.handle_intent(intent)
+                    else:
+                        self.initialize_slots(intent, slots)
 
     
     def initialize_slots(self, intent, slots):
@@ -42,6 +53,13 @@ class StateTracker:
             for key, value in slots.items():
                 if value is not None and value != "None" and value != "null":
                     self.current_slots[key] = value
+        elif intent == "HOUSE_SELECTION":
+            self.current_slots = {"house_selected": None}
+            for key, value in slots.items():
+                if value is not None and value != "None" and value != "null":
+                    self.current_slots[key] = value
+        elif intent == "ASK_INFO":
+            self.current_slots = slots
     
     def check_slots(self):
         for val in self.current_slots.values():
@@ -56,15 +74,26 @@ class StateTracker:
         """Handles one intent, once its slots are filled"""
 
         if intent == "HOUSE_SEARCH":
-            if self.next_best_actions[-1] in ['confirmation("HOUSE_SEARCH")', 'confirmation(HOUSE_SEARCH)', "confirmation('HOUSE_SEARCH')"]:
-                houses = self.database.get_houses(self.current_slots)
-                houses = houses[:3] if len(houses) > 3 else houses
+            if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1]:
+                self.current_houses = self.database.get_houses(self.current_slots)
+                houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
                 self.current_intent = "SHOW_HOUSES"
-                self.current_slots = {f"option_{i}": house for i, house in enumerate(houses)}
+                self.current_slots = {f"option_{i}": str(house) for i, house in enumerate(houses)}
                 print("="*100)
                 print(f"The search resulted in {len(houses)} houses.")
                 print("="*100)
-
+        elif intent == "HOUSE_SELECTION":
+            if self.current_slots['house_selected'] is not None:
+                try:
+                    index = int(self.current_slots['house_selected'])
+                    self.active_house = self.current_houses[index-1]
+                    print(f"House activated: {self.active_house}")
+                    self.current_intent = "ASK_INFO"
+                    self.current_slots = {}
+                except Exception as e:
+                    print("Error in converting the house index", file=sys.stderr)
+                    self.current_intent = "ASK_INFO"
+                    self.current_slots = {}
 
     def test(self):
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': None, 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Mumbai", 'house_city': "Mumbai", 'house_furnished': "Furnished"}}])

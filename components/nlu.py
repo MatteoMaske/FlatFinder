@@ -1,6 +1,6 @@
 import os, json
 from utils.utils import generate
-from prompts.house_agency.nlu import PROMPTS
+from prompts.house_agency.nlu_prompts import NLU_PROMPTS
 
 class NLU:
     def __init__(self, model, tokenizer, args, verbose=False):
@@ -10,7 +10,7 @@ class NLU:
         self.verbose = verbose
 
     def generate_chunks(self, user_input):
-        nlu_text = self.args.chat_template.format(PROMPTS[self.args.domain]["NLU"]["CHUNKING"], user_input)
+        nlu_text = self.args.chat_template.format(NLU_PROMPTS[self.args.domain]["NLU"]["CHUNKING"], user_input)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
         nlu_output = nlu_output.strip()
 
@@ -50,10 +50,10 @@ class NLU:
         for chunk in chunks:
             intent = chunk['intent'].upper()
             user_input = chunk['chunk']
-            if intent not in PROMPTS.keys():
+            if intent not in NLU_PROMPTS.keys():
                 print(f"Error: The detected intent {intent} is not in the domain {self.args.domain}.")
                 continue
-            system_prompt = PROMPTS[intent].format(conversation)
+            system_prompt = NLU_PROMPTS[intent].format(conversation)
             system_prompt = self.args.chat_template.format(system_prompt, user_input)
             print(f"NLU [Slots] prompt: '{system_prompt}'") if self.verbose else None
             nlu_output = generate(self.model, system_prompt, self.tokenizer, self.args)

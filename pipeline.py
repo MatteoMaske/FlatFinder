@@ -1,7 +1,10 @@
 import argparse
 from argparse import Namespace
+import os
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
-import torch, ollama, os
+import torch
+import ollama
 
 from utils.utils import load_model, MODELS, TEMPLATES
 from components.nlu import NLU
@@ -79,13 +82,25 @@ def main():
         ollama.show(args.model_name)
         model, tokenizer = None, None
 
-    conversation = Conversation(history_size=4)
+    conversation = Conversation(history_size=2)
     database = Database(args.database_path)
     state_tracker = StateTracker(database)
     welcome_message = "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"
     print(f"System: {welcome_message}")
-    conversation.update("system", welcome_message)
-
+    # conversation.update("system", welcome_message)
+    # user_input = "please show me the houses you found"
+    # conversation.update("user", user_input)
+    state_tracker.current_intent = "HOUSE_SEARCH"
+    state_tracker.current_slots = {"house_size": "100", "house_bhk": "2", "house_rent": "10000", "house_location": "Bandra", "house_city": "Mumbai", "house_furnished": "unfurnished"}
+    state_tracker.next_best_actions = ["confirmation(HOUSE_SEARCH)"]
+    state_tracker.handle_intent("HOUSE_SEARCH")
+    system_input = "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"
+    conversation.update("system", system_input)
+    # user_input = "i want to know more about the first house"
+    # conversation.update("user", user_input)
+    # system_input = "Do you confirm that you want to know more about the first house?"
+    # conversation.update("system", system_input)
+    
     while True:
         user_input = input("User: ")
         conversation.update("user", user_input)

@@ -181,5 +181,5 @@ def generate(model, text, tokenizer, args):
         response = ollama.generate(args.model_name, text, raw=True)
         return response["response"]
     else:
-        nlu_input = tokenizer(text, return_tensors="pt").to(model.device)
-        return model_generate(model, nlu_input, tokenizer, args)
+        input_tokens = tokenizer(text, return_tensors="pt").to(model.device)
+        return model_generate(model, input_tokens, tokenizer, args)

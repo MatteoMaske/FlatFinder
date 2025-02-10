@@ -54,6 +54,6 @@ class House(BaseModel):
         ]
 
     def __str__(self):
-        return f"A {self.bhk} BHK House ({self.size} sq.ft.) in {self.area_locality},{self.city} for {self.rent}. Suitable for {self.tenant_preferred}, please contact {self.point_of_contact} for more information."
+        return f"A {self.bhk} BHK House ({self.size} sq.ft.) in {self.area_locality}, {self.city} for {self.rent}. Suitable for {self.tenant_preferred}."
     
     

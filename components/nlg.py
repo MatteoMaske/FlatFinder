@@ -2,13 +2,29 @@ import os
 
 from components.state_tracker import StateTracker
 from utils.utils import generate
-
+from prompts.house_agency.nlg_prompts import NLG_PROMPTS
 class NLG:
     def __init__(self, model, tokenizer, args, verbose=False):
         self.model = model
         self.tokenizer = tokenizer
         self.args = args
         self.verbose = verbose
+
+    def select_nlg_prompt(self, next_best_action, conversation, state_tracker):
+        if "show_houses" in next_best_action:
+            print("Selecting show_houses prompt")
+            return NLG_PROMPTS["show_houses"]
+        elif "provide_info" in next_best_action:
+            print("Selecting provide_info prompt")
+            house_info = "House Info:\n" + str(state_tracker.active_house)
+            return NLG_PROMPTS["provide_info"].format(conversation, house_info)
+        elif "confirmation" in next_best_action:
+            print("Selecting confirmation prompt")
+            return NLG_PROMPTS["provide_info"].format(conversation, "")
+        else:
+            print("Selecting request_info prompt")
+            return NLG_PROMPTS["request_info"].format(conversation)
+        
 
     def __call__(self, state_tracker: StateTracker, conversation=[], stream=False):
 
@@ -18,9 +34,7 @@ class NLG:
         nlg_outputs = []
 
         for next_best_action in dm_output:
-            path = os.path.join("prompts", self.args.domain, "nlg.txt")
-            system_prompt = open(path, "r").read()
-            # system_prompt = system_prompt.format(conversation)
+            system_prompt = self.select_nlg_prompt(next_best_action, conversation, state_tracker)
             nlg_input = next_best_action + "\n" + str(state_tracker_state)
             system_prompt = self.args.chat_template.format(system_prompt, nlg_input)
             print(f"NLG Text: '{system_prompt}'") if self.verbose else None

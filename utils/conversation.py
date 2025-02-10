@@ -1,5 +1,5 @@
 class Conversation:
-    def __init__(self, history_size=4):
+    def __init__(self, history_size=3):
         self.history_size = history_size
         self.chat_history = []
 

@@ -1,4 +1,4 @@
-PROMPTS = {
+NLU_PROMPTS = {
     "HOUSE_SEARCH": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
 You are working as a real estate agency that helps students find houses to rent.
 
@@ -34,8 +34,8 @@ The json format is:
 You must output all the slots!""",
     
     "ASK_INFO": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
-Extract the following slot values from a chunk of the user input for the intent "ask_info"
-If a slot value is not present in the user input you have to put null as the value.
+Extract the following slot information from the user input for the intent "ask_info".
+If an information is requested, put "requested" as the value, otherwise ignore the slot.
 
 Here is provided the chat history, use it to understand the context of the conversation.
 History:
@@ -49,9 +49,10 @@ NO explanation!
 DO NOT invent new slot names!
 
 The slots name are:
-- house_reference, a unique identifier or description of the house the user is referring to
-- specific_info, the specific information the user is requesting about the house (e.g., price, size, condition, location, amenities, or any other detail)
-- context, any additional context provided by the user about their request (e.g., comparisons, preferences, or time-related questions)
+- **contact_info**: Request for contact details. Value should be "requested" if asked, otherwise ignore it.  
+- **floor_info**: Inquiry about the floor level of the apartment. Value should be "requested" if asked, otherwise ignore it.  
+- **tenant_preferred**: Inquiry about preferred tenant criteria (e.g., students only, gender restrictions). Value should be "requested" if asked, otherwise ignore it. 
+- **bathrooms_number**: Request for the number of bathrooms in the house. Value should be "requested" if asked, otherwise ignore it.
 
 The json format is:
 {{
@@ -60,7 +61,7 @@ The json format is:
     "slot3": "value3",
     ...
 }}
-You must output all the slots!""",
+You must output just the slots that are requested!""",
     
     "HOUSE_SELECTION": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
 Extract the slot value from the user input for the intent "house_selection".
@@ -84,5 +85,32 @@ The json format is:
 {{
     "house_selected": value
 }}
+""",
+
+    "COMPARE_HOUSES": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
+Extract the slot values from the user input for the intent "compare_houses".
+
+Here is provided the chat history, use it to understand the context of the conversation.
+History:
+{}
+
+Determine the numeric indices of the houses that the user wants to compare from the previously shown list.
+Determine the property names that the user want to compare the houses with.
+Only output a valid JSON object.
+Only short answers!
+NO chatty responses!
+NO explanation!
+DO NOT invent new slot names!
+
+The slot name is:
+- houses, a list of numeric indices indicating which houses from the shown list the user wants to compare. Could be more than 2.
+- properties, a list of strings indicating which properties the user wants to compare the houses on.
+
+The json format is:
+{{
+    "houses": [index1, index2, ...],
+    "properties": ["name1", "name2", ...]
+}}
+
 """
 }
