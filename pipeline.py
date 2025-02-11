@@ -87,45 +87,47 @@ def main():
     state_tracker = StateTracker(database)
     welcome_message = "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"
     print(f"System: {welcome_message}")
-    # conversation.update("system", welcome_message)
+    conversation.update("system", welcome_message)
     # user_input = "please show me the houses you found"
     # conversation.update("user", user_input)
-    state_tracker.current_intent = "HOUSE_SEARCH"
-    state_tracker.current_slots = {"house_size": "100", "house_bhk": "2", "house_rent": "10000", "house_location": "Bandra", "house_city": "Mumbai", "house_furnished": "unfurnished"}
-    state_tracker.next_best_actions = ["confirmation(HOUSE_SEARCH)"]
-    state_tracker.handle_intent("HOUSE_SEARCH")
-    system_input = "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"
-    conversation.update("system", system_input)
+    # state_tracker.current_intent = "HOUSE_SEARCH"
+    # state_tracker.current_slots = {"house_size": "100", "house_bhk": "2", "house_rent": "10000", "house_location": "Bandra", "house_city": "Mumbai", "house_furnished": "unfurnished"}
+    # state_tracker.next_best_actions = ["confirmation(HOUSE_SEARCH)"]
+    # state_tracker.handle_intent("HOUSE_SEARCH")
+    # system_input = "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"
+    # conversation.update("system", system_input)
     # user_input = "i want to know more about the first house"
     # conversation.update("user", user_input)
     # system_input = "Do you confirm that you want to know more about the first house?"
     # conversation.update("system", system_input)
+
+    DEBUG = False
     
     while True:
         user_input = input("User: ")
         conversation.update("user", user_input)
 
         # get the NLU output
-        print("="*50 + " NLU " + "="*50)
+        print("="*50 + " NLU " + "="*50) if DEBUG else None
         nlu_component = NLU(model, tokenizer, args)
         nlu_output = nlu_component(user_input, conversation.get_history(until=-1))
-        print(f"NLU: {nlu_output}")
+        print(f"NLU: {nlu_output}") if DEBUG else None
 
         # update the state tracker
         state_tracker.update(nlu_output)
-        print(f"State Tracker: {state_tracker.get_state()}")
+        print(f"State Tracker: {state_tracker.get_state()}") if DEBUG else None
 
         # get the DM output
-        print("="*50 + " DM " + "="*50)
+        print("="*50 + " DM " + "="*50) if DEBUG else None
         dm_component = DM(model, tokenizer, args)
         dm_output = dm_component(state_tracker)
-        print(f"DM: {dm_output}")
+        print(f"DM: {dm_output}") if DEBUG else None
 
         # update the next best actions
         state_tracker.update_nba(dm_output)
 
         # get the NLG output
-        print("="*50 + " NLG " + "="*50)
+        print("="*50 + " NLG " + "="*50) if DEBUG else None
         nlg_component = NLG(model, tokenizer, args)
         nlg_output = nlg_component(state_tracker, conversation.get_history())
         print(f"System: {nlg_output}")

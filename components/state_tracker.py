@@ -10,6 +10,8 @@ class StateTracker:
         self.next_best_actions = []
         self.database = database
         self.current_houses = []
+        self.houses_to_compare = []
+        self.properties_to_compare = []
         self.active_house = None
 
     def update(self, nlu_output):
@@ -60,6 +62,14 @@ class StateTracker:
                     self.current_slots[key] = value
         elif intent == "ASK_INFO":
             self.current_slots = slots
+        elif intent == "COMPARE_HOUSES":
+            try:
+                self.houses_to_compare = [self.current_houses[slots["houses"]]]
+                self.properties_to_compare = slots['properties']
+            except Exception:
+                print("Error in parsing the compare houses intent", file=sys.stderr)
+                self.current_intent = "COMPARE_HOUSES"
+                self.current_slots = {}
     
     def check_slots(self):
         for val in self.current_slots.values():
@@ -90,11 +100,20 @@ class StateTracker:
                     print(f"House activated: {self.active_house}")
                     self.current_intent = "ASK_INFO"
                     self.current_slots = {}
-                except Exception as e:
+                except Exception:
                     print("Error in converting the house index", file=sys.stderr)
                     self.current_intent = "ASK_INFO"
                     self.current_slots = {}
-
+        elif intent == "COMPARE_HOUSES":
+            self.properties_to_compare = self.current_slots["properties"]
+            if self.houses_to_compare == []:
+                try:
+                    self.houses_to_compare = [self.current_houses[i] for i in self.current_slots["houses"]]
+                except Exception:
+                    print("Error in parsing the compare houses intent", file=sys.stderr)
+                    self.current_intent = "COMPARE_HOUSES"
+                    self.current_slots = {}
+        
     def test(self):
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': None, 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Mumbai", 'house_city': "Mumbai", 'house_furnished': "Furnished"}}])
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': "100", 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Nalasopara", 'house_city': "Mumbai", 'house_furnished': "Unfurnished"}}])

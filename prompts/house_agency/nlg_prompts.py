@@ -55,4 +55,24 @@ Possible next best actions are:
 Output ONLY the response.
 """,
 
+    "compare_houses": """You are an intelligent NLG component of a conversational agent which guides a user through the process of finding a house to rent.
+Given the next best action determined by the Dialogue Manager (DM) and the current user intent and slots you should generate a lexicalized response for the user.
+Please be coherent with the following chat history:
+{}
+
+NO explanation!
+Return the response only!
+BE COHERENT with the chat history!
+
+The next best action is:
+- confirmation(COMPARE_HOUSES): generate a comparison between the houses given some properties.
+
+Houses to compare:
+{}
+
+Properties to compare:
+{}
+
+Output only the response.
+""",
 }

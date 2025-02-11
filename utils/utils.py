@@ -165,7 +165,6 @@ def model_generate(
     tokenizer: PreTrainedTokenizer,
     args: Namespace,
 ) -> str:
-    print(f"Inputs number of tokens: {len(inputs.input_ids[0])}")
     output = model.generate(
         inputs.input_ids,
         attention_mask=inputs.attention_mask,

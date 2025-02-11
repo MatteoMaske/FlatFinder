@@ -12,19 +12,21 @@ class NLG:
 
     def select_nlg_prompt(self, next_best_action, conversation, state_tracker):
         if "show_houses" in next_best_action:
-            print("Selecting show_houses prompt")
+            print("Selecting show_houses prompt") if self.verbose else None
             return NLG_PROMPTS["show_houses"]
         elif "provide_info" in next_best_action:
-            print("Selecting provide_info prompt")
+            print("Selecting provide_info prompt") if self.verbose else None
             house_info = "House Info:\n" + str(state_tracker.active_house)
             return NLG_PROMPTS["provide_info"].format(conversation, house_info)
+        elif "confirmation(COMPARE_HOUSES)" in next_best_action:
+            print("Selecting compare_houses prompt") if self.verbose else None
+            return NLG_PROMPTS["compare_houses"].format(conversation, state_tracker.houses_to_compare, state_tracker.properties_to_compare)
         elif "confirmation" in next_best_action:
-            print("Selecting confirmation prompt")
+            print("Selecting confirmation prompt") if self.verbose else None
             return NLG_PROMPTS["provide_info"].format(conversation, "")
         else:
-            print("Selecting request_info prompt")
+            print("Selecting request_info prompt") if self.verbose else None
             return NLG_PROMPTS["request_info"].format(conversation)
-        
 
     def __call__(self, state_tracker: StateTracker, conversation=[], stream=False):
 

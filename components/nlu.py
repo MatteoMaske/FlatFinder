@@ -32,7 +32,7 @@ class NLU:
         nlu_text = self.args.chat_template.format(system_prompt, user_input)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
         nlu_output = nlu_output.strip("\n").strip()
-        print(f"NLU Intent: '{nlu_output}'")
+        print(f"NLU Intent: '{nlu_output}'") if self.verbose else None
 
         return [{"intent": nlu_output, "chunk": user_input}]
 
