@@ -13,6 +13,7 @@ from components.nlg import NLG
 from components.state_tracker import StateTracker
 from utils.conversation import Conversation
 from data.database import Database
+from evaluator import Evaluator
 
 
 def get_args() -> Namespace:
@@ -66,7 +67,16 @@ def get_args() -> Namespace:
         help="The path to the csv file to use as database."
     )
 
+    # In case of evaluation
+    parser.add_argument("--eval",action="store_true",help="whether launch the program in eval mode")
+    parser.add_argument("--nlu_test_path", type=str, default="test/house_agency/nlu.json")
+    parser.add_argument("--dm_test_path", type=str, default="test/house_agency/dm.json")
+
     parsed_args = parser.parse_args()
+
+    if parsed_args.eval:
+        assert parsed_args.nlu_test_path or parsed_args.dm_test_path, "Please provide the test paths for evaluation."
+
     parsed_args.chat_template = TEMPLATES[parsed_args.model_name]
     parsed_args.model_name = MODELS[parsed_args.model_name]
     assert os.path.exists(parsed_args.database_path), "The database path does not exist."
@@ -74,8 +84,7 @@ def get_args() -> Namespace:
     return parsed_args
 
 
-def main():
-    args = get_args()
+def start_chat(args):
     if args.model_name != "llama3:latest":
         model, tokenizer = load_model(args)
     else:
@@ -133,6 +142,26 @@ def main():
         print(f"System: {nlg_output}")
         conversation.update("system", nlg_output)
 
+def evaluate(args):    
+    if args.model_name != "llama3:latest":
+        model, tokenizer = load_model(args)
+    else:
+        ollama.show(args.model_name)
+        model, tokenizer = None, None
+
+    if args.nlu_test_path:
+        assert os.path.exists(args.nlu_test_path), "The NLU test path does not exist."
+    if args.dm_test_path:
+        assert os.path.exists(args.dm_test_path), "The DM test path does not exist."
+
+    evaluator = Evaluator(args.nlu_test_path, args.dm_test_path)
+    nlu_component = NLU(model, tokenizer, args)
+    results = evaluator.evaluate_NLU(nlu_component)
+    print(results)
 
 if __name__ == "__main__":
-    main()
+    args = get_args()
+    if args.eval:
+        evaluate(args)
+    else:
+        start_chat(args)
