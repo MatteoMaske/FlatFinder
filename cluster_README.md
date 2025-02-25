@@ -73,6 +73,10 @@ Running from a script is conveninent because you don't know when resources will 
 ```bash
 srun -p edu5 -N 1 -n 1 -c 1 --gres=gpu:1 --account hmd-2024 --pty /bin/bash
 ```
+or
+```bash
+srun -p edu20-h -t 0-00:10 -N 1 -n 1 -c 1 --gres=gpu:1 --account=giuseppe.riccardi.edu --pty /bin/bash
+```
 
 When the resources will be allocated, you will have your interactive session ready.
 
