@@ -88,7 +88,7 @@ def start_chat(args):
     if args.model_name != "llama3:latest":
         model, tokenizer = load_model(args)
     else:
-        ollama.show(args.model_name)
+#        ollama.show(args.model_name)
         model, tokenizer = None, None
 
     conversation = Conversation(history_size=2)
@@ -110,7 +110,7 @@ def start_chat(args):
     # system_input = "Do you confirm that you want to know more about the first house?"
     # conversation.update("system", system_input)
 
-    DEBUG = False
+    DEBUG = True
     
     while True:
         user_input = input("User: ")
