@@ -152,6 +152,7 @@ Possible next best actions are:
 
 
 def load_model(args: Namespace) -> Tuple[PreTrainedModel, PreTrainedTokenizer]:
+    print("Loading model...")
     model = AutoModelForCausalLM.from_pretrained(
         args.model_name,
         device_map="auto" if args.parallel else args.device, 

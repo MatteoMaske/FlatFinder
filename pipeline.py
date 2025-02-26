@@ -110,7 +110,7 @@ def start_chat(args):
     # system_input = "Do you confirm that you want to know more about the first house?"
     # conversation.update("system", system_input)
 
-    DEBUG = False
+    DEBUG = True
     
     while True:
         user_input = input("User: ")
