@@ -121,3 +121,12 @@ class StateTracker:
     def get_state(self) -> dict:
         info = {"intent": self.current_intent, "slots": self.current_slots}
         return info
+    
+    def reset(self):
+        self.current_intent = None
+        self.current_slots = {}
+        self.next_best_actions = []
+        self.current_houses = []
+        self.houses_to_compare = []
+        self.properties_to_compare = []
+        self.active_house = None

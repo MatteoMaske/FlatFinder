@@ -29,3 +29,6 @@ class Conversation:
             formatted_chat += f"{self.chat_history[i]['role']}: {self.chat_history[i]['text']}\n"
 
         return formatted_chat
+    
+    def reset(self):
+        self.chat_history = []

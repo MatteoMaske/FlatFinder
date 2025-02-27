@@ -142,6 +142,12 @@ def start_chat(args):
         print(f"System: {nlg_output}")
         conversation.update("system", nlg_output)
 
+        reset = input("Reset the conversation? (y/n): ")
+        if reset == "y":
+            conversation.reset()
+            state_tracker.reset()
+            print("System: Conversation reset.")
+
 def evaluate(args):    
     if args.model_name != "llama3:latest":
         model, tokenizer = load_model(args)
