@@ -72,6 +72,8 @@ class NLU:
         """
         to_remove = []
         for i, (intent, nlu_output) in enumerate(nlu_outputs):
+            if nlu_output == {}:
+                continue
             try:
                 if "{" in nlu_output and "}" in nlu_output:
                     nlu_output = nlu_output[nlu_output.index("{") : nlu_output.index("}")+1]

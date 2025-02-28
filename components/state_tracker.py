@@ -1,5 +1,5 @@
-import pandas as pd
 import sys
+import traceback
 
 from data.database import Database
 
@@ -25,9 +25,13 @@ class StateTracker:
             intent, slots = chunk['intent'], chunk['slots']
 
             #! Error handling and fallback policy
-            if intent not in ["HOUSE_SEARCH", "HOUSE_SELECTION", "ASK_INFO", "COMPARE_HOUSES"]:
+            if intent not in ["HOUSE_SEARCH", "HOUSE_SELECTION", "ASK_INFO", "COMPARE_HOUSES", "OUT_OF_DOMAIN"]:
                 self.current_intent = "FALLBACK_POLICY"
                 self.current_slots = {"reason": "Unknown intent for the current system, please try again."}
+                continue
+            elif intent == "OUT_OF_DOMAIN":
+                self.current_intent = "FALLBACK_POLICY"
+                self.current_slots = {"reason": "The intent of the user request is out of the domain of the current system."}
                 continue
             
             if not self.current_intent: # Initial state
@@ -52,10 +56,10 @@ class StateTracker:
                     print("*"*100)
                     print(f"Changing intent to {intent} with slots {slots}")
                     print("*"*100)
-                    if self.check_slots():
-                        self.handle_intent(intent)
-                    else:
-                        self.initialize_slots(intent, slots)
+                    # if self.check_slots():
+                    #     self.handle_intent(intent)
+                    # else:
+                    self.initialize_slots(intent, slots)
 
     
     def initialize_slots(self, intent, slots):
@@ -87,14 +91,14 @@ class StateTracker:
             else:
                 try:
                     #TODO handle this better
-                    self.houses_to_compare = [self.current_houses[slots["houses"]]]
+                    self.houses_to_compare = [self.current_houses[idx] for idx in slots["houses"]]
                     self.properties_to_compare = slots['properties']
                     print(f"Comparing houses: {self.houses_to_compare}")
-                except Exception:
+                except Exception as e:
                     print("Error in parsing the compare houses intent", file=sys.stderr)
-                    print(Exception)
-                    self.current_intent = "COMPARE_HOUSES"
-                    self.current_slots = {}
+                    print(traceback.format_exc())
+                    self.current_intent = "FALLBACK_POLICY"
+                    self.current_slots = {"reason": "Error in processing the user request. Please try again."}
         else:
             raise Exception(f"Error: Initializing slots for an unknown intent {intent}.")
     
@@ -112,7 +116,7 @@ class StateTracker:
 
         if intent == "HOUSE_SEARCH":
             #! To test no houses found
-            if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1]:
+            if "confirmation" in self.next_best_actions[-2] and "HOUSE_SEARCH" in self.next_best_actions[-2]:
                 self.current_houses = self.database.get_houses(self.current_slots)
                 houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
                 self.current_intent = "SHOW_HOUSES"
