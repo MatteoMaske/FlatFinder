@@ -116,7 +116,7 @@ class StateTracker:
 
         if intent == "HOUSE_SEARCH":
             #! To test no houses found
-            if "confirmation" in self.next_best_actions[-2] and "HOUSE_SEARCH" in self.next_best_actions[-2]:
+            if len(self.next_best_actions) > 2 and "confirmation" in self.next_best_actions[-2] and "HOUSE_SEARCH" in self.next_best_actions[-2]:
                 self.current_houses = self.database.get_houses(self.current_slots)
                 houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
                 self.current_intent = "SHOW_HOUSES"
