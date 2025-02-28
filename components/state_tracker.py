@@ -111,7 +111,7 @@ class StateTracker:
         """Handles one intent, once its slots are filled"""
 
         if intent == "HOUSE_SEARCH":
-            #TODO: Handle the case where the search results in no houses
+            #! To test no houses found
             if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1]:
                 self.current_houses = self.database.get_houses(self.current_slots)
                 houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
@@ -142,8 +142,12 @@ class StateTracker:
                     print("Error in parsing the compare houses intent", file=sys.stderr)
                     self.current_intent = "COMPARE_HOUSES"
                     self.current_slots = {}
+        elif intent == "ASK_INFO":
+            if not self.active_house:
+                self.current_intent = "FALLBACK_POLICY"
+                self.current_slots = {"reason": "No house selected, you must search or select a house first."}
         else:
-            raise Exception(f"Error: Handling an unknown intent {intent}.")
+            raise Exception(f"StateTracker Error: Handling an unknown intent {intent}.")
         
     def test(self):
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': None, 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Mumbai", 'house_city': "Mumbai", 'house_furnished': "Furnished"}}])

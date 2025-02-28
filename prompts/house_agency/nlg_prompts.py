@@ -43,7 +43,8 @@ Please be coherent with the following chat history:
 NO explanation or indirect messages!
 Return the response only!
 BE COHERENT with the chat history!
-Respond using STRICTLY the information provided below! DO NOT INVENT any not given info!
+Respond using STRICTLY the information provided below! 
+DO NOT INVENT any extra information!
 
 Possible next best actions are:
 - provide_info(slot_name): provide the requested information for the given slot name using the info provided below. Always invite the user ask further info.

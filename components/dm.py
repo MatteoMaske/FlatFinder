@@ -15,8 +15,10 @@ class DM:
         dm_outputs = []
 
         info = state_tracker.get_state()
-        if info["intent"] == "SHOW_HOUSES":
+        if info["intent"] == "SHOW_HOUSES" and info["slots"] != {}:
             return ["show_houses(HOUSE_SEARCH)"]
+        elif info["intent"] == "SHOW_HOUSES" and info["slots"] == {}:
+            return ["fallback_policy('No houses found for the given search criteria.')"]
         elif info["intent"] == "FALLBACK_POLICY":
             reason = info["slots"]["reason"]
             return [f'fallback_policy("{reason}")']        

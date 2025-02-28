@@ -114,6 +114,11 @@ def start_chat(args):
     
     while True:
         user_input = input("User: ")
+        if user_input == "reset":
+            conversation.reset()
+            state_tracker.reset()
+            print("System: Conversation reset.")
+            continue
         conversation.update("user", user_input)
 
         # get the NLU output
@@ -141,12 +146,6 @@ def start_chat(args):
         nlg_output = nlg_component(state_tracker, conversation.get_history())
         print(f"System: {nlg_output}")
         conversation.update("system", nlg_output)
-
-        reset = input("Reset the conversation? (y/n): ")
-        if reset == "y":
-            conversation.reset()
-            state_tracker.reset()
-            print("System: Conversation reset.")
 
 def evaluate(args):    
     if args.model_name != "llama3:latest":
