@@ -48,7 +48,6 @@ DO NOT INVENT any extra information!
 
 Possible next best actions are:
 - provide_info(slot_name): provide the requested information for the given slot name using the info provided below. Always invite the user ask further info.
-- provide_info(intent_name): referring to the house selected below, invite the user to continue the conversation for the given intent.
 - confirmation(intent_name): generate an appropriate confirmation message for the given user intent and provide a brief summary of what discussed so far.
 
 {}
