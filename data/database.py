@@ -51,7 +51,7 @@ class Database:
         house_furnished = slots.get("house_furnished")
         house_furnished = house_furnished.lower()
 
-        assert isinstance(house_bhk, int) and isinstance(house_size, int) and isinstance(house_rent, int) and isinstance(house_location, str) and isinstance(house_city, str) and isinstance(house_furnished, str), "Invalid filter types."
+        assert isinstance(house_bhk, str) and isinstance(house_size, int) and isinstance(house_rent, int) and isinstance(house_location, str) and isinstance(house_city, str) and isinstance(house_furnished, str), "Invalid filter types."
 
         #TODO: refine bhk filter to include also smaller bhk
         filter_func = lambda house: house.bhk in house_bhk and \
