@@ -21,12 +21,11 @@ class Database:
 
         # Filter slots values to match the database types
         house_bhk = slots.get("house_bhk")
-        # if isinstance(house_bhk, str):
-        #     if " " in house_bhk:
-        #         house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
-        #     else:
-        #         house_bhk = [int(house_bhk)]
-        # house_bhk = house_bhk if house_bhk else [1, 2, 3, 4, 5]
+        if isinstance(house_bhk, str):
+            if " " in house_bhk:
+                house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
+            else:
+                house_bhk = [int(house_bhk)]
         
         house_size = slots.get("house_size")
         if isinstance(house_size, str):
@@ -51,7 +50,7 @@ class Database:
         house_furnished = slots.get("house_furnished")
         house_furnished = house_furnished.lower()
 
-        assert isinstance(house_bhk, str) and isinstance(house_size, int) and isinstance(house_rent, int) and isinstance(house_location, str) and isinstance(house_city, str) and isinstance(house_furnished, str), "Invalid filter types."
+        assert isinstance(house_bhk, int) and isinstance(house_size, int) and isinstance(house_rent, int) and isinstance(house_location, str) and isinstance(house_city, str) and isinstance(house_furnished, str), "Invalid filter types."
 
         #TODO: refine bhk filter to include also smaller bhk
         filter_func = lambda house: house.bhk in house_bhk and \
