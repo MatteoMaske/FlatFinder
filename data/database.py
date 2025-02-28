@@ -21,23 +21,26 @@ class Database:
 
         # Filter slots values to match the database types
         house_bhk = slots.get("house_bhk")
-        if " " in house_bhk:
-            house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
-        else:
-            house_bhk = [int(house_bhk)]
+        if isinstance(house_bhk, str):
+            if " " in house_bhk:
+                house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
+            else:
+                house_bhk = [int(house_bhk)]
         
         house_size = slots.get("house_size")
-        if " " in house_size:
-            house_size = [int(word) for word in house_size.split() if word.isdigit()]
-        else:
-            house_size = [int(house_size)]
+        if isinstance(house_size, str):
+            if " " in house_size:
+                house_size = [int(word) for word in house_size.split() if word.isdigit()]
+            else:
+                house_size = [int(house_size)]
         house_size = min(house_size) if house_size else 0
 
         house_rent = slots.get("house_rent")
-        if " " in house_rent:
-            house_rent = [int(word) for word in house_rent.split() if word.isdigit()]
-        else:
-            house_rent = [int(house_rent)]
+        if isinstance(house_rent, str):
+            if " " in house_rent:
+                house_rent = [int(word) for word in house_rent.split() if word.isdigit()]
+            else:
+                house_rent = [int(house_rent)]
         house_rent = max(house_rent) if house_rent else 1000000
 
         house_location = slots.get("house_location")
@@ -46,6 +49,8 @@ class Database:
         house_city = house_city.lower()
         house_furnished = slots.get("house_furnished")
         house_furnished = house_furnished.lower()
+
+        assert isinstance(house_bhk, int) and isinstance(house_size, int) and isinstance(house_rent, int) and isinstance(house_location, str) and isinstance(house_city, str) and isinstance(house_furnished, str), "Invalid filter types."
 
         #TODO: refine bhk filter to include also smaller bhk
         filter_func = lambda house: house.bhk in house_bhk and \
