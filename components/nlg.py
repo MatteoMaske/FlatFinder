@@ -24,6 +24,9 @@ class NLG:
         elif "confirmation" in next_best_action:
             print("Selecting confirmation prompt") if self.verbose else None
             return NLG_PROMPTS["provide_info"].format(conversation, "")
+        elif "fallback_policy" in next_best_action:
+            print("Selecting fallback_policy prompt") if self.verbose else None
+            return NLG_PROMPTS["fallback_policy"].format(conversation)
         else:
             print("Selecting request_info prompt") if self.verbose else None
             return NLG_PROMPTS["request_info"].format(conversation)

@@ -17,7 +17,8 @@ class DM:
         info = state_tracker.get_state()
         if info["intent"] == "SHOW_HOUSES":
             return ["show_houses(HOUSE_SEARCH)"]
-        
+        elif info["intent"] == "FALLBACK_POLICY":
+            return [f'fallback_policy("{info['slots']['reason']}")']        
         
         path = os.path.join("prompts", self.args.domain, "dm.txt")
         system_prompt = open(path, "r").read()

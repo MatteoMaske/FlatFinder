@@ -19,6 +19,12 @@ class StateTracker:
         for chunk in nlu_output:
             intent, slots = chunk['intent'], chunk['slots']
 
+            #! Error handling and fallback policy
+            if intent not in ["HOUSE_SEARCH", "HOUSE_SELECTION", "ASK_INFO", "COMPARE_HOUSES"]:
+                self.current_intent = "FALLBACK_POLICY"
+                self.current_slots = {"reason": "Unknown intent for the current system, please try again."}
+                continue
+            
             if not self.current_intent: # Initial state
                 self.current_intent = intent
                 self.initialize_slots(intent, slots)
@@ -32,6 +38,7 @@ class StateTracker:
                     self.handle_intent(intent)
             else:
                 if not self.check_slots():
+                    #TODO Handle this part
                     #! Handle this missing information later with the fallback policy
                     raise Exception("Error: The previous slots are not valid.")
                 else:
@@ -61,15 +68,25 @@ class StateTracker:
                 if value is not None and value != "None" and value != "null":
                     self.current_slots[key] = value
         elif intent == "ASK_INFO":
-            self.current_slots = slots
+            #! To test
+            if not self.active_house:
+                self.current_intent = "FALLBACK_POLICY"
+                self.current_slots = {"reason": "No house selected, you must search or select a house first."}
+            else:
+                self.current_slots = slots
         elif intent == "COMPARE_HOUSES":
             try:
+                #TODO handle this better
                 self.houses_to_compare = [self.current_houses[slots["houses"]]]
                 self.properties_to_compare = slots['properties']
+                print(f"Comparing houses: {self.houses_to_compare}")
             except Exception:
                 print("Error in parsing the compare houses intent", file=sys.stderr)
+                print(Exception)
                 self.current_intent = "COMPARE_HOUSES"
                 self.current_slots = {}
+        else:
+            raise Exception(f"Error: Initializing slots for an unknown intent {intent}.")
     
     def check_slots(self):
         for val in self.current_slots.values():
@@ -84,6 +101,7 @@ class StateTracker:
         """Handles one intent, once its slots are filled"""
 
         if intent == "HOUSE_SEARCH":
+            #TODO: Handle the case where the search results in no houses
             if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1]:
                 self.current_houses = self.database.get_houses(self.current_slots)
                 houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
@@ -109,6 +127,7 @@ class StateTracker:
             if self.houses_to_compare == []:
                 try:
                     self.houses_to_compare = [self.current_houses[i] for i in self.current_slots["houses"]]
+                    print(f"Comparing houses: {self.houses_to_compare}")
                 except Exception:
                     print("Error in parsing the compare houses intent", file=sys.stderr)
                     self.current_intent = "COMPARE_HOUSES"
