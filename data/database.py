@@ -21,11 +21,12 @@ class Database:
 
         # Filter slots values to match the database types
         house_bhk = slots.get("house_bhk")
-        if isinstance(house_bhk, str):
-            if " " in house_bhk:
-                house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
-            else:
-                house_bhk = [int(house_bhk)]
+        # if isinstance(house_bhk, str):
+        #     if " " in house_bhk:
+        #         house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
+        #     else:
+        #         house_bhk = [int(house_bhk)]
+        # house_bhk = house_bhk if house_bhk else [1, 2, 3, 4, 5]
         
         house_size = slots.get("house_size")
         if isinstance(house_size, str):
