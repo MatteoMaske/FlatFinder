@@ -51,7 +51,7 @@ class NLU:
             intent = chunk['intent'].upper()
             user_input = chunk['chunk']
             if intent not in NLU_PROMPTS.keys():
-                print(f"Error: The detected intent {intent} is not in the domain {self.args.domain}.")
+                nlu_outputs.append({"intent": "OUT_OF_DOMAIN", "slots": {}})
                 continue
             system_prompt = NLU_PROMPTS[intent].format(conversation)
             system_prompt = self.args.chat_template.format(system_prompt, user_input)
