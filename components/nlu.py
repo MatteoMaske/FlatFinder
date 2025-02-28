@@ -34,6 +34,9 @@ class NLU:
         nlu_output = nlu_output.strip("\n").strip()
         print(f"NLU Intent: '{nlu_output}'") if self.verbose else None
 
+        if "OUT_OF_DOMAIN" in nlu_output:
+            print("OUT_OF_DOMAIN detected.")
+
         return [{"intent": nlu_output, "chunk": user_input}]
 
     def __call__(self, user_input, conversation=[], chunks=False):
@@ -51,7 +54,7 @@ class NLU:
             intent = chunk['intent'].upper()
             user_input = chunk['chunk']
             if intent not in NLU_PROMPTS.keys():
-                nlu_outputs.append({"intent": "OUT_OF_DOMAIN", "slots": {}})
+                nlu_outputs.append(("OUT_OF_DOMAIN", {} ))
                 continue
             system_prompt = NLU_PROMPTS[intent].format(conversation)
             system_prompt = self.args.chat_template.format(system_prompt, user_input)
@@ -78,7 +81,6 @@ class NLU:
                 print(f"Error: The NLU output '{nlu_output}' is not in the expected json format.")
                 to_remove.append(i)
         
-        # TODO: Handle this missing information later with the fallback policy
         for i in to_remove:
             nlu_outputs.pop(i)
 

@@ -80,16 +80,21 @@ class StateTracker:
             else:
                 self.current_slots = slots
         elif intent == "COMPARE_HOUSES":
-            try:
-                #TODO handle this better
-                self.houses_to_compare = [self.current_houses[slots["houses"]]]
-                self.properties_to_compare = slots['properties']
-                print(f"Comparing houses: {self.houses_to_compare}")
-            except Exception:
-                print("Error in parsing the compare houses intent", file=sys.stderr)
-                print(Exception)
-                self.current_intent = "COMPARE_HOUSES"
-                self.current_slots = {}
+            #! To test
+            if not self.current_houses:
+                self.current_intent = "FALLBACK_POLICY"
+                self.current_slots = {"reason": "No houses found to be compared, you must search for houses first."}
+            else:
+                try:
+                    #TODO handle this better
+                    self.houses_to_compare = [self.current_houses[slots["houses"]]]
+                    self.properties_to_compare = slots['properties']
+                    print(f"Comparing houses: {self.houses_to_compare}")
+                except Exception:
+                    print("Error in parsing the compare houses intent", file=sys.stderr)
+                    print(Exception)
+                    self.current_intent = "COMPARE_HOUSES"
+                    self.current_slots = {}
         else:
             raise Exception(f"Error: Initializing slots for an unknown intent {intent}.")
     
@@ -137,6 +142,8 @@ class StateTracker:
                     print("Error in parsing the compare houses intent", file=sys.stderr)
                     self.current_intent = "COMPARE_HOUSES"
                     self.current_slots = {}
+        else:
+            raise Exception(f"Error: Handling an unknown intent {intent}.")
         
     def test(self):
         self.update([{'intent': 'HOUSE_SEARCH', 'slots': {'house_size': None, 'house_bhk': "2", 'house_rent': "10000", 'house_location': "Mumbai", 'house_city': "Mumbai", 'house_furnished': "Furnished"}}])
