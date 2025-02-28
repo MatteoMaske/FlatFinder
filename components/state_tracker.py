@@ -16,6 +16,11 @@ class StateTracker:
 
     def update(self, nlu_output):
 
+        if not isinstance(nlu_output, list) or len(nlu_output) == 0:
+            self.current_intent = "FALLBACK_POLICY"
+            self.current_slots = {"reason": "An error occured, please try again."}
+            return
+
         for chunk in nlu_output:
             intent, slots = chunk['intent'], chunk['slots']
 
