@@ -1,8 +1,9 @@
-from argparse import Namespace
-from typing import Tuple
 
 import torch
-# import ollama
+import ollama
+
+from argparse import Namespace
+from typing import Tuple
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,

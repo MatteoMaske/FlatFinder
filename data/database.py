@@ -21,20 +21,20 @@ class Database:
 
         # Filter slots values to match the database types
         house_bhk = slots.get("house_bhk")
-        if len(house_bhk.split()) > len(house_bhk):
+        if " " in house_bhk:
             house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
         else:
             house_bhk = [int(house_bhk)]
         
         house_size = slots.get("house_size")
-        if len(house_size.split()) > len(house_size):
+        if " " in house_size:
             house_size = [int(word) for word in house_size.split() if word.isdigit()]
         else:
             house_size = [int(house_size)]
         house_size = min(house_size) if house_size else 0
 
         house_rent = slots.get("house_rent")
-        if len(house_rent.split()) > len(house_rent):
+        if " " in house_rent:
             house_rent = [int(word) for word in house_rent.split() if word.isdigit()]
         else:
             house_rent = [int(house_rent)]
@@ -47,6 +47,7 @@ class Database:
         house_furnished = slots.get("house_furnished")
         house_furnished = house_furnished.lower()
 
+        #TODO: refine bhk filter to include also smaller bhk
         filter_func = lambda house: house.bhk in house_bhk and \
             house.size >= house_size and \
             house.rent <= house_rent and \

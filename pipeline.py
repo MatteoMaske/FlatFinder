@@ -4,7 +4,7 @@ import os
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
 import torch
-# import ollama
+import ollama
 
 from utils.utils import load_model, MODELS, TEMPLATES
 from components.nlu import NLU
