@@ -77,14 +77,12 @@ class StateTracker:
                 if value is not None and value != "None" and value != "null":
                     self.current_slots[key] = value
         elif intent == "ASK_INFO":
-            #! To test
             if not self.active_house:
                 self.current_intent = "FALLBACK_POLICY"
                 self.current_slots = {"reason": "No house selected, you must search or select a house first."}
             else:
                 self.current_slots = slots
         elif intent == "COMPARE_HOUSES":
-            #! To test
             if not self.current_houses:
                 self.current_intent = "FALLBACK_POLICY"
                 self.current_slots = {"reason": "No houses found to be compared, you must search for houses first."}
@@ -115,8 +113,8 @@ class StateTracker:
         """Handles one intent, once its slots are filled"""
 
         if intent == "HOUSE_SEARCH":
-            #! To test no houses found
-            if len(self.next_best_actions) > 2 and "confirmation" in self.next_best_actions[-2] and "HOUSE_SEARCH" in self.next_best_actions[-2]:
+            #TODO change this to has a modification on the current slots been made?
+            if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1]:
                 self.current_houses = self.database.get_houses(self.current_slots)
                 houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
                 self.current_intent = "SHOW_HOUSES"
