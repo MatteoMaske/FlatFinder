@@ -18,7 +18,8 @@ class DM:
         if info["intent"] == "SHOW_HOUSES":
             return ["show_houses(HOUSE_SEARCH)"]
         elif info["intent"] == "FALLBACK_POLICY":
-            return [f'fallback_policy("{info['slots']['reason']}")']        
+            reason = info["slots"]["reason"]
+            return [f'fallback_policy("{reason}")']        
         
         path = os.path.join("prompts", self.args.domain, "dm.txt")
         system_prompt = open(path, "r").read()
