@@ -38,13 +38,10 @@ class StateTracker:
                 self.current_intent = intent
                 self.initialize_slots(intent, slots)
             elif intent == self.current_intent: # Same intent
-                if intent == "ASK_INFO":
-                    self.current_slots = slots
-                else:
-                    self.current_slots.update((k, v) for k, v in slots.items() if v is not None and v != "None" and v != "null")
+                changed = self.update_slots(intent, slots)
 
                 if self.check_slots():
-                    self.handle_intent(intent)
+                    self.handle_intent(intent, changed)
             else:
                 if not self.check_slots():
                     #TODO Handle this part
@@ -106,15 +103,33 @@ class StateTracker:
                 return False
         return True
     
+    def update_slots(self, intent, slots):
+        """Update the current slots with the new slots"""
+        if intent == "ASK_INFO":
+            self.current_slots = slots
+            return True
+        else:
+            changes = False
+            for key, value in slots.items():
+                if value is not None and value != "None" and value != "null":
+                    self.current_slots[key] = value
+                    changes = True
+            return changes
+
     def update_nba(self, dm_output):
         self.next_best_actions.extend(dm_output)
 
-    def handle_intent(self, intent):
-        """Handles one intent, once its slots are filled"""
+    def handle_intent(self, intent, changed: bool):
+        """Handles one intent, once its slots are filled
+        
+        Args:
+            intent (str): The intent of the user request
+            changed (bool): If the slots have been changed in the current turn
+        """
 
         if intent == "HOUSE_SEARCH":
-            #TODO change this to has a modification on the current slots been made?
-            if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1]:
+            #! to be tested
+            if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1] and not changed:
                 self.current_houses = self.database.get_houses(self.current_slots)
                 houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
                 self.current_intent = "SHOW_HOUSES"

@@ -26,6 +26,8 @@ class Database:
                 house_bhk = [int(word) for word in house_bhk.split() if word.isdigit()]
             else:
                 house_bhk = [int(house_bhk)]
+        house_bhk = min(house_bhk) if house_bhk else 0
+        house_bhk = [i for i in range(house_bhk, 6)]
         
         house_size = slots.get("house_size")
         if isinstance(house_size, str):
@@ -50,7 +52,10 @@ class Database:
         house_furnished = slots.get("house_furnished")
         house_furnished = house_furnished.lower()
 
-        #TODO: refine bhk filter to include also smaller bhk
+        print(f"Filtering houses with BHK: {house_bhk}, Size: {house_size}, Rent: {house_rent}, Location: {house_location}, City: {house_city}, Furnished: {house_furnished}")
+        print("Current filters' types:", type(house_bhk), type(house_size), type(house_rent), type(house_location), type(house_city), type(house_furnished))
+
+        #! to be tested
         filter_func = lambda house: house.bhk in house_bhk and \
             house.size >= house_size and \
             house.rent <= house_rent and \
