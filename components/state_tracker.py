@@ -109,12 +109,10 @@ class StateTracker:
             self.current_slots = slots
             return True
         else:
-            changes = False
             for key, value in slots.items():
                 if value is not None and value != "None" and value != "null":
                     self.current_slots[key] = value
-                    changes = True
-            return changes
+            return (sorted(slots.values()) == (sorted(self.current_slots.values())))
 
     def update_nba(self, dm_output):
         self.next_best_actions.extend(dm_output)

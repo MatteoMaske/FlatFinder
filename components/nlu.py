@@ -10,7 +10,8 @@ class NLU:
         self.verbose = verbose
 
     def generate_chunks(self, user_input):
-        nlu_text = self.args.chat_template.format(NLU_PROMPTS[self.args.domain]["NLU"]["CHUNKING"], user_input)
+        prompt = NLU_PROMPTS[self.args.domain]["NLU"]["CHUNKING"]
+        nlu_text = self.args.chat_template.format(prompt, user_input)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
         nlu_output = nlu_output.strip()
 
@@ -72,8 +73,10 @@ class NLU:
         """
         to_remove = []
         for i, (intent, nlu_output) in enumerate(nlu_outputs):
-            if nlu_output == {}:
+            if nlu_output == {}: # OUT_OF_DOMAIN case
+                nlu_outputs[i] = {"intent": intent, "slots": {} }
                 continue
+
             try:
                 if "{" in nlu_output and "}" in nlu_output:
                     nlu_output = nlu_output[nlu_output.index("{") : nlu_output.index("}")+1]
