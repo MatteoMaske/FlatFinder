@@ -53,7 +53,7 @@ Possible next best actions are:
 
 ONLY IN CASE of confirmation:
 - if the intent is HOUSE_SEARCH, provide a brief summary of the search criteria and ask for confirmation.
-- if the intent is HOUSE_SELECTION, ask for confirmation and invite the user to ask some info about the selected house.
+- if the intent is HOUSE_SELECTION, ask for confirmation and invite the user to ask some info about the selected house. ONLY information, nothing else.
 - if the intent is COMPARE_HOUSES, provide the requested information and invite the user to confirm the selection.
 {}
 

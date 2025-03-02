@@ -54,7 +54,6 @@ class Database:
             house_furnished = house_furnished.lower()
 
             print(f"Filtering houses with BHK: {house_bhk}, Size: {house_size}, Rent: {house_rent}, Location: {house_location}, City: {house_city}, Furnished: {house_furnished}")
-            print("Current filters' types:", type(house_bhk), type(house_size), type(house_rent), type(house_location), type(house_city), type(house_furnished))
 
             filter_func = lambda house: house.bhk in house_bhk and \
                 house.size >= house_size and \

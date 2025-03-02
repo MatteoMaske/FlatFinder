@@ -42,25 +42,18 @@ History:
 {}
 
 Use the history to understand which slots are involved in the current user request.
-Only output a valid JSON object.
 Only short answers!
 NO chatty responses!
 NO explanation!
-DO NOT invent new slot names!
 
-The slots name are:
-- **contact_info**: Request for contact details. Value should be "requested" if asked, otherwise ignore it.  
-- **floor_info**: Inquiry about the floor level of the apartment. Value should be "requested" if asked, otherwise ignore it.  
-- **tenant_preferred**: Inquiry about preferred tenant criteria (e.g., students only, gender restrictions). Value should be "requested" if asked, otherwise ignore it. 
-- **bathrooms_number**: Request for the number of bathrooms in the house. Value should be "requested" if asked, otherwise ignore it.
+The only slot name is:
+- properties, a list of strings indicating the properties that the user wants to know about. Could be null.
 
 The json format is:
 {{
-    "slot1": "value1",
-    "slot2": "value2",
-    "slot3": "value3",
-    ...
+    "properties": ["name1", "name2", ...]
 }}
+
 You must output just the slots that are requested!""",
     
     "HOUSE_SELECTION": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.

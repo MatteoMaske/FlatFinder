@@ -8,16 +8,17 @@
 - No explanations, no questions, no extra text.
 
 ## Available Actions:
-1. request_slot(slot_name) → Request a missing slot from the user. ONLY if the value of the slot is None.
+1. request_slot(slot_name) → Request a missing slot from the user. ONLY if the value of the slot is None. 
 2. confirmation(intent_name) → Confirm the intent when all slots keys are filled with a not None value.
-3. provide_info(slot_name) → Provide specific information about a REQUESTED slot. ONLY if the slot value is "requested" and the intent is ASK_INFO.
+3. provide_info(slot_name) → Provide specific information about a REQUESTED slot. ONLY for the slot values of the properties of the intent ASK_INFO.
+
 
 ### Example 1:
 User: {'intent': 'HOUSE_SEARCH', 'slots': {'house_size': '100', 'house_bhk': '2', 'house_rent': '10000', 'house_location': 'Bandra', 'house_city': 'Mumbai', 'house_furnished': 'unfurnished'}}
 Action: confirmation(HOUSE_SEARCH)
 
 ### Example 2:
-User: {'intent': 'COMPARE_HOUSES', 'slots': {'houses': [0,1], 'properties': {bathrooms: "requested"}}}
+User: {'intent': 'COMPARE_HOUSES', 'slots': {'houses': [0,1], 'properties': ["position", "contact info"]}}
 Action: confirmation(COMPARE_HOUSES)
 
 ### Example 3:
