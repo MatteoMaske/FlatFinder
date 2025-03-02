@@ -9,7 +9,7 @@ DO NOT invent new intents!
 
 Here is the list of intents:
 - house_search, used when a user initially requests housing information and in subsequent queries that refine or clarify the search criteria.
-- house_selection, used then the user specifies which house to choose with an index of a list just proposed by the system.
+- house_selection, used then the user specifies which house to choose with an index of a list just proposed by the system. Normally it is the response which follows a list of houses.
 - ask_info, request for specific information about a specific house. The user must have already selected a house.
 - compare_houses, comparison between two houses. The user must have seen a list of candidate options.
 - out_of_domain, the user request is not related to the house search.

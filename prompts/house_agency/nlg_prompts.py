@@ -17,7 +17,7 @@ If the action is a request for a slot, you must target the format showed below:
 - house_location: location inside the city
 - house_city: the city where the house is located
 - house_furnished: furnished or semi-furnished or unfurnished
-- properties: list of properties to compare on the selected houses for comparison
+- properties: depending on the current intent, could be a list of properties to ask for reguarding a specific house OR a list of properties to compare on multiple houses
 
 Output only the response.
 """,
@@ -33,9 +33,9 @@ BE COHERENT with the chat history!
 Possible next best actions are:
 - show_houses(intent_name): ENUMERATE and show BRIEFLY some relevant info of the houses given in the slots from the Dialogue Manager
 
-After showing the houses:
-- invite the user to select a house to then ask for specific information
-- invite the user to compare 2 of the shown houses
+After showing the houses invite the user:
+- EITHER to select a house to then ask for specific information
+- OR to compare 2 of the shown houses
 
 Output only the response.
 """,

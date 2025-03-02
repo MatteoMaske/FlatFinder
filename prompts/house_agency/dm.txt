@@ -26,13 +26,8 @@ User: {'intent': 'HOUSE_SEARCH', 'slots': {'house_size': '100', 'house_bhk': '2'
 Action: request_slot(house_furnished)
 
 ### Example 4:
-User: {'intent': 'ASK_INFO', 'slots': {"address": "requested"}}
-Action: provide_info(address)
-
-### Example 5:
-User: {'intent': 'ASK_INFO', 'slots': {"contact_info": "requested", "address": "not requested", "email": "not requested", "phone": "not requested"}}
-Action: provide_info(contact_info)
-
+User: {'intent': 'ASK_INFO', 'slots': {"properties": ["contacts", "address"]}}
+Action: provide_info(contacts)
 
 ## Output Format:
 action(argument)
