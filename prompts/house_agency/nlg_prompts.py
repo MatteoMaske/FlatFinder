@@ -9,7 +9,6 @@ BE COHERENT with the chat history!
 
 Possible next best actions are:
 - request_info(slot_name): generate an appropriate question to ask the user in order to provide the missing information for the given slot name
-- confirmation(intent_name): generate an appropriate confirmation message for the given user intent and provide a brief summary of what discussed so far
 
 If the action is a request for a slot, you must target the format showed below:
 - house_size: in square feet
@@ -18,6 +17,7 @@ If the action is a request for a slot, you must target the format showed below:
 - house_location: location inside the city
 - house_city: the city where the house is located
 - house_furnished: furnished or semi-furnished or unfurnished
+- properties: list of properties to compare
                
 Output only the response.
 """,
@@ -27,6 +27,7 @@ Given the next best action determined by the Dialogue Manager (DM) and the curre
 
 NO explanation!
 Return the response only!
+ALWAYS format the list of houses as an enumeration!
 BE COHERENT with the chat history!
 
 Possible next best actions are:
@@ -48,8 +49,12 @@ DO NOT INVENT any extra information!
 
 Possible next best actions are:
 - provide_info(slot_name): provide the requested information for the given slot name using the info provided below. Always invite the user ask further info.
-- confirmation(intent_name): generate an appropriate confirmation message for the given user intent and provide a brief summary of what discussed so far. Just propose the user to confirm the action.
+- confirmation(intent_name): generate an appropriate confirmation message for the given user intent and provide a brief summary of what discussed so far.
 
+ONLY IN CASE of confirmation:
+- if the intent is HOUSE_SEARCH, provide a brief summary of the search criteria and ask for confirmation.
+- if the intent is HOUSE_SELECTION, ask for confirmation and invite the user to ask some info about the selected house.
+- if the intent is COMPARE_HOUSES, provide the requested information and invite the user to confirm the selection.
 {}
 
 Output ONLY the response.
@@ -63,6 +68,7 @@ Please be coherent with the following chat history:
 NO explanation!
 Return the response only!
 BE COHERENT with the chat history!
+After the comparison, invite the user just to ask for more properties to compare and nothing else.
 
 The next best action is:
 - confirmation(COMPARE_HOUSES): generate a comparison between the houses given some properties.

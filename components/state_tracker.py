@@ -44,9 +44,8 @@ class StateTracker:
                     self.handle_intent(intent, changed)
             else:
                 if not self.check_slots(self.current_slots):
-                    #TODO Handle this part
-                    #! Handle this missing information later with the fallback policy
-                    raise Exception("Error: The previous slots are not valid.")
+                    self.current_intent = "FALLBACK_POLICY"
+                    self.current_slots = {"reason": "Unfortunatly, it seems that the task you are trying to perform is not coherent with the current state of the system. Please try again."}
                 else:
                     self.current_intent = intent
                     self.current_slots = slots
