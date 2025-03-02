@@ -18,8 +18,8 @@ DO NOT invent new slot names!
 
 The slots name are:
 - house_bhk, the number of bedrooms, hall, and kitchen in the house
-- house_size, the size of the house in square feet, just the number
-- house_rent, the monthly fee to rent the house in INR, just the number
+- house_size, the size of the house in square feet, just the number as string
+- house_rent, the monthly fee to rent the house in INR, just the numeric value as string
 - house_city, the city in which the house is located ('Kolkata' or 'Mumbai' or 'Bangalore' or 'Delhi' or 'Chennai' or 'Hyderabad')
 - house_location, a location within the city that is distinct from the city name
 - house_furnished, whether the house should be furnished or semi-furnished or unfurnished
