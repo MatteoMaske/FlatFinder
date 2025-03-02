@@ -40,10 +40,10 @@ class StateTracker:
             elif intent == self.current_intent: # Same intent
                 changed = self.update_slots(intent, slots)
 
-                if self.check_slots():
+                if self.check_slots(self.current_slots):
                     self.handle_intent(intent, changed)
             else:
-                if not self.check_slots():
+                if not self.check_slots(self.current_slots):
                     #TODO Handle this part
                     #! Handle this missing information later with the fallback policy
                     raise Exception("Error: The previous slots are not valid.")
@@ -97,22 +97,35 @@ class StateTracker:
         else:
             raise Exception(f"Error: Initializing slots for an unknown intent {intent}.")
     
-    def check_slots(self):
-        for val in self.current_slots.values():
+    def check_slots(self, slots: dict):
+        """Check if all the slots are filled for the current intent"""
+        for val in slots.values():
             if not val:
                 return False
         return True
     
     def update_slots(self, intent, slots):
-        """Update the current slots with the new slots"""
+        """Update the current slots with the new slots
+        
+        Args:
+            intent (str): The intent of the user request
+            slots (dict): The slots of the user request
+
+        Returns:
+            changed (bool): If the slots have been changed in the current turn
+        """
         if intent == "ASK_INFO":
             self.current_slots = slots
             return True
         else:
+            prev_slots = self.current_slots.copy()
             for key, value in slots.items():
                 if value is not None and value != "None" and value != "null":
                     self.current_slots[key] = value
-            return (sorted(slots.values()) == (sorted(self.current_slots.values())))
+            if self.check_slots(self.current_slots) and self.check_slots(prev_slots):
+                return (sorted(prev_slots.values()) != sorted(self.current_slots.values()))
+            else:
+                return False
 
     def update_nba(self, dm_output):
         self.next_best_actions.extend(dm_output)
