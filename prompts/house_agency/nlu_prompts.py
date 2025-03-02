@@ -97,7 +97,7 @@ NO explanation!
 DO NOT invent new slot names!
 
 The slot name is:
-- houses, a list of numeric indices (0-indexing) indicating which houses from the shown list the user wants to compare. Could be more than 2.
+- houses, a list of numeric indices (0-indexing) indicating which houses from the shown list the user wants to compare. Could be more than 2 or null.
 - properties, a list of strings indicating the properties that the user wants to compare the houses on. Could be null.
 
 The json format is:

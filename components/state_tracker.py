@@ -132,7 +132,7 @@ class StateTracker:
         for key, value in slots.items():
             if value is not None and value != "None" and value != "null":
                 self.current_slots[key] = value
-        if self.check_slots(self.current_slots) and self.check_slots(prev_slots):
+        if self.check_slots(self.current_slots) and self.check_slots(prev_slots) and self.current_intent == "HOUSE_SEARCH":
             print(f"Slots changed: {prev_slots} -> {self.current_slots}")
             return (sorted(prev_slots.values()) != sorted(self.current_slots.values()))
         else:
@@ -165,7 +165,7 @@ class StateTracker:
                     self.active_house = self.current_houses[index-1]
                     print(f"House activated: {self.active_house}")
                     self.current_intent = "ASK_INFO"
-                    self.current_slots = {}
+                    self.current_slots = {"properties": None}
                 except Exception:
                     print("Error in parsing the house selection intent", file=sys.stderr)
                     self.fallback_policy("Error in processing the user selection. Please reselect the house.")
@@ -178,7 +178,7 @@ class StateTracker:
                 except Exception:
                     print("Error in parsing the compare houses intent", file=sys.stderr)
                     self.current_intent = "COMPARE_HOUSES"
-                    self.current_slots = {}
+                    self.current_slots = {"houses": None, "properties": None}
         elif intent == "ASK_INFO":
             if not self.active_house:
                 self.fallback_policy("No house selected, you must search or select a house first.")
