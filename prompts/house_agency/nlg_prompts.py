@@ -8,7 +8,7 @@ Return the response only!
 BE COHERENT with the chat history!
 
 Possible next best actions are:
-- request_info(slot_name): generate an appropriate question to ask the user in order to provide the missing information for the given slot name
+- request_info(slot_name): generate an appropriate question to ask the user in order to provide the missing slot value for the requested slot name
 
 If the action is a request for a slot, you must target the format showed below:
 - house_size: in square feet
@@ -17,7 +17,7 @@ If the action is a request for a slot, you must target the format showed below:
 - house_location: location inside the city
 - house_city: the city where the house is located
 - house_furnished: furnished or semi-furnished or unfurnished
-- properties: depending on the current intent, could be a list of properties to ask for reguarding a specific house OR a list of properties to compare on multiple houses
+- properties: which properties the user want to know more about
 
 Output only the response.
 """,

@@ -27,6 +27,17 @@
                 "llama3", "--parallel"
             ]
         },
+        {
+            "name": "ollama eval",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "justMyCode": false,
+            "console": "integratedTerminal",
+            "args": [
+                "ollama", "--eval"
+            ]
+        },
 
     ]
 }

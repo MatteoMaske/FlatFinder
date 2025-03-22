@@ -85,18 +85,16 @@ def get_args() -> Namespace:
 
 
 def start_chat(args):
-    if args.model_name != "llama3:latest":
+    if args.model_name != "llama3:8b-instruct-q3_K_L":
         model, tokenizer = load_model(args)
     else:
-#        ollama.show(args.model_name)
+        ollama.show(args.model_name)
         model, tokenizer = None, None
 
     conversation = Conversation(history_size=2)
     database = Database(args.database_path)
     state_tracker = StateTracker(database)
-    welcome_message = "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"
-    print(f"System: {welcome_message}")
-    conversation.update("system", welcome_message)
+    print(f"System: {conversation.get_message(-1)}")
     # user_input = "please show me the houses you found"
     # conversation.update("user", user_input)
     # state_tracker.current_intent = "HOUSE_SEARCH"
@@ -119,13 +117,15 @@ def start_chat(args):
             state_tracker.reset()
             print("System: Conversation reset.")
             continue
-        conversation.update("user", user_input)
 
         # get the NLU output
         print("="*50 + " NLU " + "="*50) if DEBUG else None
         nlu_component = NLU(model, tokenizer, args)
-        nlu_output = nlu_component(user_input, conversation.get_history(until=-1))
+        nlu_output = nlu_component(user_input, conversation.get_history())
         print(f"NLU: {nlu_output}") if DEBUG else None
+
+        # update the conversation
+        conversation.update("user", user_input)
 
         # update the state tracker
         state_tracker.update(nlu_output)
@@ -148,7 +148,7 @@ def start_chat(args):
         conversation.update("system", nlg_output)
 
 def evaluate(args):    
-    if args.model_name != "llama3:latest":
+    if args.model_name != "llama3:8b-instruct-q3_K_L":
         model, tokenizer = load_model(args)
     else:
         ollama.show(args.model_name)
@@ -159,9 +159,14 @@ def evaluate(args):
     if args.dm_test_path:
         assert os.path.exists(args.dm_test_path), "The DM test path does not exist."
 
+    # Initialize the conversation
+    conversation = Conversation(history_size=2)
+    # database = Database(args.database_path)
+    # state_tracker = StateTracker(database)
+
     evaluator = Evaluator(args.nlu_test_path, args.dm_test_path)
     nlu_component = NLU(model, tokenizer, args)
-    results = evaluator.evaluate_NLU(nlu_component)
+    results = evaluator.evaluate_NLU(nlu_component, conversation)
     print(results)
 
 if __name__ == "__main__":

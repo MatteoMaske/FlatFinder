@@ -15,7 +15,7 @@ from transformers import (
 MODELS = {
     "llama2": "meta-llama/Llama-2-7b-chat-hf",
     "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",
-    "ollama": "llama3:latest",
+    "ollama": "llama3:8b-instruct-q3_K_L",
 }
 
 TEMPLATES = {
@@ -179,8 +179,16 @@ def model_generate(
     )
 
 def generate(model, text, tokenizer, args):
+    import time
     if model is None:
         response = ollama.generate(args.model_name, text, raw=True)
+
+        eval_count = response['eval_count']
+        eval_duration_ns = response['eval_duration']
+        eval_duration_s = eval_duration_ns / 1e9  # Convert nanoseconds to seconds
+        tokens_per_second = eval_count / eval_duration_s
+
+        print(f"Time taken for generation: {eval_duration_s}s - {tokens_per_second}tok/s")
         return response["response"]
     else:
         input_tokens = tokenizer(text, return_tensors="pt").to(model.device)
