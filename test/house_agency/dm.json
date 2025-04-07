@@ -484,320 +484,320 @@
         "templates": [
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested",
-                    "tenant_preferred": "requested",
-                    "floor_info": "not requested",
-                    "contact_info": "not requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "tenant_preferred",
+                    "floor_info",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "not requested",
-                    "tenant_preferred": "requested",
-                    "floor_info": "not requested",
-                    "contact_info": "not requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "tenant_preferred",
+                    "floor_info",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested",
-                    "tenant_preferred": "not requested",
-                    "floor_info": "not requested",
-                    "contact_info": "not requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "tenant_preferred",
+                    "floor_info",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "not requested",
-                    "tenant_preferred": "requested",
-                    "floor_info": "not requested",
-                    "contact_info": "not requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "tenant_preferred",
+                    "floor_info",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested",
-                    "contact_info": "not requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "not requested",
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested",
-                    "tenant_preferred": "not requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "not requested",
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested",
-                    "bathrooms_number": "not requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "not requested",
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested",
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "contact_info",
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested",
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested",
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "contact_info",
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested",
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "tenant_preferred",
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested",
-                    "floor_info": "requested",
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "contact_info",
+                    "floor_info",
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested",
-                    "tenant_preferred": "requested",
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "tenant_preferred",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested",
-                    "bathrooms_number": "requested",
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "floor_info",
+                    "bathrooms_number",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested",
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "tenant_preferred",
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested",
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "contact_info",
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested",
-                    "floor_info": "requested",
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "floor_info",
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested",
-                    "tenant_preferred": "requested",
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "contact_info",
+                    "tenant_preferred",
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested",
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "bathrooms_number",
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "floor_info": "requested"
-                }
+                "slots": [
+                    "floor_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "contact_info": "requested"
-                }
+                "slots": [
+                    "contact_info"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "bathrooms_number": "requested"
-                }
+                "slots": [
+                    "bathrooms_number"
+                ]
             },
             {
                 "intent": "ASK_INFO",
-                "slots": {
-                    "tenant_preferred": "not requested"
-                }
+                "slots": [
+                    "tenant_preferred"
+                ]
             }
         ]
     },
@@ -1477,36 +1477,6 @@
                     "properties": null
                 }
             }
-        ]
-    },
-    {
-        "intent": "GENERIC",
-        "templates": [
-            {"intent": "ASK_INFO", "slots": {} },
-            {"intent": "HOUSE_SEARCH", "slots": {} },
-            {"intent": "HOUSE_SELECTION", "slots": {} },
-            {"intent": "COMPARE_HOUSES", "slots": {} },
-            {"intent": "ASK_INFO", "slots": {} },
-            {"intent": "HOUSE_SEARCH", "slots": {} },
-            {"intent": "HOUSE_SELECTION", "slots": {} },
-            {"intent": "COMPARE_HOUSES", "slots": {} },
-            {"intent": "ASK_INFO", "slots": {} },
-            {"intent": "HOUSE_SEARCH", "slots": {} },
-            {"intent": "HOUSE_SELECTION", "slots": {} },
-            {"intent": "COMPARE_HOUSES", "slots": {} },
-            {"intent": "ASK_INFO", "slots": {} },
-            {"intent": "HOUSE_SEARCH", "slots": {} },
-            {"intent": "HOUSE_SELECTION", "slots": {} },
-            {"intent": "COMPARE_HOUSES", "slots": {} },
-            {"intent": "ASK_INFO", "slots": {} },
-            {"intent": "HOUSE_SEARCH", "slots": {} },
-            {"intent": "HOUSE_SELECTION", "slots": {} },
-            {"intent": "COMPARE_HOUSES", "slots": {} },
-            {"intent": "ASK_INFO", "slots": {} },
-            {"intent": "HOUSE_SEARCH", "slots": {} },
-            {"intent": "HOUSE_SELECTION", "slots": {} },
-            {"intent": "COMPARE_HOUSES", "slots": {} }
-
         ]
     }
 ]

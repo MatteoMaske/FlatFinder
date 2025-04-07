@@ -5,6 +5,7 @@ import os
 
 from components.nlu import NLU
 from components.dm import DM
+from tqdm import tqdm
 
 class Evaluator:
     def __init__(self, nlu_test_path=None, dm_test_path=None):
@@ -124,7 +125,7 @@ class Evaluator:
             for key, value in values.items():
                 if "house" in key:
                     if value.isdigit():
-                        house_index = ground_truth["slots"]["houses"].append(int(value))
+                        ground_truth["slots"]["houses"].append(int(value))
                     else:   
                         match value:
                             case "one":
@@ -181,8 +182,9 @@ class Evaluator:
             if key not in gt_slots:
                 false_positives += 1
 
-        precision = true_positives / (true_positives + false_positives)
-        recall = true_positives / (true_positives + false_negatives)
+        precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 0
+        recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 0
+        # F1 score is the harmonic mean of precision and recall
         f1 = 2 * precision * recall / (precision + recall)
 
         result["precision"] = precision
@@ -200,11 +202,12 @@ class Evaluator:
             "f1": 0.0
         }
 
-        for sample in test_set:
+        loop = tqdm(test_set, desc="Evaluating NLU", total=len(test_set), colour="green")
+        for sample in loop:
             user_input = sample["user_input"]
             ground_truth = sample["ground_truth"]
             nlu_output = nlu_model(user_input, conversation.get_history())
-            nlu_output = nlu_output[0]
+            nlu_output = nlu_output[0] if len(nlu_output) > 0 else {"intent": None, "slots": {} }
 
             result = self.calculate_accuracy_f1(nlu_output, ground_truth)
             metrics["accuracy"] += result["accuracy"]
