@@ -185,7 +185,7 @@ class Evaluator:
         precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 0
         recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 0
         # F1 score is the harmonic mean of precision and recall
-        f1 = 2 * precision * recall / (precision + recall)
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
 
         result["precision"] = precision
         result["recall"] = recall
@@ -193,6 +193,7 @@ class Evaluator:
 
         return result
 
+    # TODO: Check why results are that bad
     def evaluate_NLU(self, nlu_model, conversation):
         test_set = self.create_test_set()
         metrics = {
@@ -215,7 +216,11 @@ class Evaluator:
             metrics["recall"] += result["recall"]
             metrics["f1"] += result["f1"]
 
-            print(f"Current F1: {metrics['f1']}")
+            if result["accuracy"] == 0:
+                print("Sample failed")
+                print(f"User input: {user_input}")
+                print(f"NLU output: {nlu_output}")
+                print(f"Ground truth: {ground_truth}")
 
             conversation.reset()
 
