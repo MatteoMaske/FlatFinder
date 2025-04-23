@@ -1,0 +1,156 @@
+[
+    {
+        "user_input": "I'm looking for a 2 BHK unfurnished house in Singasandra within 31000 rupees",
+        "ground_truth": {
+            "intent": "HOUSE_SEARCH",
+            "slots": {
+                "house_bhk": "2",
+                "house_furnished": "unfurnished",
+                "house_location": "Singasandra",
+                "house_rent": "31000"
+            }
+        }
+    },
+    {
+        "user_input": "Can you help me find a 900 sq ft unfurnished apartment in Mahadevapura?",
+        "ground_truth": {
+            "intent": "HOUSE_SEARCH",
+            "slots": {
+                "house_size": "900",
+                "house_furnished": "unfurnished",
+                "house_location": "Mahadevapura"
+            }
+        }
+    },
+    {
+        "user_input": "Show me furnished houses in Agrahara Layout under 20000 rupees",
+        "ground_truth": {
+            "intent": "HOUSE_SEARCH",
+            "slots": {
+                "house_furnished": "furnished",
+                "house_location": "Agrahara Layout",
+                "house_rent": "20000"
+            }
+        }
+    },
+    {
+        "user_input": "I would like to know more about house option 1",
+        "ground_truth": {
+            "intent": "HOUSE_SELECTION",
+            "slots": {
+                "house_selected": 1
+            }
+        }
+    },
+    {
+        "user_input": "Tell me about house number three",
+        "ground_truth": {
+            "intent": "HOUSE_SELECTION",
+            "slots": {
+                "house_selected": 3
+            }
+        }
+    },
+    {
+        "user_input": "Can you give me details of option five?",
+        "ground_truth": {
+            "intent": "HOUSE_SELECTION",
+            "slots": {
+                "house_selected": 5
+            }
+        }
+    },
+    {
+        "user_input": "What is the tenant preferred of this house?",
+        "ground_truth": {
+            "intent": "ASK_INFO",
+            "slots": {
+                "properties": [
+                    "tenant preferred"
+                ]
+            }
+        }
+    },
+    {
+        "user_input": "Could you tell me the location?",
+        "ground_truth": {
+            "intent": "ASK_INFO",
+            "slots": {
+                "properties": [
+                    "location"
+                ]
+            }
+        }
+    },
+    {
+        "user_input": "I'd like to know the bathrooms number details",
+        "ground_truth": {
+            "intent": "ASK_INFO",
+            "slots": {
+                "properties": [
+                    "bathrooms number"
+                ]
+            }
+        }
+    },
+    {
+        "user_input": "Compare houses 4 and 4",
+        "ground_truth": {
+            "intent": "COMPARE_HOUSES",
+            "slots": {
+                "properties": [],
+                "houses": [
+                    4,
+                    4
+                ]
+            }
+        }
+    },
+    {
+        "user_input": "What's the difference between house 1 and four?",
+        "ground_truth": {
+            "intent": "COMPARE_HOUSES",
+            "slots": {
+                "properties": [],
+                "houses": [
+                    1,
+                    3
+                ]
+            }
+        }
+    },
+    {
+        "user_input": "How do houses 3 and 1 compare?",
+        "ground_truth": {
+            "intent": "COMPARE_HOUSES",
+            "slots": {
+                "properties": [],
+                "houses": [
+                    3,
+                    1
+                ]
+            }
+        }
+    },
+    {
+        "user_input": "I'd like to have an ice cream",
+        "ground_truth": {
+            "intent": "OUT_OF_DOMAIN",
+            "slots": {}
+        }
+    },
+    {
+        "user_input": "Which places can you suggest for a good pizza?",
+        "ground_truth": {
+            "intent": "OUT_OF_DOMAIN",
+            "slots": {}
+        }
+    },
+    {
+        "user_input": "What's the weather like today?",
+        "ground_truth": {
+            "intent": "OUT_OF_DOMAIN",
+            "slots": {}
+        }
+    }
+]

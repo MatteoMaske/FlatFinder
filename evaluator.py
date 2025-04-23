@@ -17,8 +17,12 @@ class Evaluator:
             test_file = open(dm_test_path)
             self.dm_data = json.load(test_file)
 
-    def create_test_set(self):
+    def create_test_set(self, cached=True):
         """Create a test set for the NLU model and save it for later reproducibility"""
+        if cached and os.path.exists("test/house_agency/test_set.json"):
+            with open("test/house_agency/test_set.json") as f:
+                test_set = json.load(f)
+            return test_set
 
         test_set = []
         for object in self.nlu_data:
@@ -36,7 +40,7 @@ class Evaluator:
         # Save the test set
         test_set_path = os.path.join("test", "house_agency", "test_set.json")
         with open(test_set_path, "w") as f:
-            json.dump(test_set_path, f, indent=4)
+            json.dump(test_set, f, indent=4)
 
 
         return test_set
@@ -195,7 +199,7 @@ class Evaluator:
 
     # TODO: Check why results are that bad
     def evaluate_NLU(self, nlu_model, conversation):
-        test_set = self.create_test_set()
+        test_set = self.create_test_set(cached=True)
         metrics = {
             "accuracy": 0.0,
             "precision": 0.0,
