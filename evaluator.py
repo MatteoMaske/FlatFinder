@@ -77,7 +77,7 @@ class Evaluator:
             elif key == "house_furnished":
                 random_values[key] = random.choice(['furnished', 'unfurnished', 'semi-furnished'])
             elif "info_type" in key or "property" in key:
-                random_values[key] = random.choice(['price', 'location', 'size', 'bhk', 'balcony', 'bathrooms number', 'tenant preferred', 'contact info', 'floor info'])
+                random_values[key] = random.choice(['price', 'location', 'size', 'bhk', 'number of bathrooms', 'tenant preferred by the landlord', 'landlord contact', 'floors in the building'])
             elif "house_index" in key or "house_selected" in key:
                 random_values[key] = random.choice(['1', '2', '3', '4', '5', 'one', 'two', 'three', 'four', 'five'])
 
@@ -129,7 +129,7 @@ class Evaluator:
             for key, value in values.items():
                 if "house" in key:
                     if value.isdigit():
-                        ground_truth["slots"]["houses"].append(int(value))
+                        ground_truth["slots"]["houses"].append(int(value)-1)
                     else:   
                         match value:
                             case "one":
@@ -197,18 +197,21 @@ class Evaluator:
 
         return result
 
-    # TODO: Check why results are that bad
+    # TODO: Check the new test set behavior
     def evaluate_NLU(self, nlu_model, conversation):
-        test_set = self.create_test_set(cached=True)
+        test_set = self.create_test_set(cached=False)
         metrics = {
             "accuracy": 0.0,
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0
         }
+        exit()
 
         loop = tqdm(test_set, desc="Evaluating NLU", total=len(test_set), colour="green")
         for sample in loop:
+            conversation.reset(_for=sample["ground_truth"]["intent"])
+
             user_input = sample["user_input"]
             ground_truth = sample["ground_truth"]
             nlu_output = nlu_model(user_input, conversation.get_history())
@@ -226,7 +229,6 @@ class Evaluator:
                 print(f"NLU output: {nlu_output}")
                 print(f"Ground truth: {ground_truth}")
 
-            conversation.reset()
 
         num_samples = len(test_set)
         metrics["accuracy"] /= num_samples

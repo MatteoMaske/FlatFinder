@@ -19,13 +19,13 @@
         "templates": [
             "I would like to know more about house option {house_selected}",
             "Tell me about house number {house_selected}",
-            "Can you give me details of option {house_selected}?",
+            "I'd like to move to option {house_selected}?",
             "I'm interested in house {house_selected}",
             "Show me more information about property {house_selected}",
             "Let's look at house {house_selected}",
             "I want to explore option {house_selected}",
             "Give me details about listing {house_selected}",
-            "What are the specifics of house {house_selected}?",
+            "Go ahead with the house {house_selected}?",
             "Select house number {house_selected}"
         ]
     },
@@ -34,7 +34,7 @@
         "templates": [
             "What is the {info_type} of this house?",
             "Could you tell me the {info_type}?",
-            "I'd like to know the {info_type} details",
+            "I'd like to know the {info_type}",
             "What about the {info_type}?",
             "Tell me more about the {info_type}",
             "Can you share the {info_type} and {info_type_1} information?",

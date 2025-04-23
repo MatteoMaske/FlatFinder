@@ -1,7 +1,6 @@
 import argparse
 from argparse import Namespace
 import os
-os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
 import torch
 import ollama
@@ -91,7 +90,7 @@ def start_chat(args):
         ollama.show(args.model_name)
         model, tokenizer = None, None
 
-    conversation = Conversation(history_size=2)
+    conversation = Conversation(history_size=3)
     database = Database(args.database_path)
     state_tracker = StateTracker(database)
     print(f"System: {conversation.get_message(-1)}")

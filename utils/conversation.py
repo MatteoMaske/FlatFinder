@@ -36,5 +36,14 @@ class Conversation:
         else:
             return self.chat_history[idx].text
     
-    def reset(self):
+    def reset(self, _for=None):
         self.chat_history = [{"role": "system", "text": "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"}]
+
+        if _for == "HOUSE_SELECTION":
+            self.chat_history.append({"role": "system", "text": "I'd like a 2 BHK house in Mumbay under 10000 INR as rent, unfurnished please. I'd like it in the neighborhood of Bandra and at least 100 square feet."})
+            self.chat_history.append({"role": "user", "text": "please show me the houses you found"})
+            self.chat_history.append({"role": "system", "text": "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"})
+        elif _for == "ASK_INFO":
+            self.chat_history.append({"role": "system", "text": "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"})
+            self.chat_history.append({"role": "user", "text": "I want to know more about the first house"})
+            self.chat_history.append({"role": "system", "text": "Sure, what would you like to know about the first house?"})
