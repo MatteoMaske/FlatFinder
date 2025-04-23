@@ -28,7 +28,7 @@ class Evaluator:
         for object in self.nlu_data:
             intent = object["intent"]
             templates = object["templates"]
-            for template in templates[:3]:
+            for template in templates:
                 user_input, values = self.generate_random_sample(template)
                 ground_truth = self.generate_gt(intent, values)
                 
@@ -197,7 +197,7 @@ class Evaluator:
 
         return result
 
-    # TODO: Check the new test set behavior
+    # TODO: Check the how history is built and recall value
     def evaluate_NLU(self, nlu_model, conversation):
         test_set = self.create_test_set(cached=False)
         metrics = {
@@ -206,7 +206,6 @@ class Evaluator:
             "recall": 0.0,
             "f1": 0.0
         }
-        exit()
 
         loop = tqdm(test_set, desc="Evaluating NLU", total=len(test_set), colour="green")
         for sample in loop:

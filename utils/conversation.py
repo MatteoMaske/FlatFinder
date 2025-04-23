@@ -16,13 +16,13 @@ class Conversation:
     
     def get_history(self):
         formatted_chat = ""
+        tmp_chat = self.chat_history.copy()
 
         max_length = min(self.history_size, len(self.chat_history))
-        begin = -self.history_size if -self.history_size >= -max_length else -max_length
-        end = len(self.chat_history)
+        tmp_chat = tmp_chat[-self.history_size:] if -self.history_size >= -max_length else tmp_chat[:max_length]
 
-        for i in range(begin, end):
-            formatted_chat += f"{self.chat_history[i]['role']}: {self.chat_history[i]['text']}\n"
+        for message in tmp_chat:
+            formatted_chat += f"{message['role']}: {message['text']}\n"
 
         return formatted_chat
     
@@ -34,7 +34,7 @@ class Conversation:
         if abs(idx) > len(self.chat_history):
             return None
         else:
-            return self.chat_history[idx].text
+            return self.chat_history[idx]["text"]
     
     def reset(self, _for=None):
         self.chat_history = [{"role": "system", "text": "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"}]

@@ -159,7 +159,7 @@ def evaluate(args):
         assert os.path.exists(args.dm_test_path), "The DM test path does not exist."
 
     # Initialize the conversation
-    conversation = Conversation(history_size=2)
+    conversation = Conversation(history_size=3)
     # database = Database(args.database_path)
     # state_tracker = StateTracker(database)
 
