@@ -57,6 +57,8 @@ class Evaluator:
         """
         keys = [t[1] for t in string.Formatter.parse("", template)]
 
+        indices_set = set(range(1,6))
+        properties_set = set(['price', 'location', 'size', 'bhk', 'number of bathrooms', 'tenant preferred by the landlord', 'point of contact', 'floors in the building'])
         random_values = {}
         for key in keys:
             if key is None:
@@ -77,9 +79,12 @@ class Evaluator:
             elif key == "house_furnished":
                 random_values[key] = random.choice(['furnished', 'unfurnished', 'semi-furnished'])
             elif "info_type" in key or "property" in key:
-                random_values[key] = random.choice(['price', 'location', 'size', 'bhk', 'number of bathrooms', 'tenant preferred by the landlord', 'landlord contact', 'floors in the building'])
+                random_values[key] = random.choice(list(properties_set))
+                properties_set.remove(random_values[key])
             elif "house_index" in key or "house_selected" in key:
-                random_values[key] = random.choice(['1', '2', '3', '4', '5', 'one', 'two', 'three', 'four', 'five'])
+                random_values[key] = str(random.choice(list(indices_set)))
+                indices_set.remove(int(random_values[key]))
+
 
         user_input = template.format(**random_values)
         return user_input, random_values
@@ -105,19 +110,7 @@ class Evaluator:
                 if value.isdigit():
                     ground_truth["slots"][key] = int(value)
                 else:
-                    match value:
-                        case "one":
-                            ground_truth["slots"][key] = 1
-                        case "two":
-                            ground_truth["slots"][key] = 2
-                        case "three":
-                            ground_truth["slots"][key] = 3
-                        case "four":
-                            ground_truth["slots"][key] = 4
-                        case "five":
-                            ground_truth["slots"][key] = 5
-                        case _:
-                            raise ValueError(f"Invalid value {value} for key {key}")
+                    raise ValueError(f"Invalid value {value} for key {key}")
         elif intent == "ASK_INFO":
             ground_truth["slots"]["properties"] = []
             for key, value in values.items():
@@ -130,20 +123,8 @@ class Evaluator:
                 if "house" in key:
                     if value.isdigit():
                         ground_truth["slots"]["houses"].append(int(value)-1)
-                    else:   
-                        match value:
-                            case "one":
-                                ground_truth["slots"]["houses"].append(0)
-                            case "two":
-                                ground_truth["slots"]["houses"].append(1)
-                            case "three":
-                                ground_truth["slots"]["houses"].append(2)
-                            case "four":
-                                ground_truth["slots"]["houses"].append(3)
-                            case "five":
-                                ground_truth["slots"]["houses"].append(4)
-                            case _:
-                                raise ValueError(f"Invalid value {value} for key {key}")
+                    else:
+                        raise ValueError(f"Invalid value {value} for key {key}")
                 else:
                     ground_truth["slots"]["properties"].append(value)
         else:
@@ -207,26 +188,46 @@ class Evaluator:
             "f1": 0.0
         }
 
-        loop = tqdm(test_set, desc="Evaluating NLU", total=len(test_set), colour="green")
-        for sample in loop:
+        errors = {
+            "HOUSE_SEARCH": 0.0,
+            "HOUSE_SELECTION": 0,
+            "ASK_INFO": 0,
+            "COMPARE_HOUSES": 0,
+        }
+
+        loop = tqdm(enumerate(test_set), desc="Evaluating NLU", total=len(test_set), colour="green")
+        for i, sample in loop:
             conversation.reset(_for=sample["ground_truth"]["intent"])
 
             user_input = sample["user_input"]
             ground_truth = sample["ground_truth"]
             nlu_output = nlu_model(user_input, conversation.get_history())
-            nlu_output = nlu_output[0] if len(nlu_output) > 0 else {"intent": None, "slots": {} }
 
-            result = self.calculate_accuracy_f1(nlu_output, ground_truth)
+            if len(nlu_output) > 0:
+                nlu_output = nlu_output[0]
+                result = self.calculate_accuracy_f1(nlu_output, ground_truth)
+            else:
+                result = {
+                    "accuracy": 0,
+                    "precision": 0,
+                    "recall": 0,
+                    "f1": 0
+                }
             metrics["accuracy"] += result["accuracy"]
             metrics["precision"] += result["precision"]
             metrics["recall"] += result["recall"]
             metrics["f1"] += result["f1"]
 
             if result["accuracy"] == 0:
-                print("Sample failed")
+                print("Accuracy 0 on this sample ================")
+                print(f"Conversation history: {conversation.get_history()}")
                 print(f"User input: {user_input}")
                 print(f"NLU output: {nlu_output}")
                 print(f"Ground truth: {ground_truth}")
+                print("===========================================")
+                errors[ground_truth["intent"]] += 1
+
+            loop.set_description(f"Evaluating NLU: {(metrics['accuracy']/(i+1)):.2f} | {(metrics['precision']/(i+1)):.2f} | {(metrics['recall']/(i+1)):.2f} | {(metrics['f1']/(i+1)):.2f}")
 
 
         num_samples = len(test_set)
@@ -234,6 +235,12 @@ class Evaluator:
         metrics["precision"] /= num_samples
         metrics["recall"] /= num_samples
         metrics["f1"] /= num_samples
+
+        print("===========================================")
+        print("Errors:")
+        for key, value in errors.items():
+            print(f"{key}: {value}")
+        print("===========================================")
 
         return metrics
         

@@ -39,11 +39,11 @@ class Conversation:
     def reset(self, _for=None):
         self.chat_history = [{"role": "system", "text": "Hello! I am a conversational agent specialized on student's accomodation searching in India. How can I help you today?"}]
 
-        if _for == "HOUSE_SELECTION":
-            self.chat_history.append({"role": "system", "text": "I'd like a 2 BHK house in Mumbay under 10000 INR as rent, unfurnished please. I'd like it in the neighborhood of Bandra and at least 100 square feet."})
-            self.chat_history.append({"role": "user", "text": "please show me the houses you found"})
-            self.chat_history.append({"role": "system", "text": "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"})
+        if _for == "HOUSE_SELECTION" or _for == "COMPARE_HOUSES":
+            self.chat_history.append({"role": "system", "text": "I've noted down your search criteria. You're looking for a 2 BHK house in Kandivali, Mumbai, with a minimum size of 500 sq ft, unfurnished, and a rent of under 60,000. Is this correct?"})
+            self.chat_history.append({"role": "user", "text": "yes, please show me the houses you found"})
+            self.chat_history.append({"role": "system", "text": "Here are the houses that match your search criteria:\n\n1. A 2 BHK House (750 sq.ft.) in RNA Royale Park, Kandivali West, Mumbai for ₹42,000. Suitable for bachelors.\n2. A 2 BHK House (750 sq.ft.) in RNA Royale Park, Kandivali West, Mumbai for ₹41,000. Suitable for bachelors.\n3. A 3 BHK House (1100 sq.ft.) in Sakhi, Kandivali West, Mumbai for ₹55,000. Suitable for bachelors.\n4. A 2 BHK House (650 sq.ft.) in Kandivali West, Mumbai for ₹27,000. Suitable for bachelors.\n5. A 2 BHK House (650 sq.ft.) in Gaurav Heights, Kandivali West, Mumbai for ₹40,000. Suitable for bachelors.\n\nWhich one would you like to know more about or would you like to compare two of these options?"})
         elif _for == "ASK_INFO":
-            self.chat_history.append({"role": "system", "text": "Found 3 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"})
-            self.chat_history.append({"role": "user", "text": "I want to know more about the first house"})
-            self.chat_history.append({"role": "system", "text": "Sure, what would you like to know about the first house?"})
+            self.chat_history.append({"role": "system", "text": "Found 5 matching houses:\n\n1. Deep Heights, Nalasopara: 2 BHK , 790 sqft, ₹6.5k/month\n2. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n3. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n4. New Panvel: 2 BHK, 890 sqft, ₹8k/month\n5. Nakoda Heights, Nalasopara: 2 BHK, 550 sqft, ₹8k/month\n\nWhich one would you like to know more about?"})
+            self.chat_history.append({"role": "user", "text": "I want to select the second house"})
+            self.chat_history.append({"role": "system", "text": "Which properties would you like to know more about?"})

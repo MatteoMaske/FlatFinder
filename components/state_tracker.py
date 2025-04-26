@@ -152,7 +152,7 @@ class StateTracker:
         if intent == "HOUSE_SEARCH":
             if "confirmation" in self.next_best_actions[-1] and "HOUSE_SEARCH" in self.next_best_actions[-1] and not changed:
                 self.current_houses = self.database.get_houses(self.current_slots)
-                houses = self.current_houses[:3] if len(self.current_houses) > 3 else self.current_houses
+                houses = self.current_houses
                 self.current_intent = "SHOW_HOUSES"
                 self.current_slots = {f"option_{i}": str(house) for i, house in enumerate(houses)}
                 print("="*100)

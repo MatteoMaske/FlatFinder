@@ -16,7 +16,7 @@ class Database:
             self.database = House.from_dataframe(dataframe)
             print(f"Database initialized with {len(self.database)} houses.")
 
-    def get_houses(self, slots: Dict[str, str]) -> List[House]:
+    def get_houses(self, slots: Dict[str, str], first_n = 5) -> List[House]:
         """Get all houses from the database that match the given slots."""
 
         # Filter slots values to match the database types
@@ -63,9 +63,10 @@ class Database:
                 house_location in house.area_locality
 
             # Filter houses based on the slots
-            filtered_houses = filter(filter_func, self.database)
+            filtered_houses = list(filter(filter_func, self.database))
         except Exception as e:
             print("Error in filtering the houses")
             return []
 
-        return list(filtered_houses)
+
+        return filtered_houses[:min(len(filtered_houses), first_n)]
