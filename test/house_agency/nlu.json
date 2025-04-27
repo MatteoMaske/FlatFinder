@@ -33,15 +33,15 @@
         "intent": "ASK_INFO",
         "templates": [
             "What is the {info_type} of this house?",
-            "Could you tell me the {info_type}?",
+            "Could you tell me the {info_type} of the property?",
             "I'd like to know the {info_type}",
-            "What about the {info_type}?",
+            "What about the {info_type} of this accomodation?",
             "Tell me more about the {info_type}",
-            "Can you share the {info_type} and {info_type_1} information?",
-            "What's the {info_type} and {info_type_1} like?",
+            "Can you share the {info_type} and {info_type_1} information with me?",
+            "What's the {info_type} and {info_type_1} like in this apartment?",
             "I need to know about both the {info_type} and {info_type_1}",
-            "Please provide details about the {info_type}",
-            "Show me the {info_type} information"
+            "Please provide me more details about the {info_type} of the house",
+            "Show me the {info_type} information of this house"
         ]
     },
     {

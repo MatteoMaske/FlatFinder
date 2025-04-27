@@ -27,9 +27,10 @@ class NLU:
     def classify_intent(self, user_input, conversation):        
         path = os.path.join("prompts", self.args.domain, "intent.txt")
         system_prompt = open(path, "r").read()
-        system_prompt = system_prompt.format(conversation)
+        # system_prompt = system_prompt.format(conversation)
         print(f"NLU [Intent] Prompt: '{system_prompt}'") if self.verbose else None
 
+        user_input = f"History context: {conversation}\n\nUser: {user_input}"
         nlu_text = self.args.chat_template.format(system_prompt, user_input)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
         nlu_output = nlu_output.strip("\n").strip()
@@ -47,7 +48,7 @@ class NLU:
             print(f"NLU Chunks found: {chunks}")
         else:
             chunks = self.classify_intent(user_input, conversation)
-        print(f"NLU Chunks: {chunks}") if self.verbose else None
+        # print(f"NLU Chunks: {chunks}") if self.verbose else None
         
         nlu_outputs = []
 
@@ -59,7 +60,7 @@ class NLU:
                 continue
             system_prompt = NLU_PROMPTS[intent].format(conversation)
             system_prompt = self.args.chat_template.format(system_prompt, user_input)
-            print(f"NLU [Slots] prompt: '{system_prompt}'") if self.verbose else None
+            # print(f"NLU [Slots] prompt: '{system_prompt}'") if self.verbose else None
             nlu_output = generate(self.model, system_prompt, self.tokenizer, self.args)
             nlu_outputs.append((intent, nlu_output))
 
