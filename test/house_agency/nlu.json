@@ -48,12 +48,12 @@
         "intent": "COMPARE_HOUSES",
         "templates": [
             "I'd like to compare houses {house_index} and {house_index_1}",
-            "What's the difference between house {house_index} and {house_index_1} in term of {property}?",
+            "What's the difference between house {house_index} and house {house_index_1} in term of {property}?",
             "How do houses {house_index} and {house_index_1} compare on {property}?",
             "Show me a comparison of properties on the {property}",
             "Could you compare the {property} of these houses?",
             "I want to compare the {property} between {house_index} option and {house_index_1} option",
-            "What are the differences in {property} and {property_1} between houses {house_index} and {house_index_1}?",
+            "What are the differences between houses {house_index} and house {house_index_1} in {property} and {property_1} ?",
             "Compare {property} and {property_1} for houses {house_index} and {house_index_1}",
             "Show me how houses {house_index} and {house_index_1} differ in terms of {property}",
             "Let me see a comparison of houses {house_index} and {house_index_1} focusing on {property}"

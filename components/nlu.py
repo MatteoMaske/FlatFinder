@@ -28,16 +28,18 @@ class NLU:
         path = os.path.join("prompts", self.args.domain, "intent.txt")
         system_prompt = open(path, "r").read()
         # system_prompt = system_prompt.format(conversation)
-        print(f"NLU [Intent] Prompt: '{system_prompt}'") if self.verbose else None
+        # print(f"NLU [Intent] Prompt: '{system_prompt}'") if self.verbose else None
 
-        user_input = f"History context: {conversation}\n\nUser: {user_input}"
-        nlu_text = self.args.chat_template.format(system_prompt, user_input)
+        input_query = f"History:\n{conversation}\n\nUser: {user_input}"
+        nlu_text = self.args.chat_template.format(system_prompt, input_query)
         nlu_output = generate(self.model, nlu_text, self.tokenizer, self.args)
-        nlu_output = nlu_output.strip("\n").strip()
-        print(f"NLU Intent: '{nlu_output}'") if self.verbose else None
+        nlu_output = nlu_output.strip().strip('\n').strip("`")
 
-        if "OUT_OF_DOMAIN" in nlu_output:
-            print("OUT_OF_DOMAIN detected.")
+        if nlu_output.upper() not in NLU_PROMPTS.keys() and nlu_output.upper() != "OUT_OF_DOMAIN":
+            print(f"Error: The NLU output for intent classification is not in the expected format.")
+            print(f"========= {nlu_output} =========")
+        else:
+            print(f"Intent identified: {nlu_output.upper()}") if self.verbose else None
 
         return [{"intent": nlu_output, "chunk": user_input}]
 

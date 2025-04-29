@@ -17,7 +17,7 @@ class Evaluator:
             test_file = open(dm_test_path)
             self.dm_data = json.load(test_file)
 
-    def create_test_set(self, cached=True):
+    def create_test_set(self, n_sample=3, cached=True):
         """Create a test set for the NLU model and save it for later reproducibility"""
         if cached and os.path.exists("test/house_agency/test_set.json"):
             with open("test/house_agency/test_set.json") as f:
@@ -29,13 +29,14 @@ class Evaluator:
             intent = object["intent"]
             templates = object["templates"]
             for template in templates:
-                user_input, values = self.generate_random_sample(template)
-                ground_truth = self.generate_gt(intent, values)
-                
-                test_set.append({
-                    "user_input": user_input,
-                    "ground_truth": ground_truth
-                })
+                for _ in range(n_sample):
+                    user_input, values = self.generate_random_sample(template)
+                    ground_truth = self.generate_gt(intent, values)
+                    
+                    test_set.append({
+                        "user_input": user_input,
+                        "ground_truth": ground_truth
+                    })
 
         # Save the test set
         test_set_path = os.path.join("test", "house_agency", "test_set.json")
@@ -177,23 +178,80 @@ class Evaluator:
         result["f1"] = f1
 
         return result
+    
+    def compute_stats(self, y_true, y_pred):
+        """Compute the statistics for the NLU model
+        
+        Args:
+            y_true (list): The ground truth
+            y_pred (list): The NLU output
+            
+        Returns:
+            None
+        """
+        from sklearn.metrics import (
+            accuracy_score,
+            precision_score,
+            recall_score,
+            f1_score,
+            confusion_matrix,
+            classification_report
+        )
+        import seaborn as sns
+        import matplotlib.pyplot as plt
+
+        # Simulated ground truth and predictions (3 intents)
+        y_true = []
+        y_true.extend(('HOUSE_SEARCH,'*3).split(",")[:-1])
+        y_true.extend(('HOUSE_SELECTION,'*3).split(",")[:-1])
+        y_true.extend(('ASK_INFO,'*3).split(",")[:-1])
+        y_true.extend(('COMPARE_HOUSES,'*3).split(",")[:-1])
+        y_true.extend(('OUT_OF_DOMAIN,'*3).split(",")[:-1])
+
+        y_pred = []
+        y_pred.extend(('HOUSE_SEARCH,'*2).split(",")[:-1])
+        y_pred.append('HOUSE_SELECTION')
+        y_pred.extend(('HOUSE_SELECTION,'*3).split(",")[:-1])
+        y_pred.extend(('ASK_INFO,'*2).split(",")[:-1])
+        y_pred.append('COMPARE_HOUSES')
+        y_pred.extend(('OUT_OF_DOMAIN,'*3).split(",")[:-1])
+        y_pred.extend(('OUT_OF_DOMAIN,'*3).split(",")[:-1])
+
+
+
+        # Accuracy
+        accuracy = accuracy_score(y_true, y_pred)
+        print(f"Accuracy: {accuracy:.2f}")
+
+        # Macro Precision, Recall, F1
+        precision = precision_score(y_true, y_pred, average='macro')
+        recall = recall_score(y_true, y_pred, average='macro')
+        f1 = f1_score(y_true, y_pred, average='macro')
+
+        print(f"Macro Precision: {precision:.2f}")
+        print(f"Macro Recall:    {recall:.2f}")
+        print(f"Macro F1-score:  {f1:.2f}")
+
+        # Full classification report (per-intent)
+        print("\nClassification Report:")
+        print(classification_report(y_true, y_pred))
+
+        # Confusion Matrix
+        labels = sorted(set(y_true))  # ensure consistent order
+        cm = confusion_matrix(y_true, y_pred, labels=labels)
+
+        # Plot confusion matrix
+        sns.heatmap(cm, annot=True, fmt='d', xticklabels=labels, yticklabels=labels, cmap='Blues')
+        plt.xlabel("Predicted")
+        plt.ylabel("True")
+        plt.title("Confusion Matrix")
+        plt.savefig("confusion_matrix.png")
 
     # TODO: Check the how history is built and recall value
     def evaluate_NLU(self, nlu_model, conversation):
         test_set = self.create_test_set(cached=False)
-        metrics = {
-            "accuracy": 0.0,
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1": 0.0
-        }
-
-        errors = {
-            "HOUSE_SEARCH": 0.0,
-            "HOUSE_SELECTION": 0,
-            "ASK_INFO": 0,
-            "COMPARE_HOUSES": 0,
-        }
+        intent_gt = []
+        intent_pred = []
 
         loop = tqdm(enumerate(test_set), desc="Evaluating NLU", total=len(test_set), colour="green")
         for i, sample in loop:
@@ -203,46 +261,21 @@ class Evaluator:
             ground_truth = sample["ground_truth"]
             nlu_output = nlu_model(user_input, conversation.get_history())
 
+            intent_gt.append(ground_truth["intent"])
             if len(nlu_output) > 0:
                 nlu_output = nlu_output[0]
-                result = self.calculate_accuracy_f1(nlu_output, ground_truth)
+                intent_pred.append(nlu_output["intent"])
             else:
-                result = {
-                    "accuracy": 0,
-                    "precision": 0,
-                    "recall": 0,
-                    "f1": 0
-                }
-            metrics["accuracy"] += result["accuracy"]
-            metrics["precision"] += result["precision"]
-            metrics["recall"] += result["recall"]
-            metrics["f1"] += result["f1"]
+                intent_pred.append("ERROR")
 
-            if result["accuracy"] == 0:
+            if ground_truth["intent"] != nlu_output["intent"]:
                 print("Accuracy 0 on this sample ================")
-                print(f"Conversation history: {conversation.get_history()}")
-                print(f"User input: {user_input}")
+                print(f"Input query: ++++++++++++++\nHistory:\n{conversation.get_history()}\n\nUser: {user_input}\n+++++++++++++++")
                 print(f"NLU output: {nlu_output}")
                 print(f"Ground truth: {ground_truth}")
                 print("===========================================")
-                errors[ground_truth["intent"]] += 1
 
-            loop.set_description(f"Evaluating NLU: {(metrics['accuracy']/(i+1)):.2f} | {(metrics['precision']/(i+1)):.2f} | {(metrics['recall']/(i+1)):.2f} | {(metrics['f1']/(i+1)):.2f}")
-
-
-        num_samples = len(test_set)
-        metrics["accuracy"] /= num_samples
-        metrics["precision"] /= num_samples
-        metrics["recall"] /= num_samples
-        metrics["f1"] /= num_samples
-
-        print("===========================================")
-        print("Errors:")
-        for key, value in errors.items():
-            print(f"{key}: {value}")
-        print("===========================================")
-
-        return metrics
+        self.compute_stats(intent_gt, intent_pred)
         
     def evaluate_DM(self, nlg_model):
         pass
