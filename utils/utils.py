@@ -15,7 +15,7 @@ from transformers import (
 MODELS = {
     "llama2": "meta-llama/Llama-2-7b-chat-hf",
     "llama3": "meta-llama/Meta-Llama-3-8B-Instruct",
-    "ollama": "llama3:8b-instruct-q3_K_L",
+    "ollama": "llama3.2:3b",
 }
 
 TEMPLATES = {

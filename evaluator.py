@@ -1,8 +1,8 @@
 import json
-import string
 import random
 import os
 
+from string import Formatter
 from components.nlu import NLU
 from components.dm import DM
 from tqdm import tqdm
@@ -24,7 +24,7 @@ class Evaluator:
                 test_set = json.load(f)
             return test_set
 
-        test_set = []
+        test_set = {"nlu_data": [], "dm_data": []}
         for object in self.nlu_data:
             intent = object["intent"]
             templates = object["templates"]
@@ -33,7 +33,19 @@ class Evaluator:
                     user_input, values = self.generate_random_sample(template)
                     ground_truth = self.generate_gt(intent, values)
                     
-                    test_set.append({
+                    test_set["nlu_data"].append({
+                        "user_input": user_input,
+                        "ground_truth": ground_truth
+                    })
+
+        for object in self.dm_data:
+            intent = object["intent"]
+            templates = object["templates"]
+            for template in templates:
+                for _ in range(n_sample):
+                    user_input, values = self.generate_random_sample(template)
+                    ground_truth = self.generate_gt(intent, values)
+                    test_set["dm_data"].append({
                         "user_input": user_input,
                         "ground_truth": ground_truth
                     })
@@ -46,8 +58,8 @@ class Evaluator:
 
         return test_set
 
-    def generate_random_sample(self, template)-> tuple[str,dict]:
-        """Given a certain template, generate a random user input based on the template
+    def generate_nlu_sample(self, template)-> tuple[str,dict]:
+        """Given a certain NLU template, generate a random user input based on the template
         
         Args:
             template (str): A template string
@@ -56,7 +68,7 @@ class Evaluator:
             user_input (str): A user input generated from the template
             random_values (dict): A dictionary containing the random values used to generate the user input
         """
-        keys = [t[1] for t in string.Formatter.parse("", template)]
+        keys = [t[1] for t in Formatter().parse(template) if t[1] is not None]
 
         indices_set = set(range(1,6))
         properties_set = set(['price', 'location', 'size', 'bhk', 'number of bathrooms', 'tenant preferred by the landlord', 'point of contact', 'floors in the building'])
@@ -85,6 +97,24 @@ class Evaluator:
             elif "house_index" in key or "house_selected" in key:
                 random_values[key] = str(random.choice(list(indices_set)))
                 indices_set.remove(int(random_values[key]))
+
+
+        user_input = template.format(**random_values)
+        return user_input, random_values
+    
+    #! Finish the function
+    def generate_dm_sample(self, template)-> tuple[str,dict]:
+        """Given a certain DM template, generate a random user input based on the template
+        
+        Args:
+            template (dict): A template of a NLU output
+
+        Returns:
+            user_input (str): A user input generated from the template
+            random_values (dict): A dictionary containing the random values used to generate the user input
+        """
+        intent = template["intent"]
+        slots = template["slots"]
 
 
         user_input = template.format(**random_values)
@@ -134,60 +164,18 @@ class Evaluator:
 
         return ground_truth
 
-
-    def calculate_accuracy_f1(self, nlu_output, ground_truth):
-        """Calculate the accuracy and F1 score for the NLU output
-        
-        Args:
-            nlu_output (dict): The NLU output
-            ground_truth (dict): The ground truth
-            
-        Returns:
-            result (dict): A dictionary containing accuracy, precision, recall and F1 score
+    def compute_stats(self, y_true, y_pred, task_type='intent', fuzz_th=80):
         """
-        result = {}
-        result["accuracy"] = nlu_output["intent"] == ground_truth["intent"]
-
-        # Calculate the F1 score
-        nlu_slots = nlu_output["slots"]
-        gt_slots = ground_truth["slots"]
-        true_positives = 0
-        false_positives = 0
-        false_negatives = 0
-
-        for key, value in gt_slots.items():
-            if key in nlu_slots:
-                if nlu_slots[key] == value:
-                    true_positives += 1
-                else:
-                    false_negatives += 1
-            else:
-                false_negatives += 1
-
-        for key, value in nlu_slots.items():
-            if key not in gt_slots:
-                false_positives += 1
-
-        precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 0
-        recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 0
-        # F1 score is the harmonic mean of precision and recall
-        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
-
-        result["precision"] = precision
-        result["recall"] = recall
-        result["f1"] = f1
-
-        return result
-    
-    def compute_stats(self, y_true, y_pred):
-        """Compute the statistics for the NLU model
+        Evaluate NLU predictions for either intent classification or slot filling.
         
         Args:
-            y_true (list): The ground truth
-            y_pred (list): The NLU output
-            
+            y_true (list): Ground truth values
+            y_pred (list): Predicted values
+            task_type (str): 'intent' or 'slots'
+            fuzz_th (int): Fuzzy matching threshold (used only for slots)
+        
         Returns:
-            None
+            tuple or None: Precision, Recall, F1 (only returned for 'slots' mode)
         """
         from sklearn.metrics import (
             accuracy_score,
@@ -197,61 +185,69 @@ class Evaluator:
             confusion_matrix,
             classification_report
         )
-        import seaborn as sns
         import matplotlib.pyplot as plt
+        import seaborn as sns
 
-        # Simulated ground truth and predictions (3 intents)
-        y_true = []
-        y_true.extend(('HOUSE_SEARCH,'*3).split(",")[:-1])
-        y_true.extend(('HOUSE_SELECTION,'*3).split(",")[:-1])
-        y_true.extend(('ASK_INFO,'*3).split(",")[:-1])
-        y_true.extend(('COMPARE_HOUSES,'*3).split(",")[:-1])
-        y_true.extend(('OUT_OF_DOMAIN,'*3).split(",")[:-1])
+        if task_type == 'intent':
+            accuracy = accuracy_score(y_true, y_pred)
+            precision = precision_score(y_true, y_pred, average='macro')
+            recall = recall_score(y_true, y_pred, average='macro')
+            f1 = f1_score(y_true, y_pred, average='macro')
 
-        y_pred = []
-        y_pred.extend(('HOUSE_SEARCH,'*2).split(",")[:-1])
-        y_pred.append('HOUSE_SELECTION')
-        y_pred.extend(('HOUSE_SELECTION,'*3).split(",")[:-1])
-        y_pred.extend(('ASK_INFO,'*2).split(",")[:-1])
-        y_pred.append('COMPARE_HOUSES')
-        y_pred.extend(('OUT_OF_DOMAIN,'*3).split(",")[:-1])
-        y_pred.extend(('OUT_OF_DOMAIN,'*3).split(",")[:-1])
+            print(f"Accuracy:        {accuracy:.2f}")
+            print(f"Macro Precision: {precision:.2f}")
+            print(f"Macro Recall:    {recall:.2f}")
+            print(f"Macro F1-score:  {f1:.2f}")
 
+            print("\nClassification Report:")
+            print(classification_report(y_true, y_pred))
 
+            labels = sorted(set(y_true))
+            cm = confusion_matrix(y_true, y_pred, labels=labels)
 
-        # Accuracy
-        accuracy = accuracy_score(y_true, y_pred)
-        print(f"Accuracy: {accuracy:.2f}")
+            plt.figure(figsize=(12, 10))
+            sns.heatmap(cm, annot=True, fmt='d', xticklabels=labels, yticklabels=labels, cmap='Blues', cbar=False)
+            plt.xlabel("Predicted", fontsize=12)
+            plt.xticks(rotation=15, ha='right', fontsize=10)
+            plt.ylabel("True", fontsize=12)
+            plt.yticks(fontsize=10)
+            plt.title("Confusion Matrix", fontsize=14)
+            plt.savefig("test/house_agency/intent_confusion_matrix.png", bbox_inches='tight')
+            plt.show()
 
-        # Macro Precision, Recall, F1
-        precision = precision_score(y_true, y_pred, average='macro')
-        recall = recall_score(y_true, y_pred, average='macro')
-        f1 = f1_score(y_true, y_pred, average='macro')
+        elif task_type == 'slots':
+            from fuzzywuzzy import fuzz
 
-        print(f"Macro Precision: {precision:.2f}")
-        print(f"Macro Recall:    {recall:.2f}")
-        print(f"Macro F1-score:  {f1:.2f}")
+            fuzz_decisions = [
+                fuzz.ratio(t.lower(), p.lower()) >= fuzz_th
+                for t, p in zip(y_true, y_pred)
+            ]
+            print(f"Fuzzy Decisions: {fuzz_decisions}")
 
-        # Full classification report (per-intent)
-        print("\nClassification Report:")
-        print(classification_report(y_true, y_pred))
+            # Convert fuzzy match decisions into binary labels
+            y_true_binary = [1] * len(y_true)
+            y_pred_binary = [1 if match else 0 for match in fuzz_decisions]
 
-        # Confusion Matrix
-        labels = sorted(set(y_true))  # ensure consistent order
-        cm = confusion_matrix(y_true, y_pred, labels=labels)
+            precision = precision_score(y_true_binary, y_pred_binary, average='binary')
+            recall = recall_score(y_true_binary, y_pred_binary, average='binary')
+            f1 = f1_score(y_true_binary, y_pred_binary, average='binary')
 
-        # Plot confusion matrix
-        sns.heatmap(cm, annot=True, fmt='d', xticklabels=labels, yticklabels=labels, cmap='Blues')
-        plt.xlabel("Predicted")
-        plt.ylabel("True")
-        plt.title("Confusion Matrix")
-        plt.savefig("confusion_matrix.png")
+            print(f"Slots Precision: {precision:.2f}")
+            print(f"Slots Recall:    {recall:.2f}")
+            print(f"Slots F1-score:  {f1:.2f}")
+
+            return precision, recall, f1
+
+        else:
+            raise ValueError("task_type must be either 'intent' or 'slots'")
 
     # TODO: Check the how history is built and recall value
     def evaluate_NLU(self, nlu_model, conversation):
-        test_set = self.create_test_set(cached=False)
+        test_set = self.create_test_set(cached=False)["nlu_data"]
         intent_gt = []
         intent_pred = []
+        slot_gt = []
+        slot_pred = []
 
         loop = tqdm(enumerate(test_set), desc="Evaluating NLU", total=len(test_set), colour="green")
         for i, sample in loop:
@@ -265,17 +261,26 @@ class Evaluator:
             if len(nlu_output) > 0:
                 nlu_output = nlu_output[0]
                 intent_pred.append(nlu_output["intent"])
+                if ground_truth["intent"] != nlu_output["intent"]:
+                    print("Accuracy 0 on this sample ================")
+                    print(f"Input query: ++++++++++++++\nHistory:\n{conversation.get_history()}\n\nUser: {user_input}\n+++++++++++++++")
+                    print(f"NLU output: {nlu_output}")
+                    print(f"Ground truth: {ground_truth}")
+                    print("===========================================")
+                
+                true_slots = ground_truth.get('slots', {})
+                pred_slots = nlu_output.get('slots', {})
+                common_keys = set(true_slots.keys()) & set(pred_slots.keys())
+
+                for key in common_keys:
+                    slot_gt.append(true_slots[key])
+                    slot_pred.append(pred_slots[key])
             else:
                 intent_pred.append("ERROR")
+                print("NLU output is empty")
 
-            if ground_truth["intent"] != nlu_output["intent"]:
-                print("Accuracy 0 on this sample ================")
-                print(f"Input query: ++++++++++++++\nHistory:\n{conversation.get_history()}\n\nUser: {user_input}\n+++++++++++++++")
-                print(f"NLU output: {nlu_output}")
-                print(f"Ground truth: {ground_truth}")
-                print("===========================================")
+        self.compute_stats(intent_gt, intent_pred, task_type="intent")
+        self.compute_stats(slot_gt, slot_pred, task_type="slots")
 
-        self.compute_stats(intent_gt, intent_pred)
-        
     def evaluate_DM(self, nlg_model):
-        pass
+        test_set = self.create_test_set(cached=True)["dm_data"]

@@ -84,7 +84,7 @@ def get_args() -> Namespace:
 
 
 def start_chat(args):
-    if args.model_name != "llama3:8b-instruct-q3_K_L":
+    if args.model_name != "llama3.2:3b":
         model, tokenizer = load_model(args)
     else:
         ollama.show(args.model_name)
@@ -147,7 +147,7 @@ def start_chat(args):
         conversation.update("system", nlg_output)
 
 def evaluate(args):    
-    if args.model_name != "llama3:8b-instruct-q3_K_L":
+    if args.model_name != "llama3.2:3b":
         model, tokenizer = load_model(args)
     else:
         ollama.show(args.model_name)
@@ -165,8 +165,7 @@ def evaluate(args):
 
     evaluator = Evaluator(args.nlu_test_path, args.dm_test_path)
     nlu_component = NLU(model, tokenizer, args, verbose=True)
-    results = evaluator.evaluate_NLU(nlu_component, conversation)
-    print(results)
+    evaluator.evaluate_NLU(nlu_component, conversation)
 
 if __name__ == "__main__":
     args = get_args()
