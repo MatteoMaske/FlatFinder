@@ -30,7 +30,7 @@ class Evaluator:
             templates = object["templates"]
             for template in templates:
                 for _ in range(n_sample):
-                    user_input, values = self.generate_random_sample(template)
+                    user_input, values = self.generate_nlu_sample(template)
                     ground_truth = self.generate_gt(intent, values)
                     
                     test_set["nlu_data"].append({
@@ -38,17 +38,17 @@ class Evaluator:
                         "ground_truth": ground_truth
                     })
 
-        for object in self.dm_data:
-            intent = object["intent"]
-            templates = object["templates"]
-            for template in templates:
-                for _ in range(n_sample):
-                    user_input, values = self.generate_random_sample(template)
-                    ground_truth = self.generate_gt(intent, values)
-                    test_set["dm_data"].append({
-                        "user_input": user_input,
-                        "ground_truth": ground_truth
-                    })
+        # for object in self.dm_data:
+        #     intent = object["intent"]
+        #     templates = object["templates"]
+        #     for template in templates:
+        #         for _ in range(n_sample):
+        #             user_input, values = self.generate_dm_sample(template)
+        #             ground_truth = self.generate_gt(intent, values)
+        #             test_set["dm_data"].append({
+        #                 "user_input": user_input,
+        #                 "ground_truth": ground_truth
+        #             })
 
         # Save the test set
         test_set_path = os.path.join("test", "house_agency", "test_set.json")
