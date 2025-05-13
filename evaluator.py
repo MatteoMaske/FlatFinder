@@ -273,8 +273,8 @@ class Evaluator:
                 common_keys = set(true_slots.keys()) & set(pred_slots.keys())
 
                 for key in common_keys:
-                    slot_gt.append(true_slots[key])
-                    slot_pred.append(pred_slots[key])
+                    slot_gt.append(str(true_slots[key]))
+                    slot_pred.append(str(pred_slots[key]))
             else:
                 intent_pred.append("ERROR")
                 print("NLU output is empty")

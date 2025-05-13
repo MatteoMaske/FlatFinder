@@ -164,7 +164,7 @@ def evaluate(args):
     # state_tracker = StateTracker(database)
 
     evaluator = Evaluator(args.nlu_test_path, args.dm_test_path)
-    nlu_component = NLU(model, tokenizer, args, verbose=True)
+    nlu_component = NLU(model, tokenizer, args)
     evaluator.evaluate_NLU(nlu_component, conversation)
 
 if __name__ == "__main__":
