@@ -3,8 +3,6 @@ import random
 import os
 
 from string import Formatter
-from components.nlu import NLU
-from components.dm import DM
 from tqdm import tqdm
 
 class Evaluator:
@@ -38,17 +36,16 @@ class Evaluator:
                         "ground_truth": ground_truth
                     })
 
-        # for object in self.dm_data:
-        #     intent = object["intent"]
-        #     templates = object["templates"]
-        #     for template in templates:
-        #         for _ in range(n_sample):
-        #             user_input, values = self.generate_dm_sample(template)
-        #             ground_truth = self.generate_gt(intent, values)
-        #             test_set["dm_data"].append({
-        #                 "user_input": user_input,
-        #                 "ground_truth": ground_truth
-        #             })
+        for object in self.dm_data:
+            intent = object["intent"]
+            templates = object["templates"]
+            for template in templates:
+                for _ in range(n_sample):
+                    ground_truth = self.generate_dm_gt(template)
+                    test_set["dm_data"].append({
+                        "nlu_output": template,
+                        "ground_truth": ground_truth
+                    })
 
         # Save the test set
         test_set_path = os.path.join("test", "house_agency", "test_set.json")
@@ -102,8 +99,7 @@ class Evaluator:
         user_input = template.format(**random_values)
         return user_input, random_values
     
-    #! Finish the function
-    def generate_dm_sample(self, template)-> tuple[str,dict]:
+    def generate_dm_gt(self, nlu_output)-> str:
         """Given a certain DM template, generate a random user input based on the template
         
         Args:
@@ -113,13 +109,21 @@ class Evaluator:
             user_input (str): A user input generated from the template
             random_values (dict): A dictionary containing the random values used to generate the user input
         """
-        intent = template["intent"]
-        slots = template["slots"]
+        intent = nlu_output["intent"]
+        slots = nlu_output["slots"]
+        ground_truth = ""
 
+        missing_slot = [key for key, value in slots.items() if value is None]
+        if len(missing_slot) > 0:
+            ground_truth = "request_slot"
+        elif intent != "ASK_INFO":
+            ground_truth = "confirmation"
+        else:
+            ground_truth = "provide_info"
 
-        user_input = template.format(**random_values)
-        return user_input, random_values
-    
+        return ground_truth
+
+        
     def generate_gt(self, intent, values):
         """Given the values to generate the user input, generate the ground truth for the intent
         
@@ -224,13 +228,11 @@ class Evaluator:
             ]
             print(f"Fuzzy Decisions: {fuzz_decisions}")
 
-            # Convert fuzzy match decisions into binary labels
-            y_true_binary = [1] * len(y_true)
-            y_pred_binary = [1 if match else 0 for match in fuzz_decisions]
+            y_pred = [y_true[i] if fuzz_decisions[i] else y_pred[i] for i in range(len(y_pred))]
 
-            precision = precision_score(y_true_binary, y_pred_binary, average='binary')
-            recall = recall_score(y_true_binary, y_pred_binary, average='binary')
-            f1 = f1_score(y_true_binary, y_pred_binary, average='binary')
+            precision = precision_score(y_true, y_pred, average='macro')
+            recall = recall_score(y_true, y_pred, average='macro')
+            f1 = f1_score(y_true, y_pred, average='macro')
 
             print(f"Slots Precision: {precision:.2f}")
             print(f"Slots Recall:    {recall:.2f}")
@@ -241,7 +243,7 @@ class Evaluator:
         else:
             raise ValueError("task_type must be either 'intent' or 'slots'")
 
-    # TODO: Check the how history is built and recall value
+    # TODO: Check the slots stats
     def evaluate_NLU(self, nlu_model, conversation):
         test_set = self.create_test_set(cached=False)["nlu_data"]
         intent_gt = []
