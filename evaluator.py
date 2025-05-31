@@ -29,7 +29,7 @@ class Evaluator:
             for template in templates:
                 for _ in range(n_sample):
                     user_input, values = self.generate_nlu_sample(template)
-                    ground_truth = self.generate_gt(intent, values)
+                    ground_truth = self.generate_nlu_gt(intent, values)
                     
                     test_set["nlu_data"].append({
                         "user_input": user_input,
@@ -40,12 +40,11 @@ class Evaluator:
             intent = object["intent"]
             templates = object["templates"]
             for template in templates:
-                for _ in range(n_sample):
-                    ground_truth = self.generate_dm_gt(template)
-                    test_set["dm_data"].append({
-                        "nlu_output": template,
-                        "ground_truth": ground_truth
-                    })
+                ground_truth = self.generate_dm_gt(template)
+                test_set["dm_data"].append({
+                    "nlu_output": template,
+                    "ground_truth": ground_truth
+                })
 
         # Save the test set
         test_set_path = os.path.join("test", "house_agency", "test_set.json")
@@ -99,32 +98,7 @@ class Evaluator:
         user_input = template.format(**random_values)
         return user_input, random_values
     
-    def generate_dm_gt(self, nlu_output)-> str:
-        """Given a certain DM template, generate a random user input based on the template
-        
-        Args:
-            template (dict): A template of a NLU output
-
-        Returns:
-            user_input (str): A user input generated from the template
-            random_values (dict): A dictionary containing the random values used to generate the user input
-        """
-        intent = nlu_output["intent"]
-        slots = nlu_output["slots"]
-        ground_truth = ""
-
-        missing_slot = [key for key, value in slots.items() if value is None]
-        if len(missing_slot) > 0:
-            ground_truth = "request_slot"
-        elif intent != "ASK_INFO":
-            ground_truth = "confirmation"
-        else:
-            ground_truth = "provide_info"
-
-        return ground_truth
-
-        
-    def generate_gt(self, intent, values):
+    def generate_nlu_gt(self, intent, values):
         """Given the values to generate the user input, generate the ground truth for the intent
         
         Args:
@@ -168,6 +142,33 @@ class Evaluator:
 
         return ground_truth
 
+    
+    
+    def generate_dm_gt(self, nlu_output)-> str:
+        """Given a certain DM template, generate a random user input based on the template
+        
+        Args:
+            template (dict): A template of a NLU output
+
+        Returns:
+            user_input (str): A user input generated from the template
+            random_values (dict): A dictionary containing the random values used to generate the user input
+        """
+        intent = nlu_output["intent"]
+        slots = nlu_output["slots"]
+        ground_truth = ""
+
+        missing_slot = [key for key, value in slots.items() if value is None]
+        if len(missing_slot) > 0:
+            ground_truth = "request_slot"
+        elif intent != "ASK_INFO":
+            ground_truth = "confirmation"
+        else:
+            ground_truth = "provide_info"
+
+        return ground_truth
+
+        
     def compute_stats(self, y_true, y_pred, task_type='intent', fuzz_th=80):
         """
         Evaluate NLU predictions for either intent classification or slot filling.
@@ -226,7 +227,10 @@ class Evaluator:
                 fuzz.ratio(t.lower(), p.lower()) >= fuzz_th
                 for t, p in zip(y_true, y_pred)
             ]
-            print(f"Fuzzy Decisions: {fuzz_decisions}")
+            
+            for i, decision in enumerate(fuzz_decisions):
+                if not decision:
+                    print(f"Fuzzy match failed for index {i}: True='{y_true[i]}', Predicted='{y_pred[i]}'")
 
             y_pred = [y_true[i] if fuzz_decisions[i] else y_pred[i] for i in range(len(y_pred))]
 
