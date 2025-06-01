@@ -117,7 +117,7 @@ class Evaluator:
         if intent == "HOUSE_SELECTION":
             for key, value in values.items():
                 if value.isdigit():
-                    ground_truth["slots"][key] = int(value)
+                    ground_truth["slots"][key] = int(value)-1
                 else:
                     raise ValueError(f"Invalid value {value} for key {key}")
         elif intent == "ASK_INFO":
@@ -135,7 +135,17 @@ class Evaluator:
                     else:
                         raise ValueError(f"Invalid value {value} for key {key}")
                 else:
+                    if "bathrooms" in value:
+                        ground_truth["slots"]["properties"].append("bathrooms")
+                    elif "floors" in value:
+                        ground_truth["slots"]["properties"].append("floors")
                     ground_truth["slots"]["properties"].append(value)
+
+            # Set values as None (json null) if they are empty
+            if not ground_truth["slots"]["houses"]:
+                ground_truth["slots"]["houses"] = None
+            if not ground_truth["slots"]["properties"]:
+                ground_truth["slots"]["properties"] = None
         else:
             for key, value in values.items():
                 ground_truth["slots"][key] = value
@@ -228,15 +238,15 @@ class Evaluator:
                 for t, p in zip(y_true, y_pred)
             ]
             
-            for i, decision in enumerate(fuzz_decisions):
-                if not decision:
-                    print(f"Fuzzy match failed for index {i}: True='{y_true[i]}', Predicted='{y_pred[i]}'")
+            # for i, decision in enumerate(fuzz_decisions):
+            #     if not decision:
+            #         print(f"Fuzzy match failed for index {i}: True='{y_true[i]}', Predicted='{y_pred[i]}'")
 
             y_pred = [y_true[i] if fuzz_decisions[i] else y_pred[i] for i in range(len(y_pred))]
 
-            precision = precision_score(y_true, y_pred, average='macro')
-            recall = recall_score(y_true, y_pred, average='macro')
-            f1 = f1_score(y_true, y_pred, average='macro')
+            precision = precision_score(y_true, y_pred, average='macro', zero_division=0)
+            recall = recall_score(y_true, y_pred, average='macro', zero_division=0)
+            f1 = f1_score(y_true, y_pred, average='macro', zero_division=0)
 
             print(f"Slots Precision: {precision:.2f}")
             print(f"Slots Recall:    {recall:.2f}")
@@ -247,13 +257,14 @@ class Evaluator:
         else:
             raise ValueError("task_type must be either 'intent' or 'slots'")
 
-    # TODO: Check the slots stats
     def evaluate_NLU(self, nlu_model, conversation):
+
         test_set = self.create_test_set(cached=False)["nlu_data"]
         intent_gt = []
         intent_pred = []
         slot_gt = []
         slot_pred = []
+        results = []
 
         loop = tqdm(enumerate(test_set), desc="Evaluating NLU", total=len(test_set), colour="green")
         for i, sample in loop:
@@ -262,6 +273,10 @@ class Evaluator:
             user_input = sample["user_input"]
             ground_truth = sample["ground_truth"]
             nlu_output = nlu_model(user_input, conversation.get_history())
+            results.append({
+                "sample": sample,
+                "nlu_output": nlu_output
+            })
 
             intent_gt.append(ground_truth["intent"])
             if len(nlu_output) > 0:
@@ -285,8 +300,54 @@ class Evaluator:
                 intent_pred.append("ERROR")
                 print("NLU output is empty")
 
+        # Save results
+        json.dump(results, open("test/house_agency/nlu_results.json", "w"), indent=4)
+
         self.compute_stats(intent_gt, intent_pred, task_type="intent")
         self.compute_stats(slot_gt, slot_pred, task_type="slots")
 
+    
+    def evaluate_NLU_fake(self):
+        intent_gt = []
+        intent_pred = []
+        slots = {}
+        results = json.load(open("test/house_agency/nlu_results.json"))
+
+        loop = tqdm(enumerate(results), desc="Evaluating NLU", total=len(results), colour="green")
+        for i, test in loop:
+            ground_truth = test["sample"]["ground_truth"]
+            nlu_output = test["nlu_output"]
+            intent_gt.append(ground_truth["intent"])
+            if ground_truth["intent"] not in slots:
+                slots[ground_truth["intent"]] = {"gt": [], "pred": []}
+
+            if len(nlu_output) > 0:
+                nlu_output = nlu_output[0]
+                intent_pred.append(nlu_output["intent"])
+                
+                true_slots = ground_truth.get('slots', {})
+                pred_slots = nlu_output.get('slots', {})
+                common_keys = set(true_slots.keys()) & set(pred_slots.keys())
+
+                for key in common_keys:
+                    slots[ground_truth["intent"]]["gt"].append(str(true_slots[key]))
+                    slots[ground_truth["intent"]]["pred"].append(str(pred_slots[key]))
+                    if true_slots[key] != pred_slots[key]:
+                        print(f"Slots mismatch: {key} - gt: {true_slots[key]}, Predicted: {pred_slots[key]}")
+            else:
+                intent_pred.append("ERROR")
+                print("NLU output is empty")
+
+        self.compute_stats(intent_gt, intent_pred, task_type="intent")
+        for intent, slot_data in slots.items():
+            slot_gt = slot_data["gt"]
+            slot_pred = slot_data["pred"]
+            print(f"Evaluating slots for intent: {intent}")
+            self.compute_stats(slot_gt, slot_pred, task_type="slots")
+
     def evaluate_DM(self, nlg_model):
         test_set = self.create_test_set(cached=True)["dm_data"]
+
+if __name__ == "__main__":
+    evaluator = Evaluator(nlu_test_path="test/house_agency/nlu.json", dm_test_path="test/house_agency/dm.json")
+    evaluator.evaluate_NLU_fake()
