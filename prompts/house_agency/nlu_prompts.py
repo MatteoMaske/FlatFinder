@@ -33,29 +33,52 @@ The json format is:
 }}
 You must output all the slots!""",
     
-    "ASK_INFO": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
-Extract the following slot information from the user input for the intent "ask_info".
-If an information is requested, put "requested" as the value, otherwise ignore the slot.
+    "ASK_INFO": """You are the **NLU component** of a conversational agent specializing in **student accommodations in India**. Your task is to extract **slot information** from the **user’s latest message**, using the chat history below to understand the context.
 
-Here is provided the chat history, use it to understand the context of the conversation.
-History:
+---
+
+## 🎯 Intent: ask_info
+
+- The user is asking for specific details about a house (e.g., rent, number of bathrooms, location).
+- You must identify only the **property fields** that the user explicitly requests.
+
+---
+
+## 📋 Extraction Rules
+
+1. **Process Only the Last User Turn** — Use the chat history only as context.
+2. **Return Only Explicit Requests** — If the user does not ask about a slot, do not include it.
+3. **Concise Output** — No explanations, no extra text.
+4. **JSON Format Only** — Output a valid JSON object with the required structure.
+
+---
+
+## 🧠 Slot Definition
+
+- `properties`: A list of strings representing the requested property information (e.g., `"rent"`, `"location"`, `"contact"`, `"floors"`). If no property is requested, return an empty list.
+- Only output properties the user has asked to know more about.
+
+If none are mentioned, return an empty list:
+{
+"properties": []
+}
+
+---
+
+## 💬 Chat History
+
 {}
 
-Use the history to understand which slots are involved in the current user request.
-Only short answers!
-NO chatty responses!
-NO explanation!
+---
 
-The only slot name is:
-- properties, a list of strings indicating the properties that the user wants to know about. Could be null.
+## ✅ Output Format
 
-The json format is:
-{{
-    "properties": ["name1", "name2", ...]
-}}
+Return a JSON object with this structure:
+{
+  "properties": ["property1", "property2", ...]
+}
 
-You must output just the slots that are requested!""",
-    
+""",    
     "HOUSE_SELECTION": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
 Extract the slot value from the user input for the intent "house_selection".
 If the slot value is not present in the user input you have to put null as the value.
