@@ -26,6 +26,8 @@ class Evaluator:
         for object in self.nlu_data:
             intent = object["intent"]
             templates = object["templates"]
+            if intent not in ["ASK_INFO", "COMPARE_HOUSES"]:
+                continue
             for template in templates:
                 for _ in range(n_sample):
                     user_input, values = self.generate_nlu_sample(template)
@@ -67,7 +69,7 @@ class Evaluator:
         keys = [t[1] for t in Formatter().parse(template) if t[1] is not None]
 
         indices_set = set(range(1,6))
-        properties_set = set(['price', 'location', 'size', 'bhk', 'number of bathrooms', 'tenant preferred by the landlord', 'point of contact', 'floors in the building'])
+        properties_set = set(['rent', 'location', 'size', 'bhk', 'number of bathrooms', 'tenant preferred by the landlord', 'point of contact', 'floors in the building'])
         random_values = {}
         for key in keys:
             if key is None:
@@ -123,7 +125,18 @@ class Evaluator:
         elif intent == "ASK_INFO":
             ground_truth["slots"]["properties"] = []
             for key, value in values.items():
-                ground_truth["slots"]["properties"].append(value)
+                if "bathrooms" in value:
+                    ground_truth["slots"]["properties"].append("bathrooms")
+                elif "floors" in value:
+                    ground_truth["slots"]["properties"].append("floors")
+                elif "contact" in value:
+                    ground_truth["slots"]["properties"].append("contact")
+                else:
+                    ground_truth["slots"]["properties"].append(value)
+
+            if not ground_truth["slots"]["properties"]:
+                ground_truth["slots"]["properties"] = None
+
         elif intent == "COMPARE_HOUSES":
             ground_truth["slots"]["properties"] = []
             ground_truth["slots"]["houses"] = []
@@ -139,6 +152,8 @@ class Evaluator:
                         ground_truth["slots"]["properties"].append("bathrooms")
                     elif "floors" in value:
                         ground_truth["slots"]["properties"].append("floors")
+                    elif "contact" in value:
+                        ground_truth["slots"]["properties"].append("contact")
                     else:
                         ground_truth["slots"]["properties"].append(value)
 
@@ -296,8 +311,14 @@ class Evaluator:
                 common_keys = set(true_slots.keys()) & set(pred_slots.keys())
 
                 for key in common_keys:
-                    slots[ground_truth["intent"]]["gt"].append(str(true_slots[key]))
-                    slots[ground_truth["intent"]]["pred"].append(str(pred_slots[key]))
+                    if isinstance(true_slots[key], list) and isinstance(pred_slots[key], list):
+                        true_val = sorted(true_slots[key])
+                        pred_val = sorted(pred_slots[key])
+                    else:
+                        true_val = true_slots[key]
+                        pred_val = pred_slots[key]
+                    slots[ground_truth["intent"]]["gt"].append(str(true_val))
+                    slots[ground_truth["intent"]]["pred"].append(str(pred_val))
             else:
                 intent_pred.append("ERROR")
                 print("NLU output is empty")
@@ -336,8 +357,14 @@ class Evaluator:
                 common_keys = set(true_slots.keys()) & set(pred_slots.keys())
 
                 for key in common_keys:
-                    slots[ground_truth["intent"]]["gt"].append(str(true_slots[key]))
-                    slots[ground_truth["intent"]]["pred"].append(str(pred_slots[key]))
+                    if isinstance(true_slots[key], list) and isinstance(pred_slots[key], list):
+                        true_val = sorted(true_slots[key])
+                        pred_val = sorted(pred_slots[key])
+                    else:
+                        true_val = true_slots[key]
+                        pred_val = pred_slots[key]
+                    slots[ground_truth["intent"]]["gt"].append(str(true_val))
+                    slots[ground_truth["intent"]]["pred"].append(str(pred_val))
                     if true_slots[key] != pred_slots[key]:
                         print(f"Slots mismatch: [{ground_truth['intent']}] {key} - gt: {true_slots[key]}, Predicted: {pred_slots[key]}")
                         print(f"Input query:\n{test['sample']['user_input']}\n+++++++++++++++")

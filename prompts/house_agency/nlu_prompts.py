@@ -59,9 +59,9 @@ You must output all the slots!""",
 - Only output properties the user has asked to know more about.
 
 If none are mentioned, return an empty list:
-{
-"properties": []
-}
+{{
+    z"properties": []
+}}
 
 ---
 
@@ -74,11 +74,11 @@ If none are mentioned, return an empty list:
 ## ✅ Output Format
 
 Return a JSON object with this structure:
-{
-  "properties": ["property1", "property2", ...]
-}
+{{
+    "properties": ["property1", "property2", ...]
+}}
 
-""",    
+Output only the JSON object, nothing else!""",    
     "HOUSE_SELECTION": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
 Extract the slot value from the user input for the intent "house_selection".
 If the slot value is not present in the user input you have to put null as the value.
@@ -103,44 +103,84 @@ The json format is:
 }}
 """,
 
-    "COMPARE_HOUSES": """You are an intelligent NLU component of a conversational agent that analyzes a user's request.
-Extract the slot values from the user input for the intent "compare_houses".
-If the slot value cannot be established from the user input, put null as the value.
+    "COMPARE_HOUSES": """You are the **NLU component** of a conversational agent specializing in **student accommodations in India**. Your task is to extract **slot values** from the **user’s latest message** for the intent `compare_houses`. Use the chat history provided below to resolve context.
 
-Here is provided the chat history, use it to understand the context of the conversation.
-History:
+---
+
+## 🎯 Intent: compare_houses
+
+- The user wants to compare **two or more houses**.
+- You must extract:
+  - The **indices** (0-indexed) of the houses being compared.
+  - The **property fields** the user wants to compare (e.g., rent, location, size).
+
+---
+
+## 📋 Extraction Rules
+
+1. **Process Only the Last User Turn** — Use previous messages only as context.
+2. **Do Not Invent Data** — If houses or properties are not explicitly mentioned, return `null`.
+3. **Short Output** — Output a clean JSON object only, no extra text or explanations.
+4. **Strict Slot Names** — Only use:  
+    - `houses`: list of numeric indices (e.g., `[0, 1]`)  
+    - `properties`: list of strings (e.g., `["rent", "size", "contact", "location", "floors", "tenant"]`)
+
+---
+
+## 🧠 Slot Schema
+
+- `houses`: a list of integers indicating which houses the user wants to compare from a previously shown list (0-indexed). Return `null` if unspecified.
+- `properties`: a list of strings indicating which features/properties the comparison should be based on. Return `null` if unspecified.
+
+---
+
+## 💬 Chat History
+
 {}
 
-Determine the numeric indices of the houses that the user wants to compare from the previously shown list.
-Determine the property names that the user want to compare the houses with.
-Only output a valid JSON object.
-Only short answers!
-NO chatty responses!
-NO explanation!
-DO NOT invent new slot names!
+---
 
-The slot name is:
-- houses, a list of numeric indices (0-indexing) indicating which houses from the shown list the user wants to compare. Could be more than 2 or null.
-- properties, a list of strings indicating the properties that the user wants to compare the houses on. Could be null.
+## ✅ Output Format
 
-The json format is:
+Output a valid JSON object only:
 {{
     "houses": [index1, index2, ...],
-    "properties": ["name1", "name2", ...]
+    "properties": ["property1", "property2", ...]
 }}
 
-Example 1:
-User: I want to compare the first and the second houses on the basis of the size and the rent.
-Output: {{"houses": [0, 1], "properties": ["size", "rent"]}}
+---
 
-Example 2:
-User: I want to compare the second house with the third house.
-Output: {{"houses": [1, 2]}} (No properties to compare on)
+## 📘 Examples
 
-Example 3:
-User: I want to compare some houses.
-Output: {{"houses": null, "properties": null}} (No houses or properties to compare on)
+1. **User:** I want to compare the first and the second houses on the basis of the size and the rent.  
+   **Output:**  
+    {{
+        "houses": [0, 1],
+        "properties": ["size", "rent"]
+    }}
 
+2. **User:** Compare house 3 with house 5 for rent and location.  
+   **Output:**  
+    {{
+        "houses": [2, 4],
+        "properties": ["rent", "location"]
+    }}
 
-Output only the JSON object, nothing else!""",
+3. **User:** I want to compare the second house with the third house.  
+   **Output:**  
+    {{
+        "houses": [1, 2],
+        "properties": null
+    }}
+
+4. **User:** I want to compare some houses.  
+   **Output:**  
+    {{
+        "houses": null,
+        "properties": null
+    }}
+---
+
+Return only the JSON object. No text, no backticks.
+"""
 }
