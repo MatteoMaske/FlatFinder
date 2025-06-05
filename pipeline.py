@@ -93,7 +93,7 @@ def start_chat(args):
     conversation = Conversation(history_size=3)
     database = Database(args.database_path)
     state_tracker = StateTracker(database)
-    print(f"System: {conversation.get_message(-1)}")
+    print(f"System 🏘️: {conversation.get_message(-1)}")
     # user_input = "please show me the houses you found"
     # conversation.update("user", user_input)
     # state_tracker.current_intent = "HOUSE_SEARCH"
@@ -108,18 +108,20 @@ def start_chat(args):
     # conversation.update("system", system_input)
 
     DEBUG = True
+    nlu_component = NLU(model, tokenizer, args)
+    dm_component = DM(model, tokenizer, args)
+    nlg_component = NLG(model, tokenizer, args)
     
     while True:
-        user_input = input("User: ")
+        user_input = input("User 🧑🏻‍💻: ")
         if user_input == "reset":
             conversation.reset()
             state_tracker.reset()
-            print("System: Conversation reset.")
+            print("System 🏘️: Conversation reset.")
             continue
 
         # get the NLU output
         print("="*50 + " NLU " + "="*50) if DEBUG else None
-        nlu_component = NLU(model, tokenizer, args)
         nlu_output = nlu_component(user_input, conversation.get_history())
         print(f"NLU: {nlu_output}") if DEBUG else None
 
@@ -128,12 +130,12 @@ def start_chat(args):
 
         # update the state tracker
         state_tracker.update(nlu_output)
-        print(f"State Tracker: {state_tracker.get_state()}") if DEBUG else None
+        current_state = state_tracker.get_state()
+        print(f"State Tracker: {current_state}") if DEBUG else None
 
         # get the DM output
         print("="*50 + " DM " + "="*50) if DEBUG else None
-        dm_component = DM(model, tokenizer, args)
-        dm_output = dm_component(state_tracker)
+        dm_output = dm_component(current_state)
         print(f"DM: {dm_output}") if DEBUG else None
 
         # update the next best actions
@@ -141,9 +143,8 @@ def start_chat(args):
 
         # get the NLG output
         print("="*50 + " NLG " + "="*50) if DEBUG else None
-        nlg_component = NLG(model, tokenizer, args)
         nlg_output = nlg_component(state_tracker, conversation.get_history())
-        print(f"System: {nlg_output}")
+        print(f"System 🏘️: {nlg_output}")
         conversation.update("system", nlg_output)
 
 def evaluate(args):    
@@ -158,14 +159,14 @@ def evaluate(args):
     if args.dm_test_path:
         assert os.path.exists(args.dm_test_path), "The DM test path does not exist."
 
-    # Initialize the conversation
-    conversation = Conversation(history_size=3)
-    # database = Database(args.database_path)
-    # state_tracker = StateTracker(database)
-
     evaluator = Evaluator(args.nlu_test_path, args.dm_test_path)
-    nlu_component = NLU(model, tokenizer, args)
-    evaluator.evaluate_NLU(nlu_component, conversation)
+
+    # conversation = Conversation(history_size=3)
+    # nlu_component = NLU(model, tokenizer, args)
+    # evaluator.evaluate_NLU(nlu_component, conversation)
+
+    dm_component = DM(model, tokenizer, args)
+    evaluator.evaluate_DM(dm_component)
 
 if __name__ == "__main__":
     args = get_args()

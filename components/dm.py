@@ -10,22 +10,21 @@ class DM:
         self.args = args
         self.verbose = verbose
 
-    def __call__(self, state_tracker: StateTracker):
+    def __call__(self, current_state):
 
         dm_outputs = []
 
-        info = state_tracker.get_state()
-        if info["intent"] == "SHOW_HOUSES" and info["slots"] != {}:
+        if current_state["intent"] == "SHOW_HOUSES" and current_state["slots"] != {}:
             return ["show_houses(HOUSE_SEARCH)"]
-        elif info["intent"] == "SHOW_HOUSES" and info["slots"] == {}:
+        elif current_state["intent"] == "SHOW_HOUSES" and current_state["slots"] == {}:
             return ["fallback_policy('No houses found for the given search criteria.')"]
-        elif info["intent"] == "FALLBACK_POLICY":
-            reason = info["slots"]["reason"]
+        elif current_state["intent"] == "FALLBACK_POLICY":
+            reason = current_state["slots"]["reason"]
             return [f'fallback_policy("{reason}")']        
         
         path = os.path.join("prompts", self.args.domain, "dm.txt")
         system_prompt = open(path, "r").read()
-        system_prompt = self.args.chat_template.format(system_prompt, str(info))
+        system_prompt = self.args.chat_template.format(system_prompt, str(current_state))
         print(f"DM Text: '{system_prompt}'") if self.verbose else None
         dm_output = generate(self.model, system_prompt, self.tokenizer, self.args)
         dm_outputs.append(dm_output)

@@ -26,8 +26,6 @@ class Evaluator:
         for object in self.nlu_data:
             intent = object["intent"]
             templates = object["templates"]
-            if intent not in ["ASK_INFO", "COMPARE_HOUSES"]:
-                continue
             for template in templates:
                 for _ in range(n_sample):
                     user_input, values = self.generate_nlu_sample(template)
@@ -38,15 +36,15 @@ class Evaluator:
                         "ground_truth": ground_truth
                     })
 
-        # for object in self.dm_data:
-        #     intent = object["intent"]
-        #     templates = object["templates"]
-        #     for template in templates:
-        #         ground_truth = self.generate_dm_gt(template)
-        #         test_set["dm_data"].append({
-        #             "nlu_output": template,
-        #             "ground_truth": ground_truth
-        #         })
+        for object in self.dm_data:
+            intent = object["intent"]
+            templates = object["templates"]
+            for template in templates:
+                ground_truth = self.generate_dm_gt(template)
+                test_set["dm_data"].append({
+                    "nlu_output": template,
+                    "ground_truth": ground_truth
+                })
 
         # Save the test set
         test_set_path = os.path.join("test", "house_agency", "test_set.json")
@@ -268,8 +266,16 @@ class Evaluator:
             print(f"Slots Recall:    {recall:.2f}")
             print(f"Slots F1-score:  {f1:.2f}")
 
-            return precision, recall, f1
+        elif task_type == 'dm':
+            accuracy = accuracy_score(y_true, y_pred)
+            print(f"DM Accuracy: {accuracy:.2f}")
 
+            precision = precision_score(y_true, y_pred, average='macro', zero_division=0)
+            recall = recall_score(y_true, y_pred, average='macro', zero_division=0)
+            f1 = f1_score(y_true, y_pred, average='macro', zero_division=0)
+            print(f"Slots Precision: {precision:.2f}")
+            print(f"Slots Recall:    {recall:.2f}")
+            print(f"Slots F1-score:  {f1:.2f}")
         else:
             raise ValueError("task_type must be either 'intent' or 'slots'")
 
@@ -379,8 +385,44 @@ class Evaluator:
             print(f"Evaluating slots for intent: {intent}")
             self.compute_stats(slot_gt, slot_pred, task_type="slots")
 
-    def evaluate_DM(self, nlg_model):
+    def evaluate_DM(self, dm_model):
+        """Evaluate the DM model on the test set"""
         test_set = self.create_test_set(cached=True)["dm_data"]
+
+        dm_gt = []
+        dm_pred = []
+        results = []
+
+        loop = tqdm(enumerate(test_set), desc="Evaluating DM", total=len(test_set), colour="blue")
+        for i, sample in loop:
+            nlu_output = sample["nlu_output"]
+            ground_truth = sample["ground_truth"]
+
+            dm_output = dm_model(nlu_output)
+            dm_output = dm_output[0] if len(dm_output) > 0 else "ERROR"
+            
+            results.append({
+                "sample": sample,
+                "dm_output": dm_output
+            })
+
+            if ground_truth in dm_output:
+                print(f"DM output matches ground truth: {ground_truth} == {dm_output}")
+                ground_truth = dm_output
+            else:
+                print(f"DM output does not match ground truth: {ground_truth} != {dm_output}")
+                print(f"Input query:\n{sample['nlu_output']}\n+++++++++++++++")
+
+            dm_gt.append(ground_truth)
+            dm_pred.append(dm_output)
+
+        # Compute stats
+        self.compute_stats(dm_gt, dm_pred, task_type="dm")
+
+        # Save results
+        json.dump(results, open("test/house_agency/dm_results.json", "w"), indent=4)
+
+
 
 if __name__ == "__main__":
     evaluator = Evaluator(nlu_test_path="test/house_agency/nlu.json", dm_test_path="test/house_agency/dm.json")
