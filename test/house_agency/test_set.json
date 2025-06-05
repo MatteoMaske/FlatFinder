@@ -1,1598 +1,3621 @@
-[
-    {
-        "user_input": "I'm looking for a 1 BHK unfurnished house in Alandur within 87000 rupees",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "1",
-                "house_furnished": "unfurnished",
-                "house_location": "Alandur",
-                "house_rent": "87000"
-            }
-        }
-    },
-    {
-        "user_input": "I'm looking for a 2 BHK furnished house in Konnur Highroad within 76000 rupees",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "2",
-                "house_furnished": "furnished",
-                "house_location": "Konnur Highroad",
-                "house_rent": "76000"
-            }
-        }
-    },
-    {
-        "user_input": "I'm looking for a 5 BHK furnished house in Agrahara Layout within 8000 rupees",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "5",
-                "house_furnished": "furnished",
-                "house_location": "Agrahara Layout",
-                "house_rent": "8000"
-            }
-        }
-    },
-    {
-        "user_input": "Can you help me find a 600 sq ft unfurnished apartment in Thiruvanmiyur?",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_size": "600",
-                "house_furnished": "unfurnished",
-                "house_location": "Thiruvanmiyur"
-            }
-        }
-    },
-    {
-        "user_input": "Can you help me find a 1800 sq ft furnished apartment in Adyar?",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_size": "1800",
-                "house_furnished": "furnished",
-                "house_location": "Adyar"
-            }
-        }
-    },
-    {
-        "user_input": "Can you help me find a 2900 sq ft unfurnished apartment in Singasandra?",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_size": "2900",
-                "house_furnished": "unfurnished",
-                "house_location": "Singasandra"
-            }
-        }
-    },
-    {
-        "user_input": "Show me semi-furnished houses in Agrahara Layout under 54000 rupees",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "semi-furnished",
-                "house_location": "Agrahara Layout",
-                "house_rent": "54000"
-            }
-        }
-    },
-    {
-        "user_input": "Show me furnished houses in Adyar under 59000 rupees",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "furnished",
-                "house_location": "Adyar",
-                "house_rent": "59000"
-            }
-        }
-    },
-    {
-        "user_input": "Show me semi-furnished houses in Colony-Velachery under 25000 rupees",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "semi-furnished",
-                "house_location": "Colony-Velachery",
-                "house_rent": "25000"
-            }
-        }
-    },
-    {
-        "user_input": "I need a 2 bedroom house in Adugodi, Mumbai",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "2",
-                "house_location": "Adugodi",
-                "house_city": "Mumbai"
-            }
-        }
-    },
-    {
-        "user_input": "I need a 4 bedroom house in Kaggadasapura, Bangalore",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "4",
-                "house_location": "Kaggadasapura",
-                "house_city": "Bangalore"
-            }
-        }
-    },
-    {
-        "user_input": "I need a 5 bedroom house in Hebbal, Chennai",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "5",
-                "house_location": "Hebbal",
-                "house_city": "Chennai"
-            }
-        }
-    },
-    {
-        "user_input": "Looking for furnished properties in Narayanapura around 1600 square feet",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "furnished",
-                "house_location": "Narayanapura",
-                "house_size": "1600"
-            }
-        }
-    },
-    {
-        "user_input": "Looking for furnished properties in Abiramapuram around 1900 square feet",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "furnished",
-                "house_location": "Abiramapuram",
-                "house_size": "1900"
-            }
-        }
-    },
-    {
-        "user_input": "Looking for unfurnished properties in Abbigere around 500 square feet",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "unfurnished",
-                "house_location": "Abbigere",
-                "house_size": "500"
-            }
-        }
-    },
-    {
-        "user_input": "Find me a 4 BHK flat with rent under 90000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "4",
-                "house_rent": "90000"
-            }
-        }
-    },
-    {
-        "user_input": "Find me a 3 BHK flat with rent under 3000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "3",
-                "house_rent": "3000"
-            }
-        }
-    },
-    {
-        "user_input": "Find me a 4 BHK flat with rent under 53000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "4",
-                "house_rent": "53000"
-            }
-        }
-    },
-    {
-        "user_input": "Search for unfurnished homes in Agrahara Layout area",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "unfurnished",
-                "house_location": "Agrahara Layout"
-            }
-        }
-    },
-    {
-        "user_input": "Search for semi-furnished homes in Thiruvanmiyur area",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "semi-furnished",
-                "house_location": "Thiruvanmiyur"
-            }
-        }
-    },
-    {
-        "user_input": "Search for furnished homes in Singasandra area",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "furnished",
-                "house_location": "Singasandra"
-            }
-        }
-    },
-    {
-        "user_input": "I want to rent a 700 sq ft house in Sardar Patel Road",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_size": "700",
-                "house_location": "Sardar Patel Road"
-            }
-        }
-    },
-    {
-        "user_input": "I want to rent a 2500 sq ft house in Narayanapura",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_size": "2500",
-                "house_location": "Narayanapura"
-            }
-        }
-    },
-    {
-        "user_input": "I want to rent a 2700 sq ft house in Mahadevapura",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_size": "2700",
-                "house_location": "Mahadevapura"
-            }
-        }
-    },
-    {
-        "user_input": "Show available 4 BHK options in Aarna Enclave under 19000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "4",
-                "house_location": "Aarna Enclave",
-                "house_rent": "19000"
-            }
-        }
-    },
-    {
-        "user_input": "Show available 6 BHK options in Colony-Velachery under 47000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "6",
-                "house_location": "Colony-Velachery",
-                "house_rent": "47000"
-            }
-        }
-    },
-    {
-        "user_input": "Show available 6 BHK options in Singasandra under 42000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_bhk": "6",
-                "house_location": "Singasandra",
-                "house_rent": "42000"
-            }
-        }
-    },
-    {
-        "user_input": "Need a semi-furnished flat in Colony-Velachery within my budget of 80000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "semi-furnished",
-                "house_location": "Colony-Velachery",
-                "house_rent": "80000"
-            }
-        }
-    },
-    {
-        "user_input": "Need a semi-furnished flat in Colony-Velachery within my budget of 89000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "semi-furnished",
-                "house_location": "Colony-Velachery",
-                "house_rent": "89000"
-            }
-        }
-    },
-    {
-        "user_input": "Need a unfurnished flat in Sardar Patel Road within my budget of 48000",
-        "ground_truth": {
-            "intent": "HOUSE_SEARCH",
-            "slots": {
-                "house_furnished": "unfurnished",
-                "house_location": "Sardar Patel Road",
-                "house_rent": "48000"
-            }
-        }
-    },
-    {
-        "user_input": "I would like to know more about house option 4",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 4
-            }
-        }
-    },
-    {
-        "user_input": "I would like to know more about house option 5",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "I would like to know more about house option 2",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Tell me about house number 1",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "Tell me about house number 5",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "Tell me about house number 1",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to move to option 5?",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to move to option 5?",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to move to option 5?",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "I'm interested in house 4",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 4
-            }
-        }
-    },
-    {
-        "user_input": "I'm interested in house 1",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "I'm interested in house 2",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Show me more information about property 2",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Show me more information about property 2",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Show me more information about property 4",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 4
-            }
-        }
-    },
-    {
-        "user_input": "Let's look at house 4",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 4
-            }
-        }
-    },
-    {
-        "user_input": "Let's look at house 1",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "Let's look at house 4",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 4
-            }
-        }
-    },
-    {
-        "user_input": "I want to explore option 3",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 3
-            }
-        }
-    },
-    {
-        "user_input": "I want to explore option 5",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "I want to explore option 5",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "Give me details about listing 5",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 5
-            }
-        }
-    },
-    {
-        "user_input": "Give me details about listing 1",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "Give me details about listing 3",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 3
-            }
-        }
-    },
-    {
-        "user_input": "Go ahead with the house 2?",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Go ahead with the house 1?",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "Go ahead with the house 4?",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 4
-            }
-        }
-    },
-    {
-        "user_input": "Select house number 2",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Select house number 2",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 2
-            }
-        }
-    },
-    {
-        "user_input": "Select house number 1",
-        "ground_truth": {
-            "intent": "HOUSE_SELECTION",
-            "slots": {
-                "house_selected": 1
-            }
-        }
-    },
-    {
-        "user_input": "What is the price of this house?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "price"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What is the bhk of this house?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "bhk"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What is the location of this house?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Could you tell me the tenant preferred by the landlord of the property?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Could you tell me the point of contact of the property?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "point of contact"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Could you tell me the point of contact of the property?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "point of contact"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to know the tenant preferred by the landlord",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to know the location",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to know the point of contact",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "point of contact"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What about the location of this accomodation?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What about the location of this accomodation?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What about the tenant preferred by the landlord of this accomodation?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Tell me more about the tenant preferred by the landlord",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Tell me more about the location",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Tell me more about the price",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "price"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Can you share the point of contact and floors in the building information with me?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "point of contact",
-                    "floors in the building"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Can you share the floors in the building and price information with me?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "floors in the building",
-                    "price"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Can you share the number of bathrooms and size information with me?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "number of bathrooms",
-                    "size"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What's the price and number of bathrooms like in this apartment?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "price",
-                    "number of bathrooms"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What's the number of bathrooms and bhk like in this apartment?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "number of bathrooms",
-                    "bhk"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What's the price and point of contact like in this apartment?",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "price",
-                    "point of contact"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I need to know about both the tenant preferred by the landlord and number of bathrooms",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord",
-                    "number of bathrooms"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I need to know about both the point of contact and number of bathrooms",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "point of contact",
-                    "number of bathrooms"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I need to know about both the size and point of contact",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "size",
-                    "point of contact"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Please provide me more details about the number of bathrooms of the house",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "number of bathrooms"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Please provide me more details about the floors in the building of the house",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "floors in the building"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Please provide me more details about the location of the house",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me the location information of this house",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "location"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me the tenant preferred by the landlord information of this house",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me the number of bathrooms information of this house",
-        "ground_truth": {
-            "intent": "ASK_INFO",
-            "slots": {
-                "properties": [
-                    "number of bathrooms"
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to compare houses 4 and 3",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [],
-                "houses": [
-                    3,
-                    2
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to compare houses 1 and 5",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [],
-                "houses": [
-                    0,
-                    4
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to compare houses 2 and 5",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [],
-                "houses": [
-                    1,
-                    4
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What's the difference between house 4 and house 3 in term of number of bathrooms?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "number of bathrooms"
-                ],
-                "houses": [
-                    3,
-                    2
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What's the difference between house 4 and house 1 in term of price?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "price"
-                ],
-                "houses": [
-                    3,
-                    0
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What's the difference between house 2 and house 1 in term of number of bathrooms?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "number of bathrooms"
-                ],
-                "houses": [
-                    1,
-                    0
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "How do houses 5 and 3 compare on floors in the building?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "floors in the building"
-                ],
-                "houses": [
-                    4,
-                    2
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "How do houses 4 and 1 compare on size?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "size"
-                ],
-                "houses": [
-                    3,
-                    0
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "How do houses 1 and 4 compare on number of bathrooms?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "number of bathrooms"
-                ],
-                "houses": [
-                    0,
-                    3
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me a comparison of properties on the bhk",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "bhk"
-                ],
-                "houses": []
-            }
-        }
-    },
-    {
-        "user_input": "Show me a comparison of properties on the tenant preferred by the landlord",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ],
-                "houses": []
-            }
-        }
-    },
-    {
-        "user_input": "Show me a comparison of properties on the bhk",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "bhk"
-                ],
-                "houses": []
-            }
-        }
-    },
-    {
-        "user_input": "Could you compare the floors in the building of these houses?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "floors in the building"
-                ],
-                "houses": []
-            }
-        }
-    },
-    {
-        "user_input": "Could you compare the tenant preferred by the landlord of these houses?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ],
-                "houses": []
-            }
-        }
-    },
-    {
-        "user_input": "Could you compare the bhk of these houses?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "bhk"
-                ],
-                "houses": []
-            }
-        }
-    },
-    {
-        "user_input": "I want to compare the bhk between 3 option and 1 option",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "bhk"
-                ],
-                "houses": [
-                    2,
-                    0
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I want to compare the tenant preferred by the landlord between 4 option and 2 option",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ],
-                "houses": [
-                    3,
-                    1
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I want to compare the tenant preferred by the landlord between 3 option and 5 option",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord"
-                ],
-                "houses": [
-                    2,
-                    4
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What are the differences between houses 4 and house 3 in location and price ?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "location",
-                    "price"
-                ],
-                "houses": [
-                    3,
-                    2
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What are the differences between houses 3 and house 1 in number of bathrooms and size ?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "number of bathrooms",
-                    "size"
-                ],
-                "houses": [
-                    2,
-                    0
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "What are the differences between houses 1 and house 4 in tenant preferred by the landlord and size ?",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "tenant preferred by the landlord",
-                    "size"
-                ],
-                "houses": [
-                    0,
-                    3
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Compare price and tenant preferred by the landlord for houses 4 and 5",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "price",
-                    "tenant preferred by the landlord"
-                ],
-                "houses": [
-                    3,
-                    4
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Compare point of contact and location for houses 1 and 5",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "point of contact",
-                    "location"
-                ],
-                "houses": [
-                    0,
-                    4
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Compare price and location for houses 2 and 5",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "price",
-                    "location"
-                ],
-                "houses": [
-                    1,
-                    4
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me how houses 4 and 3 differ in terms of size",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "size"
-                ],
-                "houses": [
-                    3,
-                    2
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me how houses 4 and 2 differ in terms of bhk",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "bhk"
-                ],
-                "houses": [
-                    3,
-                    1
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Show me how houses 1 and 2 differ in terms of price",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "price"
-                ],
-                "houses": [
-                    0,
-                    1
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Let me see a comparison of houses 5 and 2 focusing on number of bathrooms",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "number of bathrooms"
-                ],
-                "houses": [
-                    4,
-                    1
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Let me see a comparison of houses 4 and 3 focusing on size",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "size"
-                ],
-                "houses": [
-                    3,
-                    2
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "Let me see a comparison of houses 3 and 2 focusing on floors in the building",
-        "ground_truth": {
-            "intent": "COMPARE_HOUSES",
-            "slots": {
-                "properties": [
-                    "floors in the building"
-                ],
-                "houses": [
-                    2,
-                    1
-                ]
-            }
-        }
-    },
-    {
-        "user_input": "I'd like to have an ice cream",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "I'd like to have an ice cream",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "I'd like to have an ice cream",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Which places can you suggest for a good pizza?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Which places can you suggest for a good pizza?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Which places can you suggest for a good pizza?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What's the weather like today?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What's the weather like today?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What's the weather like today?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Can you help me book a flight to Paris?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Can you help me book a flight to Paris?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Can you help me book a flight to Paris?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Tell me a joke",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Tell me a joke",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Tell me a joke",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What time is the next bus?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What time is the next bus?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What time is the next bus?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "I want to order some groceries",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "I want to order some groceries",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "I want to order some groceries",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "How do I make pasta carbonara?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "How do I make pasta carbonara?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "How do I make pasta carbonara?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What movies are playing at the cinema?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What movies are playing at the cinema?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What movies are playing at the cinema?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Tell me about the story of the magestic Carlo Magno",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Tell me about the story of the magestic Carlo Magno",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "Tell me about the story of the magestic Carlo Magno",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What's the capital of France?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What's the capital of France?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    },
-    {
-        "user_input": "What's the capital of France?",
-        "ground_truth": {
-            "intent": "OUT_OF_DOMAIN",
-            "slots": {}
-        }
-    }
-]
+{
+    "nlu_data": [
+        {
+            "user_input": "I'm looking for a 5 BHK furnished house in Ayanavaram within 6000 rupees",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "5",
+                    "house_furnished": "furnished",
+                    "house_location": "Ayanavaram",
+                    "house_rent": "6000"
+                }
+            }
+        },
+        {
+            "user_input": "I'm looking for a 1 BHK furnished house in Kaggadasapura within 78000 rupees",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "1",
+                    "house_furnished": "furnished",
+                    "house_location": "Kaggadasapura",
+                    "house_rent": "78000"
+                }
+            }
+        },
+        {
+            "user_input": "I'm looking for a 3 BHK semi-furnished house in Abiramapuram within 49000 rupees",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_furnished": "semi-furnished",
+                    "house_location": "Abiramapuram",
+                    "house_rent": "49000"
+                }
+            }
+        },
+        {
+            "user_input": "Can you help me find a 2400 sq ft furnished apartment in Adyar?",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "2400",
+                    "house_furnished": "furnished",
+                    "house_location": "Adyar"
+                }
+            }
+        },
+        {
+            "user_input": "Can you help me find a 2800 sq ft unfurnished apartment in Kaggadasapura?",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "2800",
+                    "house_furnished": "unfurnished",
+                    "house_location": "Kaggadasapura"
+                }
+            }
+        },
+        {
+            "user_input": "Can you help me find a 2200 sq ft semi-furnished apartment in Aarna Enclave?",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "2200",
+                    "house_furnished": "semi-furnished",
+                    "house_location": "Aarna Enclave"
+                }
+            }
+        },
+        {
+            "user_input": "Show me unfurnished houses in Mahadevapura under 62000 rupees",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "unfurnished",
+                    "house_location": "Mahadevapura",
+                    "house_rent": "62000"
+                }
+            }
+        },
+        {
+            "user_input": "Show me furnished houses in Abbigere under 60000 rupees",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "furnished",
+                    "house_location": "Abbigere",
+                    "house_rent": "60000"
+                }
+            }
+        },
+        {
+            "user_input": "Show me semi-furnished houses in Agrahara Layout under 67000 rupees",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "semi-furnished",
+                    "house_location": "Agrahara Layout",
+                    "house_rent": "67000"
+                }
+            }
+        },
+        {
+            "user_input": "I need a 5 bedroom house in Aarna Enclave, Mumbai",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "5",
+                    "house_location": "Aarna Enclave",
+                    "house_city": "Mumbai"
+                }
+            }
+        },
+        {
+            "user_input": "I need a 2 bedroom house in Sardar Patel Road, Kolkata",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Sardar Patel Road",
+                    "house_city": "Kolkata"
+                }
+            }
+        },
+        {
+            "user_input": "I need a 2 bedroom house in Ayanavaram, Delhi",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Ayanavaram",
+                    "house_city": "Delhi"
+                }
+            }
+        },
+        {
+            "user_input": "Looking for unfurnished properties in Agrahara Layout around 1900 square feet",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "unfurnished",
+                    "house_location": "Agrahara Layout",
+                    "house_size": "1900"
+                }
+            }
+        },
+        {
+            "user_input": "Looking for furnished properties in Colony-Velachery around 1900 square feet",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "furnished",
+                    "house_location": "Colony-Velachery",
+                    "house_size": "1900"
+                }
+            }
+        },
+        {
+            "user_input": "Looking for unfurnished properties in Thiruvanmiyur around 1100 square feet",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "unfurnished",
+                    "house_location": "Thiruvanmiyur",
+                    "house_size": "1100"
+                }
+            }
+        },
+        {
+            "user_input": "Find me a 3 BHK flat with rent under 19000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_rent": "19000"
+                }
+            }
+        },
+        {
+            "user_input": "Find me a 5 BHK flat with rent under 33000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "5",
+                    "house_rent": "33000"
+                }
+            }
+        },
+        {
+            "user_input": "Find me a 3 BHK flat with rent under 65000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_rent": "65000"
+                }
+            }
+        },
+        {
+            "user_input": "Search for furnished homes in Singasandra area",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "furnished",
+                    "house_location": "Singasandra"
+                }
+            }
+        },
+        {
+            "user_input": "Search for unfurnished homes in Adambakkam area",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "unfurnished",
+                    "house_location": "Adambakkam"
+                }
+            }
+        },
+        {
+            "user_input": "Search for semi-furnished homes in Thiruvanmiyur area",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "semi-furnished",
+                    "house_location": "Thiruvanmiyur"
+                }
+            }
+        },
+        {
+            "user_input": "I want to rent a 1100 sq ft house in Colony-Velachery",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "1100",
+                    "house_location": "Colony-Velachery"
+                }
+            }
+        },
+        {
+            "user_input": "I want to rent a 1000 sq ft house in Hebbal",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "1000",
+                    "house_location": "Hebbal"
+                }
+            }
+        },
+        {
+            "user_input": "I want to rent a 1800 sq ft house in Aarna Enclave",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "1800",
+                    "house_location": "Aarna Enclave"
+                }
+            }
+        },
+        {
+            "user_input": "Show available 6 BHK options in Hosur Road under 37000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "6",
+                    "house_location": "Hosur Road",
+                    "house_rent": "37000"
+                }
+            }
+        },
+        {
+            "user_input": "Show available 3 BHK options in Adambakkam under 37000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_location": "Adambakkam",
+                    "house_rent": "37000"
+                }
+            }
+        },
+        {
+            "user_input": "Show available 1 BHK options in Adyar under 32000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "1",
+                    "house_location": "Adyar",
+                    "house_rent": "32000"
+                }
+            }
+        },
+        {
+            "user_input": "Need a unfurnished flat in Konnur Highroad within my budget of 4000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "unfurnished",
+                    "house_location": "Konnur Highroad",
+                    "house_rent": "4000"
+                }
+            }
+        },
+        {
+            "user_input": "Need a furnished flat in Ayanavaram within my budget of 93000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "furnished",
+                    "house_location": "Ayanavaram",
+                    "house_rent": "93000"
+                }
+            }
+        },
+        {
+            "user_input": "Need a furnished flat in Abiramapuram within my budget of 47000",
+            "ground_truth": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "furnished",
+                    "house_location": "Abiramapuram",
+                    "house_rent": "47000"
+                }
+            }
+        },
+        {
+            "user_input": "I would like to know more about house option 3",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "I would like to know more about house option 2",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        },
+        {
+            "user_input": "I would like to know more about house option 2",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        },
+        {
+            "user_input": "Tell me about house number 3",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "Tell me about house number 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Tell me about house number 3",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to move to option 2?",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to move to option 5?",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 4
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to move to option 3?",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "I'm interested in house 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "I'm interested in house 1",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 0
+                }
+            }
+        },
+        {
+            "user_input": "I'm interested in house 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Show me more information about property 2",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        },
+        {
+            "user_input": "Show me more information about property 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Show me more information about property 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Let's look at house 3",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "Let's look at house 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Let's look at house 1",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 0
+                }
+            }
+        },
+        {
+            "user_input": "I want to explore option 1",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 0
+                }
+            }
+        },
+        {
+            "user_input": "I want to explore option 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "I want to explore option 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Give me details about listing 2",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        },
+        {
+            "user_input": "Give me details about listing 1",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 0
+                }
+            }
+        },
+        {
+            "user_input": "Give me details about listing 3",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "Go ahead with the house 3?",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            }
+        },
+        {
+            "user_input": "Go ahead with the house 4?",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Go ahead with the house 4?",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Select house number 5",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 4
+                }
+            }
+        },
+        {
+            "user_input": "Select house number 4",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            }
+        },
+        {
+            "user_input": "Select house number 5",
+            "ground_truth": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 4
+                }
+            }
+        },
+        {
+            "user_input": "What is the number of bathrooms of this house?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What is the point of contact of this house?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What is the number of bathrooms of this house?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Could you tell me the point of contact of the property?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Could you tell me the rent of the property?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Could you tell me the tenant preferred by the landlord of the property?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to know the rent",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to know the tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to know the bhk",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What about the point of contact of this accomodation?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What about the rent of this accomodation?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What about the size of this accomodation?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Tell me more about the location",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Tell me more about the tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Tell me more about the number of bathrooms",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Can you share the size and floors in the building information with me?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "size",
+                        "floors"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Can you share the point of contact and size information with me?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact",
+                        "size"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Can you share the bhk and location information with me?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk",
+                        "location"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What's the tenant preferred by the landlord and rent like in this apartment?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord",
+                        "rent"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What's the location and bhk like in this apartment?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What's the bhk and tenant preferred by the landlord like in this apartment?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk",
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I need to know about both the location and bhk",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I need to know about both the rent and tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I need to know about both the tenant preferred by the landlord and point of contact",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord",
+                        "contact"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Please provide me more details about the rent of the house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Please provide me more details about the point of contact of the house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Please provide me more details about the rent of the house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me the number of bathrooms information of this house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me the bhk information of this house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me the tenant preferred by the landlord information of this house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to compare houses 3 and 2",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": null,
+                    "houses": [
+                        2,
+                        1
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to compare houses 5 and 1",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": null,
+                    "houses": [
+                        4,
+                        0
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to compare houses 5 and 2",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": null,
+                    "houses": [
+                        4,
+                        1
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What's the difference between house 3 and house 4 in term of rent?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": [
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What's the difference between house 4 and house 2 in term of location?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": [
+                        3,
+                        1
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What's the difference between house 1 and house 4 in term of location?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": [
+                        0,
+                        3
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "How do houses 3 and 4 compare on tenant preferred by the landlord?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "How do houses 1 and 5 compare on rent?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": [
+                        0,
+                        4
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "How do houses 2 and 4 compare on tenant preferred by the landlord?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        1,
+                        3
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me a comparison of properties on the size",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        {
+            "user_input": "Show me a comparison of properties on the tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        {
+            "user_input": "Show me a comparison of properties on the location",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        {
+            "user_input": "Could you compare the location of these houses?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        {
+            "user_input": "Could you compare the location of these houses?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        {
+            "user_input": "Could you compare the rent of these houses?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        {
+            "user_input": "I want to compare the rent between 2 option and 5 option",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": [
+                        1,
+                        4
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I want to compare the location between 5 option and 3 option",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": [
+                        4,
+                        2
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I want to compare the tenant preferred by the landlord between 2 option and 1 option",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        1,
+                        0
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What are the differences between houses 4 and house 3 in floors in the building and rent ?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors",
+                        "rent"
+                    ],
+                    "houses": [
+                        3,
+                        2
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What are the differences between houses 3 and house 5 in floors in the building and size ?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors",
+                        "size"
+                    ],
+                    "houses": [
+                        2,
+                        4
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "What are the differences between houses 2 and house 5 in bhk and tenant preferred by the landlord ?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bhk",
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        1,
+                        4
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Compare location and number of bathrooms for houses 5 and 1",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "bathrooms"
+                    ],
+                    "houses": [
+                        4,
+                        0
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Compare size and location for houses 5 and 1",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "size",
+                        "location"
+                    ],
+                    "houses": [
+                        4,
+                        0
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Compare bhk and floors in the building for houses 3 and 1",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bhk",
+                        "floors"
+                    ],
+                    "houses": [
+                        2,
+                        0
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me how houses 1 and 3 differ in terms of tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        0,
+                        2
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me how houses 1 and 2 differ in terms of floors in the building",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ],
+                    "houses": [
+                        0,
+                        1
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Show me how houses 2 and 1 differ in terms of bhk",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ],
+                    "houses": [
+                        1,
+                        0
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Let me see a comparison of houses 2 and 3 focusing on tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Let me see a comparison of houses 2 and 4 focusing on rent",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": [
+                        1,
+                        3
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "Let me see a comparison of houses 3 and 4 focusing on bhk",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ],
+                    "houses": [
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        {
+            "user_input": "I'd like to have an ice cream",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "I'd like to have an ice cream",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "I'd like to have an ice cream",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Which places can you suggest for a good pizza?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Which places can you suggest for a good pizza?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Which places can you suggest for a good pizza?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What's the weather like today?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What's the weather like today?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What's the weather like today?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Can you help me book a flight to Paris?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Can you help me book a flight to Paris?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Can you help me book a flight to Paris?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Tell me a joke",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Tell me a joke",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Tell me a joke",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "I want to order some groceries",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "I want to order some groceries",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "I want to order some groceries",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "How do I make pasta carbonara?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "How do I make pasta carbonara?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "How do I make pasta carbonara?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What movies are playing at the cinema?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What movies are playing at the cinema?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What movies are playing at the cinema?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Tell me about the story of the magestic Carlo Magno",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Tell me about the story of the magestic Carlo Magno",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "Tell me about the story of the magestic Carlo Magno",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What's the capital of France?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What's the capital of France?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        },
+        {
+            "user_input": "What's the capital of France?",
+            "ground_truth": {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        }
+    ],
+    "dm_data": [
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_furnished": "Furnished",
+                    "house_location": "Adyar",
+                    "house_city": "Chennai",
+                    "house_rent": "25000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "790",
+                    "house_bhk": "2",
+                    "house_location": "Deep Heights, Nalasopara",
+                    "house_city": "Mumbai",
+                    "house_furnished": "Unfurnished",
+                    "house_rent": "6500"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "Semi-Furnished",
+                    "house_location": "Andheri West",
+                    "house_city": "Mumbai",
+                    "house_rent": "50000",
+                    "house_size": null,
+                    "house_bhk": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": null,
+                    "house_location": "Aditya Nagar",
+                    "house_city": "Bangalore",
+                    "house_rent": "15000",
+                    "house_furnished": "Unfurnished"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "550",
+                    "house_furnished": "Unfurnished",
+                    "house_location": "Agarpara",
+                    "house_city": "Kolkata",
+                    "house_rent": null,
+                    "house_bhk": "2"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_location": "Velachery",
+                    "house_city": "Chennai",
+                    "house_furnished": null,
+                    "house_rent": "35000"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "623",
+                    "house_location": "Shreenath nagar",
+                    "house_city": "Mumbai",
+                    "house_furnished": "Unfurnished",
+                    "house_rent": "8000",
+                    "house_bhk": "2"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Abids",
+                    "house_city": "Hyderabad",
+                    "house_rent": "30000",
+                    "house_furnished": "Semi-Furnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "890",
+                    "house_location": "new panvel",
+                    "house_city": "Mumbai",
+                    "house_furnished": "Unfurnished",
+                    "house_rent": "8000",
+                    "house_bhk": "2"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "Furnished",
+                    "house_location": "Chembur East",
+                    "house_city": "Mumbai",
+                    "house_rent": null,
+                    "house_bhk": null,
+                    "house_size": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Adambakkam",
+                    "house_city": "Chennai",
+                    "house_rent": "20000",
+                    "house_furnished": "Semi-Furnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "550",
+                    "house_location": "Nakoda Heights",
+                    "house_city": "Mumbai",
+                    "house_furnished": "Unfurnished",
+                    "house_rent": "8000",
+                    "house_bhk": "2"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Salt Lake",
+                    "house_city": "Kolkata",
+                    "house_rent": null,
+                    "house_furnished": "Furnished"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": null,
+                    "house_location": "Abiramapuram",
+                    "house_city": "Chennai",
+                    "house_furnished": "Semi-Furnished",
+                    "house_rent": "40000",
+                    "house_bhk": "3"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Anand Niketan",
+                    "house_city": "Delhi",
+                    "house_rent": "45000",
+                    "house_furnished": "Furnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "790",
+                    "house_location": "Agripada",
+                    "house_city": "Mumbai",
+                    "house_furnished": "Unfurnished",
+                    "house_rent": null,
+                    "house_bhk": "2"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": null,
+                    "house_location": "Abhyudaya Nagar",
+                    "house_city": "Hyderabad",
+                    "house_rent": "25000",
+                    "house_furnished": "Semi-Furnished"
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "890",
+                    "house_location": "Adugodi",
+                    "house_city": "Bangalore",
+                    "house_furnished": "Furnished",
+                    "house_rent": "35000",
+                    "house_bhk": "3"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Arjun Nagar",
+                    "house_city": "Delhi",
+                    "house_rent": "30000",
+                    "house_furnished": "Semi-Furnished",
+                    "house_size": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "623",
+                    "house_location": "Amar Colony",
+                    "house_city": "Delhi",
+                    "house_furnished": "Furnished",
+                    "house_rent": "50000",
+                    "house_bhk": "3"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Thiruvanmiyur",
+                    "house_city": "Chennai",
+                    "house_rent": "28000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_furnished": "Furnished",
+                    "house_location": "Bandra West"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Powai",
+                    "house_rent": "45000",
+                    "house_city": "Mumbai"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "750",
+                    "house_location": "Whitefield",
+                    "house_city": "Bangalore"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "Semi-Furnished",
+                    "house_location": "Rajarhat",
+                    "house_city": "Kolkata"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_rent": "40000",
+                    "house_city": "Chennai"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "900",
+                    "house_location": "Juhu",
+                    "house_city": "Mumbai"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "Semi-Furnished",
+                    "house_location": "Gachibowli",
+                    "house_rent": "32000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "1100",
+                    "house_bhk": "3",
+                    "house_city": "Mumbai"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "Unfurnished",
+                    "house_location": "Malad West",
+                    "house_city": "Mumbai"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_rent": "22000",
+                    "house_furnished": "Semi-Furnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "800",
+                    "house_location": "Koramangala",
+                    "house_city": "Bangalore"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_furnished": "Furnished",
+                    "house_city": "Hyderabad"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "T Nagar",
+                    "house_rent": "35000",
+                    "house_city": "Chennai"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "3",
+                    "house_location": "Vasant Kunj",
+                    "house_furnished": "Furnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "1000",
+                    "house_furnished": "Unfurnished",
+                    "house_city": "Delhi"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Madhapur",
+                    "house_rent": "28000",
+                    "house_city": "Hyderabad"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "850",
+                    "house_furnished": "Semi-Furnished",
+                    "house_bhk": "2"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "2",
+                    "house_location": "Rohini",
+                    "house_rent": "25000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Ballygunge",
+                    "house_furnished": "Furnished",
+                    "house_city": "Kolkata"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "4",
+                    "house_location": "Indiranagar",
+                    "house_city": "Bangalore",
+                    "house_rent": "55000",
+                    "house_furnished": "Furnished",
+                    "house_size": "1500"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Worli",
+                    "house_city": "Mumbai",
+                    "house_rent": "75000",
+                    "house_furnished": "Furnished",
+                    "house_bhk": "3",
+                    "house_size": "1200"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Hauz Khas",
+                    "house_city": "Delhi",
+                    "house_furnished": "Semi-Furnished",
+                    "house_size": "950"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "1",
+                    "house_location": "Mylapore",
+                    "house_city": "Chennai",
+                    "house_rent": "18000",
+                    "house_furnished": "Unfurnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_size": "1800",
+                    "house_bhk": "4",
+                    "house_location": "Park Street",
+                    "house_city": "Kolkata",
+                    "house_furnished": "Furnished",
+                    "house_rent": "65000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Kondapur",
+                    "house_city": "Hyderabad",
+                    "house_bhk": "2",
+                    "house_size": "1000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_furnished": "Semi-Furnished",
+                    "house_location": "HSR Layout",
+                    "house_city": "Bangalore",
+                    "house_rent": "42000",
+                    "house_bhk": "3"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Chanakyapuri",
+                    "house_city": "Delhi",
+                    "house_rent": "95000",
+                    "house_size": "2200",
+                    "house_furnished": "Furnished",
+                    "house_bhk": "5"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_bhk": "1",
+                    "house_location": "Goregaon",
+                    "house_city": "Mumbai",
+                    "house_size": "450",
+                    "house_furnished": "Unfurnished"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SEARCH",
+                "slots": {
+                    "house_location": "Jubilee Hills",
+                    "house_city": "Hyderabad",
+                    "house_rent": "85000",
+                    "house_furnished": "Furnished",
+                    "house_bhk": "4",
+                    "house_size": "2000"
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "tenant_preferred",
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "tenant_preferred",
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "tenant_preferred",
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "tenant_preferred",
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred",
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info",
+                        "floor_info",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "tenant_preferred",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "bathrooms_number",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info",
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "floor_info",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info",
+                        "tenant_preferred",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 4
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 5
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 0
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 0
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 2
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 3
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 4
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ],
+                    "properties": [
+                        "price",
+                        "location",
+                        "size"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ],
+                    "properties": [
+                        "price",
+                        "bathrooms",
+                        "size"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        4
+                    ],
+                    "properties": [
+                        "rent",
+                        "bathrooms",
+                        "size"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        3
+                    ],
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        4
+                    ],
+                    "properties": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        3
+                    ],
+                    "properties": [
+                        "size",
+                        "rent",
+                        "furnished"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        5
+                    ],
+                    "properties": [
+                        "bathrooms_number",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        4
+                    ],
+                    "properties": [
+                        "house_bhk",
+                        "size",
+                        "rent"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        5
+                    ],
+                    "properties": [
+                        "location",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        3
+                    ],
+                    "properties": [
+                        "furnished",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        5
+                    ],
+                    "properties": [
+                        "size",
+                        "house_bhk",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        5
+                    ],
+                    "properties": [
+                        "rent",
+                        "location",
+                        "furnished"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ],
+                    "properties": [
+                        "bathrooms_number",
+                        "tenant_preferred",
+                        "size"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        4
+                    ],
+                    "properties": [
+                        "house_bhk",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        4
+                    ],
+                    "properties": [
+                        "floor_info",
+                        "size",
+                        "furnished"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        5
+                    ],
+                    "properties": [
+                        "location",
+                        "rent",
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        3
+                    ],
+                    "properties": [
+                        "tenant_preferred",
+                        "house_bhk"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        5
+                    ],
+                    "properties": [
+                        "size",
+                        "contact_info",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        3
+                    ],
+                    "properties": [
+                        "furnished",
+                        "location",
+                        "rent"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        5
+                    ],
+                    "properties": [
+                        "bathrooms_number",
+                        "house_bhk",
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        4
+                    ],
+                    "properties": [
+                        "size",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        4
+                    ],
+                    "properties": [
+                        "contact_info",
+                        "furnished",
+                        "location"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        3
+                    ],
+                    "properties": [
+                        "rent",
+                        "bathrooms_number",
+                        "house_bhk"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        5
+                    ],
+                    "properties": [
+                        "tenant_preferred",
+                        "size",
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ],
+                    "properties": [
+                        "location",
+                        "contact_info",
+                        "furnished"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ],
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": [
+                        "size"
+                    ]
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        4
+                    ],
+                    "properties": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        3
+                    ],
+                    "properties": [
+                        "furnished"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bathrooms_number"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        5
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        3
+                    ],
+                    "properties": [
+                        "location"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "house_bhk"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        5
+                    ],
+                    "properties": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": [
+                        "floor_info"
+                    ]
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        4
+                    ],
+                    "properties": [
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        5
+                    ],
+                    "properties": [
+                        "size"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        4
+                    ],
+                    "properties": null
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": [
+                        "furnished"
+                    ]
+                }
+            },
+            "ground_truth": "request_slot"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        5
+                    ],
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        4
+                    ],
+                    "properties": [
+                        "house_bhk"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ]
+                }
+            },
+            "ground_truth": "confirmation"
+        },
+        {
+            "nlu_output": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        2
+                    ],
+                    "properties": null
+                }
+            },
+            "ground_truth": "request_slot"
+        }
+    ]
+}

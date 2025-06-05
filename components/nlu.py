@@ -18,7 +18,7 @@ class NLU:
         try:
             chunks = json.loads(nlu_output)
         except Exception as e:
-            print("Error: The NLU output [CHUNKING] is not in the expected json format.")
+            print("❌Error: The NLU output [CHUNKING] is not in the expected json format.")
             print(f"'{nlu_output}'")
             raise e
         
@@ -36,7 +36,7 @@ class NLU:
         nlu_output = nlu_output.strip().strip('\n').strip("`")
 
         if nlu_output.upper() not in NLU_PROMPTS.keys() and nlu_output.upper() != "OUT_OF_DOMAIN":
-            print(f"Error: The NLU output for intent classification is not in the expected format.")
+            print(f"❌Error: The NLU output for intent classification is not in the expected format.")
             print(f"========= {nlu_output} =========")
         else:
             print(f"Intent identified: {nlu_output.upper()}") if self.verbose else None
@@ -86,7 +86,7 @@ class NLU:
                 nlu_output_dict = json.loads(nlu_output)
                 nlu_outputs[i] = {"intent": intent, "slots": nlu_output_dict}
             except Exception as e:
-                print(f"Error: The NLU output '{nlu_output}' is not in the expected json format.")
+                print(f"❌Error: The NLU output '{nlu_output}' is not in the expected json format.")
                 to_remove.append(i)
         
         for i in to_remove:

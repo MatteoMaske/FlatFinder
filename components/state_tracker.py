@@ -109,7 +109,7 @@ class StateTracker:
                     print(traceback.format_exc())
                     self.fallback_policy("Error in processing the user request. Please try again.")
         else:
-            raise Exception(f"Error: Initializing slots for an unknown intent {intent}.")
+            raise Exception(f"❌Error: Initializing slots for an unknown intent {intent}.")
     
     def check_slots(self, slots: dict):
         """Check if all the slots are filled for the current intent"""
@@ -156,7 +156,7 @@ class StateTracker:
                 self.current_intent = "SHOW_HOUSES"
                 self.current_slots = {f"option_{i}": str(house) for i, house in enumerate(houses)}
                 print("="*100)
-                print(f"The search resulted in {len(houses)} houses.")
+                print(f"📋The search resulted in {len(houses)} houses.")
                 print("="*100)
         elif intent == "HOUSE_SELECTION":
             if self.current_slots['house_selected'] is not None:
