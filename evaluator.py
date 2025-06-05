@@ -179,8 +179,21 @@ class Evaluator:
             random_values (dict): A dictionary containing the random values used to generate the user input
         """
         intent = nlu_output["intent"]
-        slots = nlu_output["slots"]
+        new_slots = nlu_output["slots"]
         ground_truth = ""
+
+        if intent == "HOUSE_SEARCH":
+            slots = {"house_size": None, "house_bhk": None, "house_rent": None, "house_location": None, "house_city": None, "house_furnished": None}
+            for key, value in new_slots.items():
+                if value is not None and value != "None" and value != "null":
+                    slots[key] = value
+        elif intent == "HOUSE_SELECTION":
+            slots = {"house_selected": None}
+            for key, value in new_slots.items():
+                if value is not None and value != "None" and value != "null":
+                    slots[key] = value
+        else:
+            slots = new_slots
 
         missing_slot = [key for key, value in slots.items() if value is None]
         if len(missing_slot) > 0:

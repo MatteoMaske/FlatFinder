@@ -100,7 +100,6 @@ class StateTracker:
                 self.fallback_policy("No houses found to be compared, you must search for houses first.")
             else:
                 try:
-                    #TODO handle this better
                     self.houses_to_compare = [self.current_houses[idx] for idx in slots["houses"]]
                     self.properties_to_compare = slots['properties']
                     print(f"Comparing houses: {self.houses_to_compare}")
