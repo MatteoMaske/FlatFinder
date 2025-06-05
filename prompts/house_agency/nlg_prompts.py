@@ -5,7 +5,7 @@ Please be coherent with the following chat history:
 
 NO explanation!
 Return the response only!
-BE COHERENT with the chat history!
+BE COHERENT with the chat history and use conversational markers to connect messages!
 
 Possible next best actions are:
 - request_info(slot_name): generate an appropriate question to ask the user in order to provide the missing slot value for the requested slot name
