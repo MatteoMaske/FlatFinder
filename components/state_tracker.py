@@ -137,8 +137,8 @@ class StateTracker:
         else:
             return False
 
-    def update_nba(self, dm_output):
-        self.next_best_actions.extend(dm_output)
+    def update_nba(self, dm_output: str):
+        self.next_best_actions.append(dm_output)
 
     def handle_intent(self, intent, changed: bool):
         """Handles one intent, once its slots are filled

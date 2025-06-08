@@ -398,8 +398,13 @@ class Evaluator:
             print(f"Evaluating slots for intent: {intent}")
             self.compute_stats(slot_gt, slot_pred, task_type="slots")
 
-    def evaluate_DM(self, dm_model):
-        """Evaluate the DM model on the test set"""
+    def evaluate_DM(self, dm_model, deterministic=False):
+        """Evaluate the DM model on the test set
+        
+        Args:
+            dm_model (DM): The dialogue manager model to evaluate
+            deterministic (bool): If True, the DM will use deterministic outputs
+        """
         test_set = self.create_test_set(cached=True)["dm_data"]
 
         dm_gt = []
@@ -411,8 +416,7 @@ class Evaluator:
             nlu_output = sample["nlu_output"]
             ground_truth = sample["ground_truth"]
 
-            dm_output = dm_model(nlu_output)
-            dm_output = dm_output[0] if len(dm_output) > 0 else "ERROR"
+            dm_output = dm_model(nlu_output, deterministic=deterministic)
             
             results.append({
                 "sample": sample,
@@ -420,7 +424,7 @@ class Evaluator:
             })
 
             if ground_truth in dm_output:
-                print(f"DM output matches ground truth: {ground_truth} == {dm_output}")
+                # print(f"DM output matches ground truth: {ground_truth} == {dm_output}")
                 ground_truth = dm_output
             else:
                 print(f"DM output does not match ground truth: {ground_truth} != {dm_output}")
