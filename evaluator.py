@@ -192,6 +192,11 @@ class Evaluator:
             for key, value in new_slots.items():
                 if value is not None and value != "None" and value != "null":
                     slots[key] = value
+        elif intent == "COMPARE_HOUSES":
+            slots = {"houses": None, "properties": None}
+            for key, value in new_slots.items():
+                if value is not None and value != "None" and value != []:
+                    slots[key] = value
         else:
             slots = new_slots
 
@@ -405,7 +410,7 @@ class Evaluator:
             dm_model (DM): The dialogue manager model to evaluate
             deterministic (bool): If True, the DM will use deterministic outputs
         """
-        test_set = self.create_test_set(cached=True)["dm_data"]
+        test_set = self.create_test_set(cached=False)["dm_data"]
 
         dm_gt = []
         dm_pred = []

@@ -188,7 +188,7 @@ def generate(model, text, tokenizer, args):
         eval_duration_s = eval_duration_ns / 1e9  # Convert nanoseconds to seconds
         tokens_per_second = eval_count / eval_duration_s
 
-        print(f"Time taken for generation: {eval_duration_s}s - {tokens_per_second}tok/s")
+        # print(f"Time taken for generation: {eval_duration_s}s - {tokens_per_second}tok/s")
         return response["response"]
     else:
         input_tokens = tokenizer(text, return_tensors="pt").to(model.device)

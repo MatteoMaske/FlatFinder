@@ -166,7 +166,7 @@ def evaluate(args):
     # evaluator.evaluate_NLU(nlu_component, conversation)
 
     dm_component = DM(model, tokenizer, args)
-    evaluator.evaluate_DM(dm_component, deterministic=True)
+    evaluator.evaluate_DM(dm_component, deterministic=False)
 
 if __name__ == "__main__":
     args = get_args()

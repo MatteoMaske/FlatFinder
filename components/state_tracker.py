@@ -47,7 +47,6 @@ class StateTracker:
         for chunk in nlu_output:
             intent, slots = chunk['intent'], chunk['slots']
 
-            #! Error handling and fallback policy
             if intent not in ["HOUSE_SEARCH", "HOUSE_SELECTION", "ASK_INFO", "COMPARE_HOUSES", "OUT_OF_DOMAIN"]:
                 self.fallback_policy("Unknown intent for the current system, please try again.")
                 continue
@@ -173,7 +172,6 @@ class StateTracker:
             if self.houses_to_compare == []:
                 try:
                     self.houses_to_compare = [self.current_houses[i] for i in self.current_slots["houses"]]
-                    print(f"Comparing houses: {self.houses_to_compare}")
                 except Exception:
                     print("Error in parsing the compare houses intent", file=sys.stderr)
                     self.current_intent = "COMPARE_HOUSES"
