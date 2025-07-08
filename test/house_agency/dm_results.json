@@ -1,1583 +1,6 @@
-{
-    "nlu_data": [
-        {
-            "user_input": "I'm looking for a 1 BHK furnished house in Sardar Patel Road within 79000 rupees",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "1",
-                    "house_furnished": "furnished",
-                    "house_location": "Sardar Patel Road",
-                    "house_rent": "79000"
-                }
-            }
-        },
-        {
-            "user_input": "I'm looking for a 6 BHK unfurnished house in Aarna Enclave within 66000 rupees",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "6",
-                    "house_furnished": "unfurnished",
-                    "house_location": "Aarna Enclave",
-                    "house_rent": "66000"
-                }
-            }
-        },
-        {
-            "user_input": "I'm looking for a 2 BHK furnished house in Adyar within 22000 rupees",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "2",
-                    "house_furnished": "furnished",
-                    "house_location": "Adyar",
-                    "house_rent": "22000"
-                }
-            }
-        },
-        {
-            "user_input": "Can you help me find a 2300 sq ft unfurnished apartment in Singasandra?",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_size": "2300",
-                    "house_furnished": "unfurnished",
-                    "house_location": "Singasandra"
-                }
-            }
-        },
-        {
-            "user_input": "Can you help me find a 2300 sq ft furnished apartment in Thiruvanmiyur?",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_size": "2300",
-                    "house_furnished": "furnished",
-                    "house_location": "Thiruvanmiyur"
-                }
-            }
-        },
-        {
-            "user_input": "Can you help me find a 2300 sq ft semi-furnished apartment in Aarna Enclave?",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_size": "2300",
-                    "house_furnished": "semi-furnished",
-                    "house_location": "Aarna Enclave"
-                }
-            }
-        },
-        {
-            "user_input": "Show me furnished houses in Singasandra under 40000 rupees",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "furnished",
-                    "house_location": "Singasandra",
-                    "house_rent": "40000"
-                }
-            }
-        },
-        {
-            "user_input": "Show me unfurnished houses in Adyar under 14000 rupees",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "unfurnished",
-                    "house_location": "Adyar",
-                    "house_rent": "14000"
-                }
-            }
-        },
-        {
-            "user_input": "Show me semi-furnished houses in Aarna Enclave under 65000 rupees",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "semi-furnished",
-                    "house_location": "Aarna Enclave",
-                    "house_rent": "65000"
-                }
-            }
-        },
-        {
-            "user_input": "I need a 4 bedroom house in Adyar, Bangalore",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "4",
-                    "house_location": "Adyar",
-                    "house_city": "Bangalore"
-                }
-            }
-        },
-        {
-            "user_input": "I need a 2 bedroom house in Singasandra, Mumbai",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "2",
-                    "house_location": "Singasandra",
-                    "house_city": "Mumbai"
-                }
-            }
-        },
-        {
-            "user_input": "I need a 3 bedroom house in Abbigere, Bangalore",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "3",
-                    "house_location": "Abbigere",
-                    "house_city": "Bangalore"
-                }
-            }
-        },
-        {
-            "user_input": "Looking for unfurnished properties in Adyar around 900 square feet",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "unfurnished",
-                    "house_location": "Adyar",
-                    "house_size": "900"
-                }
-            }
-        },
-        {
-            "user_input": "Looking for semi-furnished properties in Vidyaranyapura around 2300 square feet",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "semi-furnished",
-                    "house_location": "Vidyaranyapura",
-                    "house_size": "2300"
-                }
-            }
-        },
-        {
-            "user_input": "Looking for unfurnished properties in Aarna Enclave around 2200 square feet",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "unfurnished",
-                    "house_location": "Aarna Enclave",
-                    "house_size": "2200"
-                }
-            }
-        },
-        {
-            "user_input": "Find me a 6 BHK flat with rent under 67000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "6",
-                    "house_rent": "67000"
-                }
-            }
-        },
-        {
-            "user_input": "Find me a 1 BHK flat with rent under 83000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "1",
-                    "house_rent": "83000"
-                }
-            }
-        },
-        {
-            "user_input": "Find me a 3 BHK flat with rent under 99000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "3",
-                    "house_rent": "99000"
-                }
-            }
-        },
-        {
-            "user_input": "Search for unfurnished homes in Abiramapuram area",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "unfurnished",
-                    "house_location": "Abiramapuram"
-                }
-            }
-        },
-        {
-            "user_input": "Search for furnished homes in Hosur Road area",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "furnished",
-                    "house_location": "Hosur Road"
-                }
-            }
-        },
-        {
-            "user_input": "Search for furnished homes in Hebbal area",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "furnished",
-                    "house_location": "Hebbal"
-                }
-            }
-        },
-        {
-            "user_input": "I want to rent a 500 sq ft house in Adugodi",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_size": "500",
-                    "house_location": "Adugodi"
-                }
-            }
-        },
-        {
-            "user_input": "I want to rent a 900 sq ft house in Adambakkam",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_size": "900",
-                    "house_location": "Adambakkam"
-                }
-            }
-        },
-        {
-            "user_input": "I want to rent a 2000 sq ft house in Adyar",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_size": "2000",
-                    "house_location": "Adyar"
-                }
-            }
-        },
-        {
-            "user_input": "Show available 4 BHK options in Adambakkam under 39000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "4",
-                    "house_location": "Adambakkam",
-                    "house_rent": "39000"
-                }
-            }
-        },
-        {
-            "user_input": "Show available 2 BHK options in Abbigere under 6000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "2",
-                    "house_location": "Abbigere",
-                    "house_rent": "6000"
-                }
-            }
-        },
-        {
-            "user_input": "Show available 5 BHK options in Agrahara Layout under 86000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_bhk": "5",
-                    "house_location": "Agrahara Layout",
-                    "house_rent": "86000"
-                }
-            }
-        },
-        {
-            "user_input": "Need a semi-furnished flat in Hebbal within my budget of 43000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "semi-furnished",
-                    "house_location": "Hebbal",
-                    "house_rent": "43000"
-                }
-            }
-        },
-        {
-            "user_input": "Need a unfurnished flat in Sardar Patel Road within my budget of 47000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "unfurnished",
-                    "house_location": "Sardar Patel Road",
-                    "house_rent": "47000"
-                }
-            }
-        },
-        {
-            "user_input": "Need a unfurnished flat in Colony-Velachery within my budget of 72000",
-            "ground_truth": {
-                "intent": "HOUSE_SEARCH",
-                "slots": {
-                    "house_furnished": "unfurnished",
-                    "house_location": "Colony-Velachery",
-                    "house_rent": "72000"
-                }
-            }
-        },
-        {
-            "user_input": "I would like to know more about house option 1",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 0
-                }
-            }
-        },
-        {
-            "user_input": "I would like to know more about house option 5",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 4
-                }
-            }
-        },
-        {
-            "user_input": "I would like to know more about house option 1",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 0
-                }
-            }
-        },
-        {
-            "user_input": "Tell me about house number 1",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 0
-                }
-            }
-        },
-        {
-            "user_input": "Tell me about house number 5",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 4
-                }
-            }
-        },
-        {
-            "user_input": "Tell me about house number 5",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 4
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to move to option 5?",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 4
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to move to option 3?",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to move to option 4?",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 3
-                }
-            }
-        },
-        {
-            "user_input": "I'm interested in house 1",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 0
-                }
-            }
-        },
-        {
-            "user_input": "I'm interested in house 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "I'm interested in house 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "Show me more information about property 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "Show me more information about property 3",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "Show me more information about property 3",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "Let's look at house 1",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 0
-                }
-            }
-        },
-        {
-            "user_input": "Let's look at house 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "Let's look at house 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "I want to explore option 4",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 3
-                }
-            }
-        },
-        {
-            "user_input": "I want to explore option 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "I want to explore option 4",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 3
-                }
-            }
-        },
-        {
-            "user_input": "Give me details about listing 5",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 4
-                }
-            }
-        },
-        {
-            "user_input": "Give me details about listing 3",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "Give me details about listing 3",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "Go ahead with the house 4?",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 3
-                }
-            }
-        },
-        {
-            "user_input": "Go ahead with the house 3?",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "Go ahead with the house 2?",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "Select house number 2",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 1
-                }
-            }
-        },
-        {
-            "user_input": "Select house number 5",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 4
-                }
-            }
-        },
-        {
-            "user_input": "Select house number 3",
-            "ground_truth": {
-                "intent": "HOUSE_SELECTION",
-                "slots": {
-                    "house_selected": 2
-                }
-            }
-        },
-        {
-            "user_input": "What is the number of bathrooms of this house?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bathrooms"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What is the size of this house?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What is the number of bathrooms of this house?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bathrooms"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Could you tell me the rent of the property?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Could you tell me the point of contact of the property?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "contact"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Could you tell me the location of the property?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "location"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to know the number of bathrooms",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bathrooms"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to know the rent",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to know the bhk",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bhk"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What about the tenant preferred by the landlord of this accomodation?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "tenant preferred by the landlord"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What about the size of this accomodation?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What about the rent of this accomodation?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Tell me more about the size",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Tell me more about the point of contact",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "contact"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Tell me more about the size",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Can you share the number of bathrooms and size information with me?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bathrooms",
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Can you share the location and point of contact information with me?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "location",
-                        "contact"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Can you share the bhk and size information with me?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bhk",
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What's the floors in the building and bhk like in this apartment?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "floors",
-                        "bhk"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What's the size and rent like in this apartment?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "size",
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What's the floors in the building and size like in this apartment?",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "floors",
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I need to know about both the location and size",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "location",
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I need to know about both the bhk and floors in the building",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bhk",
-                        "floors"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I need to know about both the bhk and number of bathrooms",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "bhk",
-                        "bathrooms"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Please provide me more details about the rent of the house",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Please provide me more details about the rent of the house",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Please provide me more details about the rent of the house",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me the tenant preferred by the landlord information of this house",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "tenant preferred by the landlord"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me the size information of this house",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me the location information of this house",
-            "ground_truth": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "location"
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to compare houses 4 and 2",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": null,
-                    "houses": [
-                        3,
-                        1
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to compare houses 4 and 5",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": null,
-                    "houses": [
-                        3,
-                        4
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to compare houses 3 and 2",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": null,
-                    "houses": [
-                        2,
-                        1
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What's the difference between house 2 and house 3 in term of location?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "location"
-                    ],
-                    "houses": [
-                        1,
-                        2
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What's the difference between house 2 and house 4 in term of point of contact?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "contact"
-                    ],
-                    "houses": [
-                        1,
-                        3
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What's the difference between house 3 and house 4 in term of bhk?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "bhk"
-                    ],
-                    "houses": [
-                        2,
-                        3
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "How do houses 1 and 2 compare on point of contact?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "contact"
-                    ],
-                    "houses": [
-                        0,
-                        1
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "How do houses 2 and 1 compare on floors in the building?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "floors"
-                    ],
-                    "houses": [
-                        1,
-                        0
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "How do houses 1 and 2 compare on bhk?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "bhk"
-                    ],
-                    "houses": [
-                        0,
-                        1
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me a comparison of properties on the location",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "location"
-                    ],
-                    "houses": null
-                }
-            }
-        },
-        {
-            "user_input": "Show me a comparison of properties on the rent",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ],
-                    "houses": null
-                }
-            }
-        },
-        {
-            "user_input": "Show me a comparison of properties on the floors in the building",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "floors"
-                    ],
-                    "houses": null
-                }
-            }
-        },
-        {
-            "user_input": "Could you compare the number of bathrooms of these houses?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "bathrooms"
-                    ],
-                    "houses": null
-                }
-            }
-        },
-        {
-            "user_input": "Could you compare the rent of these houses?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "rent"
-                    ],
-                    "houses": null
-                }
-            }
-        },
-        {
-            "user_input": "Could you compare the floors in the building of these houses?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "floors"
-                    ],
-                    "houses": null
-                }
-            }
-        },
-        {
-            "user_input": "I want to compare the size between 1 option and 4 option",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ],
-                    "houses": [
-                        0,
-                        3
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I want to compare the point of contact between 2 option and 1 option",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "contact"
-                    ],
-                    "houses": [
-                        1,
-                        0
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I want to compare the size between 5 option and 1 option",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ],
-                    "houses": [
-                        4,
-                        0
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What are the differences between houses 3 and house 1 in bhk and tenant preferred by the landlord ?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "bhk",
-                        "tenant preferred by the landlord"
-                    ],
-                    "houses": [
-                        2,
-                        0
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What are the differences between houses 5 and house 3 in rent and tenant preferred by the landlord ?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "rent",
-                        "tenant preferred by the landlord"
-                    ],
-                    "houses": [
-                        4,
-                        2
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "What are the differences between houses 1 and house 2 in point of contact and location ?",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "contact",
-                        "location"
-                    ],
-                    "houses": [
-                        0,
-                        1
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Compare location and size for houses 4 and 5",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "location",
-                        "size"
-                    ],
-                    "houses": [
-                        3,
-                        4
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Compare size and bhk for houses 5 and 3",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size",
-                        "bhk"
-                    ],
-                    "houses": [
-                        4,
-                        2
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Compare size and point of contact for houses 4 and 3",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size",
-                        "contact"
-                    ],
-                    "houses": [
-                        3,
-                        2
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me how houses 5 and 4 differ in terms of size",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ],
-                    "houses": [
-                        4,
-                        3
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me how houses 3 and 1 differ in terms of location",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "location"
-                    ],
-                    "houses": [
-                        2,
-                        0
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Show me how houses 4 and 5 differ in terms of size",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ],
-                    "houses": [
-                        3,
-                        4
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Let me see a comparison of houses 1 and 4 focusing on size",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ],
-                    "houses": [
-                        0,
-                        3
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Let me see a comparison of houses 3 and 5 focusing on size",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "size"
-                    ],
-                    "houses": [
-                        2,
-                        4
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "Let me see a comparison of houses 5 and 4 focusing on point of contact",
-            "ground_truth": {
-                "intent": "COMPARE_HOUSES",
-                "slots": {
-                    "properties": [
-                        "contact"
-                    ],
-                    "houses": [
-                        4,
-                        3
-                    ]
-                }
-            }
-        },
-        {
-            "user_input": "I'd like to have an ice cream",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "I'd like to have an ice cream",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "I'd like to have an ice cream",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Which places can you suggest for a good pizza?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Which places can you suggest for a good pizza?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Which places can you suggest for a good pizza?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What's the weather like today?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What's the weather like today?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What's the weather like today?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Can you help me book a flight to Paris?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Can you help me book a flight to Paris?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Can you help me book a flight to Paris?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Tell me a joke",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Tell me a joke",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Tell me a joke",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "I want to order some groceries",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "I want to order some groceries",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "I want to order some groceries",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "How do I make pasta carbonara?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "How do I make pasta carbonara?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "How do I make pasta carbonara?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What movies are playing at the cinema?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What movies are playing at the cinema?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What movies are playing at the cinema?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Tell me about the story of the magestic Carlo Magno",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Tell me about the story of the magestic Carlo Magno",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "Tell me about the story of the magestic Carlo Magno",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What's the capital of France?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What's the capital of France?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        },
-        {
-            "user_input": "What's the capital of France?",
-            "ground_truth": {
-                "intent": "OUT_OF_DOMAIN",
-                "slots": {}
-            }
-        }
-    ],
-    "dm_data": [
-        {
+[
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1590,7 +13,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1604,7 +30,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_rent)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1618,7 +47,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1631,7 +63,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_bhk)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1645,7 +80,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_rent)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1658,7 +96,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_furnished)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1672,7 +113,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1685,7 +129,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1699,7 +146,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_furnished)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1713,7 +163,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1726,7 +179,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1740,7 +196,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_furnished)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1753,7 +212,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1767,7 +229,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1780,7 +245,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1794,7 +262,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_rent)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1807,7 +278,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_bhk)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1821,7 +295,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_city)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1835,7 +312,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1849,7 +329,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1860,7 +343,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1871,7 +357,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1882,7 +371,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1893,7 +385,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_bhk)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1904,7 +399,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1915,7 +413,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1926,7 +427,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_furnished)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1937,7 +441,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1948,7 +455,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_rent)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1959,7 +469,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1970,7 +483,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1981,7 +497,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_bhk)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -1992,7 +511,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2003,7 +525,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2014,7 +539,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2025,7 +553,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_bhk)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2036,7 +567,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2047,7 +581,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_location)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2058,7 +595,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2069,7 +609,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2083,7 +626,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2097,7 +643,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2109,7 +658,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2122,7 +674,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2136,7 +691,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2148,7 +706,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_rent)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2161,7 +722,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2175,7 +739,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2188,7 +755,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SEARCH",
                 "slots": {
@@ -2202,7 +772,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SEARCH)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2216,7 +789,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2230,7 +806,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2244,7 +823,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2258,7 +840,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2269,7 +854,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2280,7 +868,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2291,7 +882,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2302,19 +896,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
-            "nlu_output": {
-                "intent": "ASK_INFO",
-                "slots": {
-                    "properties": [
-                        "floor_info",
-                        "contact_info"
-                    ]
-                }
-            },
-            "ground_truth": "provide_info"
-        },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2326,7 +911,25 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
+            "nlu_output": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floor_info",
+                        "contact_info"
+                    ]
+                }
+            },
+            "ground_truth": "provide_info"
+        },
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2338,7 +941,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2350,7 +956,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2362,7 +971,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2374,7 +986,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2386,7 +1001,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2398,7 +1016,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2410,7 +1031,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2422,7 +1046,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2433,7 +1060,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2444,7 +1074,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2455,7 +1088,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2466,7 +1102,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2479,7 +1118,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2492,7 +1134,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2505,7 +1150,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2517,7 +1165,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2529,7 +1180,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2540,7 +1194,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2553,7 +1210,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2566,7 +1226,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2577,7 +1240,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2589,7 +1255,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2600,7 +1269,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2611,7 +1283,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2622,7 +1297,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2633,7 +1311,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2644,7 +1325,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2655,7 +1339,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2666,7 +1353,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2677,7 +1367,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2688,7 +1381,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(floor_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2699,7 +1395,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2710,7 +1409,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(contact_info)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2721,7 +1423,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2732,7 +1437,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2743,7 +1451,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "request_slot(bathrooms_number)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "ASK_INFO",
                 "slots": {
@@ -2754,7 +1465,10 @@
             },
             "ground_truth": "provide_info"
         },
-        {
+        "dm_output": "provide_info(tenant_preferred)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2763,7 +1477,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2772,7 +1489,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2781,7 +1501,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2790,7 +1513,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2799,7 +1525,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2808,7 +1537,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2817,7 +1549,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2826,7 +1561,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2835,7 +1573,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2844,7 +1585,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2853,7 +1597,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_size)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2862,7 +1609,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2871,7 +1621,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2880,7 +1633,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2889,7 +1645,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(house_selected)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "HOUSE_SELECTION",
                 "slots": {
@@ -2898,7 +1657,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(HOUSE_SELECTION)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2915,7 +1677,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2932,7 +1697,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2949,7 +1717,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2964,7 +1735,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2976,7 +1750,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(houses)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2989,7 +1766,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -2999,7 +1779,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(houses)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3011,7 +1794,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3022,7 +1808,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3039,7 +1828,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3055,7 +1847,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3072,7 +1867,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3088,7 +1886,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3104,7 +1905,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3121,7 +1925,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3138,7 +1945,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3155,7 +1965,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3171,7 +1984,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3188,7 +2004,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3205,7 +2024,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3221,7 +2043,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3238,7 +2063,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3255,7 +2083,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3272,7 +2103,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3288,7 +2122,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3305,7 +2142,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3322,7 +2162,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3339,7 +2182,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3356,7 +2202,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3371,7 +2220,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3383,7 +2235,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(houses)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3396,7 +2251,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3411,7 +2269,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3422,7 +2283,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3434,7 +2298,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3446,7 +2313,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(houses)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3461,7 +2331,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3472,7 +2345,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3485,7 +2361,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3497,7 +2376,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(houses)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3512,7 +2394,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3527,7 +2412,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3538,7 +2426,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3551,7 +2442,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3563,7 +2457,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3578,7 +2475,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3593,7 +2493,10 @@
             },
             "ground_truth": "confirmation"
         },
-        {
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3604,7 +2507,10 @@
             },
             "ground_truth": "request_slot"
         },
-        {
+        "dm_output": "request_slot(properties)"
+    },
+    {
+        "sample": {
             "nlu_output": {
                 "intent": "COMPARE_HOUSES",
                 "slots": {
@@ -3616,6 +2522,7 @@
                 }
             },
             "ground_truth": "request_slot"
-        }
-    ]
-}
+        },
+        "dm_output": "confirmation(COMPARE_HOUSES)"
+    }
+]

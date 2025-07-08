@@ -1,0 +1,1538 @@
+[
+    {
+        "sample": {
+            "user_input": "What is the bhk of this house?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What is the point of contact of this house?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What is the rent of this house?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Could you tell me the bhk of the property?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Could you tell me the bhk of the property?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bhk"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Could you tell me the floors in the building of the property?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I'd like to know the tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": []
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I'd like to know the number of bathrooms",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I'd like to know the location",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "OUT_OF_DOMAIN",
+                "slots": {}
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What about the floors in the building of this accomodation?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What about the floors in the building of this accomodation?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What about the number of bathrooms of this accomodation?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "location"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Tell me more about the rent",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Tell me more about the rent",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Tell me more about the size",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Can you share the location and rent information with me?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "rent"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Can you share the location and bhk information with me?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "location",
+                        "bhk"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Can you share the floors in the building and rent information with me?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors",
+                        "rent"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What's the floors in the building and tenant preferred by the landlord like in this apartment?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors",
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "floors",
+                        "tenant"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What's the tenant preferred by the landlord and point of contact like in this apartment?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord",
+                        "contact"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What's the tenant preferred by the landlord and number of bathrooms like in this apartment?",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord",
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "bathrooms"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I need to know about both the size and bhk",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "size",
+                        "bhk"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I need to know about both the size and point of contact",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "size",
+                        "contact"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "HOUSE_SELECTION",
+                "slots": {
+                    "house_selected": 1
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I need to know about both the point of contact and floors in the building",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact",
+                        "floors"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact",
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Please provide me more details about the tenant preferred by the landlord of the house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        "nlu_output": []
+    },
+    {
+        "sample": {
+            "user_input": "Please provide me more details about the point of contact of the house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Please provide me more details about the point of contact of the house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me the number of bathrooms information of this house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "number of bathrooms"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me the rent information of this house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me the tenant preferred by the landlord information of this house",
+            "ground_truth": {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": []
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I'd like to compare houses 5 and 4",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": null,
+                    "houses": [
+                        4,
+                        3
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        3
+                    ],
+                    "properties": null
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I'd like to compare houses 2 and 1",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": null,
+                    "houses": [
+                        1,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        0
+                    ],
+                    "properties": null
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I'd like to compare houses 1 and 4",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": null,
+                    "houses": [
+                        0,
+                        3
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        3
+                    ],
+                    "properties": null
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What's the difference between house 5 and house 4 in term of size?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ],
+                    "houses": [
+                        4,
+                        3
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What's the difference between house 2 and house 5 in term of point of contact?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "contact"
+                    ],
+                    "houses": [
+                        1,
+                        4
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": []
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What's the difference between house 4 and house 3 in term of number of bathrooms?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ],
+                    "houses": [
+                        3,
+                        2
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": []
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "How do houses 2 and 1 compare on tenant preferred by the landlord?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        1,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": []
+    },
+    {
+        "sample": {
+            "user_input": "How do houses 3 and 4 compare on size?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ],
+                    "houses": [
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        3
+                    ],
+                    "properties": [
+                        "size"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "How do houses 1 and 3 compare on rent?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": [
+                        0,
+                        2
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        2
+                    ],
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me a comparison of properties on the location",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        1
+                    ],
+                    "properties": [
+                        "location"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me a comparison of properties on the floors in the building",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        1
+                    ],
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me a comparison of properties on the location",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        1
+                    ],
+                    "properties": [
+                        "location"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Could you compare the floors in the building of these houses?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        1
+                    ],
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Could you compare the size of these houses?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        1
+                    ],
+                    "properties": [
+                        "size"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Could you compare the tenant preferred by the landlord of these houses?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": null
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": null,
+                    "properties": null
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I want to compare the number of bathrooms between 2 option and 1 option",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bathrooms"
+                    ],
+                    "houses": [
+                        1,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        0
+                    ],
+                    "properties": [
+                        "bathrooms"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I want to compare the floors in the building between 5 option and 2 option",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ],
+                    "houses": [
+                        4,
+                        1
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        1
+                    ],
+                    "properties": [
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "I want to compare the size between 3 option and 2 option",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "size"
+                    ],
+                    "houses": [
+                        2,
+                        1
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        1
+                    ],
+                    "properties": [
+                        "size"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What are the differences between houses 2 and house 1 in number of bathrooms and rent ?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bathrooms",
+                        "rent"
+                    ],
+                    "houses": [
+                        1,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "bathrooms"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What are the differences between houses 3 and house 4 in rent and tenant preferred by the landlord ?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "contact"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "What are the differences between houses 4 and house 1 in point of contact and size ?",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "contact",
+                        "size"
+                    ],
+                    "houses": [
+                        3,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "ASK_INFO",
+                "slots": {
+                    "properties": [
+                        "rent",
+                        "size"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Compare number of bathrooms and bhk for houses 4 and 5",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bathrooms",
+                        "bhk"
+                    ],
+                    "houses": [
+                        3,
+                        4
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        4
+                    ],
+                    "properties": [
+                        "bathrooms",
+                        "bhk"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Compare number of bathrooms and floors in the building for houses 3 and 4",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "bathrooms",
+                        "floors"
+                    ],
+                    "houses": [
+                        2,
+                        3
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        3
+                    ],
+                    "properties": [
+                        "bathrooms",
+                        "floors"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Compare floors in the building and bhk for houses 1 and 2",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors",
+                        "bhk"
+                    ],
+                    "houses": [
+                        0,
+                        1
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        0,
+                        1
+                    ],
+                    "properties": [
+                        "floors",
+                        "bhk"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me how houses 1 and 2 differ in terms of floors in the building",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "floors"
+                    ],
+                    "houses": [
+                        0,
+                        1
+                    ]
+                }
+            }
+        },
+        "nlu_output": []
+    },
+    {
+        "sample": {
+            "user_input": "Show me how houses 4 and 1 differ in terms of location",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": [
+                        3,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        1,
+                        4
+                    ],
+                    "properties": [
+                        "location"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Show me how houses 4 and 3 differ in terms of tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        3,
+                        2
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        2
+                    ],
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Let me see a comparison of houses 3 and 1 focusing on rent",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "rent"
+                    ],
+                    "houses": [
+                        2,
+                        0
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        2,
+                        0
+                    ],
+                    "properties": [
+                        "rent"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Let me see a comparison of houses 4 and 2 focusing on tenant preferred by the landlord",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "tenant preferred by the landlord"
+                    ],
+                    "houses": [
+                        3,
+                        1
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        3,
+                        1
+                    ],
+                    "properties": [
+                        "tenant_preferred"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "sample": {
+            "user_input": "Let me see a comparison of houses 5 and 3 focusing on location",
+            "ground_truth": {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "properties": [
+                        "location"
+                    ],
+                    "houses": [
+                        4,
+                        2
+                    ]
+                }
+            }
+        },
+        "nlu_output": [
+            {
+                "intent": "COMPARE_HOUSES",
+                "slots": {
+                    "houses": [
+                        4,
+                        2
+                    ],
+                    "properties": [
+                        "location"
+                    ]
+                }
+            }
+        ]
+    }
+]
