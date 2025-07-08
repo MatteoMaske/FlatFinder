@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
 [![Transformers](https://img.shields.io/badge/Transformers-4.45%2B-red?logo=transformers)](https://pytorch.org/)
 
-A modular Conversational Agent pipeline based on open source Large Language Models (LLMs), developed for the Human Machine Dialogue 2023/24 course.  
+A modular Conversational Agent pipeline based on open source Large Language Models (LLMs), developed for the Human Machine Dialogue 2024/25 course.  
 This agent can help users find rental properties in India, leveraging a real dataset and advanced NLU, DM, and NLG components.
 
 ---
