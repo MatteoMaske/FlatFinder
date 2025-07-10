@@ -36,6 +36,7 @@ def setup_logging(debug: bool = False):
     logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.getLogger("httpcore").setLevel(logging.WARNING)
     logging.getLogger("ollama").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
 def get_logger(name=None):
