@@ -1,34 +1,41 @@
 import os
-
+from utils.logger import get_logger
 from components.state_tracker import StateTracker
 from utils.utils import generate
 from prompts.house_agency.nlg_prompts import NLG_PROMPTS
+
+logger = get_logger(__name__)
+
+
 class NLG:
-    def __init__(self, model, tokenizer, args, verbose=False):
+    def __init__(self, model, tokenizer, args):
         self.model = model
         self.tokenizer = tokenizer
         self.args = args
-        self.verbose = verbose
 
     def select_nlg_prompt(self, next_best_action, conversation, state_tracker):
         if "show_houses" in next_best_action:
-            print("Selecting show_houses prompt") if self.verbose else None
+            logger.debug("Selecting show_houses prompt")
             return NLG_PROMPTS["show_houses"]
         elif "provide_info" in next_best_action:
-            print("Selecting provide_info prompt") if self.verbose else None
+            logger.debug("Selecting provide_info prompt")
             house_info = "House Info:\n" + str(state_tracker.active_house)
             return NLG_PROMPTS["provide_info"].format(conversation, house_info)
         elif "confirmation(COMPARE_HOUSES)" in next_best_action:
-            print("Selecting compare_houses prompt") if self.verbose else None
-            return NLG_PROMPTS["compare_houses"].format(conversation, state_tracker.houses_to_compare, state_tracker.properties_to_compare)
+            logger.debug("Selecting compare_houses prompt")
+            return NLG_PROMPTS["compare_houses"].format(
+                conversation,
+                state_tracker.houses_to_compare,
+                state_tracker.properties_to_compare,
+            )
         elif "confirmation" in next_best_action:
-            print("Selecting confirmation prompt") if self.verbose else None
+            logger.debug("Selecting confirmation prompt")
             return NLG_PROMPTS["provide_info"].format(conversation, "")
         elif "fallback_policy" in next_best_action:
-            print("Selecting fallback_policy prompt") if self.verbose else None
+            logger.debug("Selecting fallback_policy prompt")
             return NLG_PROMPTS["fallback_policy"].format(conversation, next_best_action)
         else:
-            print("Selecting request_info prompt") if self.verbose else None
+            logger.debug("Selecting request_info prompt")
             return NLG_PROMPTS["request_info"].format(conversation)
 
     def __call__(self, state_tracker: StateTracker, conversation=[], stream=False):
@@ -39,18 +46,20 @@ class NLG:
         nlg_outputs = []
 
         for next_best_action in dm_output:
-            system_prompt = self.select_nlg_prompt(next_best_action, conversation, state_tracker)
+            system_prompt = self.select_nlg_prompt(
+                next_best_action, conversation, state_tracker
+            )
             nlg_input = next_best_action + "\n" + str(state_tracker_state)
             system_prompt = self.args.chat_template.format(system_prompt, nlg_input)
-            print(f"NLG Text: '{system_prompt}'") if self.verbose else None
-            
+            logger.debug(f"NLG Text: '{system_prompt}'")
+
             nlg_output = generate(self.model, system_prompt, self.tokenizer, self.args)
             nlg_outputs.append(nlg_output)
 
             self.post_process(nlg_outputs)
 
             return nlg_outputs[0]
-    
+
     def post_process(self, nlg_outputs):
         """
         Apply simple post-processing to the NLU outputs by converting them to a dictionary.
@@ -60,8 +69,7 @@ class NLG:
             nlg_outputs[i] = nlg_outputs[i].strip("\n")
             if len(nlg_outputs[i]) == 0:
                 to_remove.append(i)
-        
-        # TODO: Handle this missing information later with the fallback policy
+
         for i in to_remove:
             nlg_outputs.pop(i)
 
