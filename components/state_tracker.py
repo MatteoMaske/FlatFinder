@@ -61,13 +61,16 @@ class StateTracker:
                 "COMPARE_HOUSES",
                 "OUT_OF_DOMAIN",
             ]:
-                logger.error("Unknown intent for the current system, please try again.")
-                continue
+                self.fallback_policy(
+                    "Unknown intent for the current system, please try again."
+                )
             elif intent == "OUT_OF_DOMAIN":
-                logger.error(
+                self.fallback_policy(
                     "The intent of the user request is out of the domain of the current system."
                 )
-                continue
+            else:
+                self.current_intent = intent
+                self.initialize_slots(intent, slots)
 
             if not self.current_intent:  # Initial state
                 self.current_intent = intent
